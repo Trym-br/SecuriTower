@@ -14,7 +14,7 @@ public class CrystalController : MonoBehaviour
     [SerializeField] private bool isSender = false;
     public float Rotation;
     
-    private bool isLaserOn = true;
+    private bool isLaserOn = false;
     private GameObject[] LastHits;
 
     private void Awake()
@@ -26,6 +26,10 @@ public class CrystalController : MonoBehaviour
         Array.Fill(LastHits, null);
     }
 
+    private void FixedUpdate()
+    {
+        CrystalLogic();
+    }
     private void SendLaser(int OutputPointIndex, bool isOn)
     {
         Vector3 OutputPoint = OutputPoints[OutputPointIndex];
@@ -39,31 +43,32 @@ public class CrystalController : MonoBehaviour
         );
         if (hit)
         {
+            Debug.DrawLine(origin, hit.point, Color.green);
             // print("Hit: " + hit.collider.name);
             
-            // If lost LOS on crystal, disable it
             
-            print("Hit: " + hit.collider.name + " / " + LastHits[OutputPointIndex]);
-            if (LastHits[OutputPointIndex] != null && hit.collider.gameObject != LastHits[OutputPointIndex])
-            {
-                print("UMBRELLA CASE");
-                LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, false, true);
-                LastHits[OutputPointIndex] = null;
-            }
+            // print("Hit: " + hit.collider.name + " / " + LastHits[OutputPointIndex]);
             // If hit crystal, enable it
             if (hit.collider.CompareTag("Crystal"))
-            {
-               hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn);
-               LastHits[OutputPointIndex] = hit.collider.gameObject;
+            { 
+                // print("");
+                hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn);
+                LastHits[OutputPointIndex] = hit.collider.gameObject;
             }
-            
-            Debug.DrawLine(origin, hit.point, Color.green);
+        }
+        // If lost LOS on crystal, disable it
+        if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex]))
+        {
+            // print("UMBRELLA CASE");
+            LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, false, true);
+            LastHits[OutputPointIndex] = null;
         }
         Debug.DrawRay(origin, dir, Color.red);
     }
     
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
+        // print("hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(InputPoints[0]));
         for (int i = 0; i < InputPoints.Length; i++)
         {
             if (hitPoint == transform.TransformPoint(InputPoints[i]) || forceTrue)
@@ -88,15 +93,20 @@ public class CrystalController : MonoBehaviour
         }
         else if (isLaserOn)
         {
+            isLaserOn = false;
             for (int i = 0; i < OutputPoints.Length; i++)
             {
                 SendLaser(i, false);
             }
-            isLaserOn = false;
         }
     }
-    private void FixedUpdate()
+
+    [ContextMenu("Interact")]
+    private void Interact()
     {
+        //Rotate Crystal
+        Array.Fill(ActiveInputs, isSender);
+        transform.Rotate(Vector3.forward, 45);
         CrystalLogic();
     }
 
