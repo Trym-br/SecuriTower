@@ -3,7 +3,7 @@ using UnityEngine;
 public class MakeMoveable : MonoBehaviour {
 	LayerMask getStoppedBy = ~0;
 
-	public bool canBeMovedInConjunction;
+	public bool canBeMovedInConjunction = true;
 
 	public bool TryMoveInDirection(Vector2 direction) {
 		var moveTo = direction;

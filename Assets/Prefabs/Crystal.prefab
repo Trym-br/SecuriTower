@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 442739920675841832}
   - component: {fileID: 2565804433044961153}
   - component: {fileID: 264910044129537266}
+  - component: {fileID: 7418415956531884968}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Crystal
@@ -98,7 +99,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4273786917217003375}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -163,6 +164,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7418415956531884968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273786917217003375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c381b25cd336c30618c589901a21f56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeMovedInConjunction: 1
 --- !u!1 &7687328020190194353
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,8 +222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputPoints:
-  - {x: 0, y: 0, z: 0}
-  ActiveInputPoints: 
+  - {x: -0.5, y: 0, z: 0}
   OutputPoints:
-  - {x: 0.5, y: 0, z: 0}
+  - {x: 0, y: -0.5, z: 0}
+  ActiveInputs: 
+  isSender: 0
   Rotation: 0
+  isLaserOn: 0
