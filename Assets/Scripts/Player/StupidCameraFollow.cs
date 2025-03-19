@@ -1,10 +1,9 @@
 using UnityEngine;
 
-#if UNITY_EDITOR
 public class StupidCameraFollow : MonoBehaviour {
 	public Transform target;
 
-	public float smoothing = 0.5f;
+	public float smoothing = 5.0f;
 
 	const float cameraZ = -10.0f;
 
@@ -29,4 +28,3 @@ public class StupidCameraFollow : MonoBehaviour {
 		playerCamera.transform.position = camPosition;
 	}
 }
-#endif
