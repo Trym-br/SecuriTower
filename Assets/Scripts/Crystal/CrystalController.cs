@@ -1,9 +1,6 @@
 using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
-using UnityEngine.InputSystem;
 
 
 public class CrystalController : MonoBehaviour
@@ -14,7 +11,7 @@ public class CrystalController : MonoBehaviour
     [SerializeField] private bool isSender = false;
     public float Rotation;
     
-    private bool isLaserOn = false;
+    public bool isLaserOn = false;
     private GameObject[] LastHits;
 
     private void Awake()
@@ -78,11 +75,26 @@ public class CrystalController : MonoBehaviour
         }
         // Cut Down on Delay
         CrystalLogic();
+        
+        // Breaking logic
+        for (int i = 0; i < OutputPoints.Length; i++)
+        {
+            if (hitPoint == transform.TransformPoint(OutputPoints[i]) || forceTrue)
+            {
+                DestroyCrystal();
+            }
+        }
+        
+    }
+
+    private void DestroyCrystal()
+    {
+        
     }
 
     private void CrystalLogic()
     {
-        bool shootFlag = ActiveInputs.All(x=>x);
+        bool shootFlag = ActiveInputs.All(x=> x);
         if (shootFlag)
         {
             isLaserOn = true;

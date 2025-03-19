@@ -6,11 +6,27 @@ public class CameraController : MonoBehaviour
     public Transform target;
     public Vector3 targetPos;
     public float speed;
+
+    private void Start()
+    {
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        } 
+    }
+
     private void Update()
     {
        // transform.position = new Vector3(target.position.x, target.position.y, transform.position.z); 
        targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
-       transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+       if (speed == -1)
+       {
+           transform.position = targetPos;
+       }
+       else
+       {
+           transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+       }
     }
 }
 
