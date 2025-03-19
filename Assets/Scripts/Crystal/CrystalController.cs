@@ -68,8 +68,9 @@ public class CrystalController : MonoBehaviour
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            if (hitPoint == transform.TransformPoint(OutputPoints[i]) || forceTrue)
+            if (hitPoint == transform.TransformPoint(OutputPoints[i]))
             {
+                // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(OutputPoints[i]));
                 if (ActiveInputs.All(x => x))
                 {
                     DestroyCrystal();
