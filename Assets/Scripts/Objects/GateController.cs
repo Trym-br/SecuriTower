@@ -6,14 +6,14 @@ public class GateController : MonoBehaviour
 {
     
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Collider2D collider2D;
+    [SerializeField] private Collider2D _collider2D;
     [SerializeField] private CrystalController[] Inputs;
     private bool isOpen = false;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider2D = GetComponent<Collider2D>();
+        _collider2D = GetComponent<Collider2D>();
     }
 
     private void FixedUpdate()
@@ -34,12 +34,12 @@ public class GateController : MonoBehaviour
     private void Open()
     {
         spriteRenderer.enabled = false;
-        collider2D.enabled = false;
+        _collider2D.enabled = false;
     }
 
     private void Close()
     {
         spriteRenderer.enabled = true;
-        collider2D.enabled = true;
+        _collider2D.enabled = true;
     }
 }
