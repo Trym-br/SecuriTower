@@ -65,6 +65,17 @@ public class CrystalController : MonoBehaviour
     
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
+        // Crystal Breaking logic
+        for (int i = 0; i < OutputPoints.Length; i++)
+        {
+            if (hitPoint == transform.TransformPoint(OutputPoints[i]) || forceTrue)
+            {
+                if (ActiveInputs.All(x => x))
+                {
+                    DestroyCrystal();
+                }
+            }
+        }
         // print("hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(InputPoints[0]));
         for (int i = 0; i < InputPoints.Length; i++)
         {
@@ -75,21 +86,11 @@ public class CrystalController : MonoBehaviour
         }
         // Cut Down on Delay
         CrystalLogic();
-        
-        // Breaking logic
-        for (int i = 0; i < OutputPoints.Length; i++)
-        {
-            if (hitPoint == transform.TransformPoint(OutputPoints[i]) || forceTrue)
-            {
-                DestroyCrystal();
-            }
-        }
-        
     }
 
     private void DestroyCrystal()
     {
-        
+       Destroy(transform.parent.gameObject); 
     }
 
     private void CrystalLogic()
