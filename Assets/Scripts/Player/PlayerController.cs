@@ -92,17 +92,6 @@ public class PlayerController : MonoBehaviour {
 				if (objectBeingPushedAgainstStartedAt + objectPushingDelay < Time.time) {
 					moveableAtTarget.TryMoveInDirection(moveDirection);
 				}
-
-#if false
-				objectBeingPushedAgainstID = dings
-				if (objectBeingPushedAgainstID == dings && objectBeingPushedAgainstID != 0
-				    && previousMoveDirection == moveDirection
-				    && !(moveDirection.x == 0.0f && moveDirection.y == 0.0f)) {
-					print($"id is {objectBeingPushedAgainstID} at {Time.time}");
-				} else {
-					print("not holdering");
-				}
-#endif
 			}
 		}
 	}
@@ -126,30 +115,6 @@ public class PlayerController : MonoBehaviour {
 
 		Gizmos.color = Color.blue;
 		Gizmos.DrawWireCube(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment());
-	}
-#endif
-
-#if false
-	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.TryGetComponent<MakeMoveable>(out var moveable)) {
-			var delta = new Vector2(collision.transform.position.x,
-			                        collision.transform.position.y)
-			            - playerRB.position;
-
-			if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y) && delta.x != 0.0f) {
-				Vector2 moveBy = delta;
-				moveBy.x /= Mathf.Abs(moveBy.x);
-				moveBy.y = 0.0f;
-				moveable.TryMoveInDirection(moveBy);
-			} else if (Mathf.Abs(delta.x) < Mathf.Abs(delta.y) && delta.y != 0.0f) {
-				Vector2 moveBy = delta;
-				moveBy.x = 0.0f;
-				moveBy.y /= Mathf.Abs(moveBy.y);
-				moveable.TryMoveInDirection(moveBy);
-			} else {
-				// Do nothing!
-			}
-		}
 	}
 #endif
 }
