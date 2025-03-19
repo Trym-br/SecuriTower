@@ -8,7 +8,7 @@ public class CrystalController : MonoBehaviour
     [SerializeField] private Vector3[] InputPoints;
     [SerializeField] private Vector3[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
-    [SerializeField] private bool isSender = false;
+    private bool isSender = false;
     public float Rotation;
     
     public bool isLaserOn = false;
@@ -16,6 +16,12 @@ public class CrystalController : MonoBehaviour
 
     private void Awake()
     {
+        if (InputPoints.Length == 0)
+        {
+            InputPoints = new Vector3[1];
+            InputPoints[0] = new Vector3(0, 0, 0);
+            isSender = true;
+        }
         ActiveInputs = new bool[InputPoints.Length];
         Array.Fill(ActiveInputs, isSender);
         
