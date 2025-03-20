@@ -11,8 +11,10 @@ public class CrystalController : MonoBehaviour
     private bool isSender = false;
     public float Rotation;
     
-    public bool isLaserOn = false;
     private GameObject[] LastHits;
+    public bool isLaserOn = false;
+    private LineRenderer lineRenderer;
+    private Vector3[] linePoints;  
 
     private void Awake()
     {
@@ -27,6 +29,9 @@ public class CrystalController : MonoBehaviour
         
         LastHits = new GameObject[InputPoints.Length];
         Array.Fill(LastHits, null);
+        
+        lineRenderer = GetComponent<LineRenderer>();
+        linePoints = new Vector3[OutputPoints.Length*3];
     }
 
     private void FixedUpdate()
@@ -47,6 +52,9 @@ public class CrystalController : MonoBehaviour
         if (hit)
         {
             Debug.DrawLine(origin, hit.point, Color.green);
+            linePoints[OutputPointIndex] = hit.point;
+            linePoints[OutputPointIndex+1] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
+            linePoints[OutputPointIndex+2] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
             // print("Hit: " + hit.collider.name);
             
             
@@ -58,6 +66,12 @@ public class CrystalController : MonoBehaviour
                 hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn);
                 LastHits[OutputPointIndex] = hit.collider.gameObject;
             }
+        }
+        else
+        {
+            linePoints[OutputPointIndex] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
+            linePoints[OutputPointIndex+1] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
+            linePoints[OutputPointIndex+2] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
         }
         // If lost LOS on crystal, disable it
         if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex]))
@@ -100,9 +114,15 @@ public class CrystalController : MonoBehaviour
        Destroy(transform.parent.gameObject); 
     }
 
+    private void UpdateLineRenderer()
+    {
+        lineRenderer.positionCount = linePoints.Length;
+        lineRenderer.SetPositions(linePoints);
+    }
+
     private void CrystalLogic()
     {
-        bool shootFlag = ActiveInputs.All(x=> x);
+        bool shootFlag = ActiveInputs.All(x => x);
         if (shootFlag)
         {
             isLaserOn = true;
@@ -110,6 +130,7 @@ public class CrystalController : MonoBehaviour
             {
                 SendLaser(i, true);
             }
+            UpdateLineRenderer();
         }
         else if (isLaserOn)
         {
