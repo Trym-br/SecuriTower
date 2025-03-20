@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 161362559460413998}
   - component: {fileID: 7493029758781248991}
   - component: {fileID: 5724120411040840717}
-  - component: {fileID: 2625559387711884709}
+  - component: {fileID: 7142426865959595911}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -183,7 +183,7 @@ MonoBehaviour:
   playerInRange: 0
   visualCue: {fileID: 9202300942054321820}
   InkJSONs: []
---- !u!114 &2625559387711884709
+--- !u!114 &7142426865959595911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4762053927091217816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b3a5b61553af98d9a7859298c6ce407, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b42e91b35eb0dfac864523dcdf7a217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8124300079993611779
