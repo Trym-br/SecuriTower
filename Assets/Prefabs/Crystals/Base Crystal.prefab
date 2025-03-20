@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 264910044129537266}
   - component: {fileID: 7418415956531884968}
   m_Layer: 0
-  m_Name: Crystal
+  m_Name: Base Crystal
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.81621456, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -226,6 +226,5 @@ MonoBehaviour:
   OutputPoints:
   - {x: 0, y: -0.5, z: 0}
   ActiveInputs: 
-  isSender: 0
   Rotation: 0
   isLaserOn: 0
