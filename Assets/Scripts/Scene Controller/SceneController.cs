@@ -1,4 +1,5 @@
 //#define USE_MAIN_MENU_SCENE_LOADING
+//#define USE_LEVEL_STRUCT
 
 using System;
 using System.Collections;
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
 
+#if USE_LEVEL_STRUCT
 [Serializable]
 public struct Level {
 	public string name;
@@ -17,10 +19,11 @@ public struct Level {
 	[FormerlySerializedAs("additionalScenes")]
 	public string[] scenes;
 }
+#endif
 
 public class SceneController : MonoBehaviour {
 	[HideInInspector]
-	public SceneController instance;
+	public static SceneController instance;
 
 	[Tooltip("These scenes will get loaded additively.")]
 	public string[] loadOnStartup;
@@ -32,7 +35,12 @@ public class SceneController : MonoBehaviour {
 
 	[Header("Levels")]
 	public int currentLevel;
+#if USE_LEVEL_STRUCT
 	public Level[] levels;
+#else
+	public string[] levels;
+#endif
+
 	void Awake() {
 		if (instance != null) {
 			Destroy(this);
@@ -55,7 +63,7 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void Start() {
-		LoadLevelScenes(currentLevel);
+		//LoadLevelScenes(currentLevel);
 		previousCurrentLevel = currentLevel;
 	}
 
@@ -128,14 +136,18 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+#if UNITY_EDITOR
 		if (!scene.isLoaded) {
 			// Sanity check.
 			Debug.LogError("OnSceneLoaded got a scene that isn't loaded!?");
 		}
+#endif
 
+#if USE_LEVEL_STRUCT
 		if (scene.name == levels[currentLevel].setAsActiveScene) {
 			SceneManager.SetActiveScene(scene);
 		}
+#endif
 	}
 
 	void UnloadLevelScenes(int level) {
@@ -144,6 +156,7 @@ public class SceneController : MonoBehaviour {
 			return;
 		}
 
+#if USE_LEVEL_STRUCT
 		if (levels[level].scenes == null) return;
 
 		for (int i = 0; i < levels[level].scenes.Length; ++i) {
@@ -151,6 +164,10 @@ public class SceneController : MonoBehaviour {
 				UnloadScene(levels[level].scenes[i]);
 			}
 		}
+#else
+		if (levels[level] == null) return;
+		UnloadScene(levels[level]);
+#endif
 	}
 
 	void LoadLevelScenes(int level) {
@@ -159,6 +176,7 @@ public class SceneController : MonoBehaviour {
 			return;
 		}
 
+#if USE_LEVEL_STRUCT
 		if (levels[level].scenes == null) return;
 
 		for (int i = 0; i < levels[level].scenes.Length; ++i) {
@@ -166,6 +184,11 @@ public class SceneController : MonoBehaviour {
 				LoadSceneIfNotLoaded(levels[level].scenes[i]);
 			}
 		}
+#else
+		if (levels[level] == null) return;
+		//LoadSceneIfNotLoaded(levels[level]);
+		LoadScene(levels[level]);
+#endif
 	}
 
 	public void LoadLevel(int level) {

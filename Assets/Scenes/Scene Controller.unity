@@ -163,17 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97544d619850aaec592471cae5951a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   loadOnStartup:
   - Player
-  mainMenuScenes: []
   currentLevel: 0
   levels:
-  - name: 
-    setAsActiveScene: 
-    scenes:
-    - Level 1
-  mainMenuIsLoaded: 0
+  - Cramped Cystals
+  - Cramped Cystals
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

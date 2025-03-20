@@ -26,7 +26,7 @@ public class InputActions : MonoBehaviour {
     [HideInInspector] public bool submitBegin  { get; private set; }
     [HideInInspector] public bool submitHeld   { get; private set; }
     [HideInInspector] public bool submitEnd    { get; private set; }
-    
+
 	void Update() {
 		if (actions == null) actions = new InputSystem_Actions();
 
@@ -44,7 +44,7 @@ public class InputActions : MonoBehaviour {
 		parasolBegin = actions.Player.Parasol.WasPressedThisFrame();
 		parasolHeld  = actions.Player.Parasol.IsPressed();
 		parasolEnd   = actions.Player.Parasol.WasReleasedThisFrame();
-        
+
         submitBegin = actions.UI.Submit.WasPressedThisFrame();
         submitHeld  = actions.UI.Submit.IsPressed();
         submitEnd   = actions.UI.Submit.WasReleasedThisFrame();

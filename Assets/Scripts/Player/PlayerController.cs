@@ -2,6 +2,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(InputActions))]
 public class PlayerController : MonoBehaviour {
+	public static PlayerController instance;
+
 	public float speed = 2.35f;
 
 	[Range(0.0f, 1.0f)]
@@ -13,6 +15,13 @@ public class PlayerController : MonoBehaviour {
 	InputActions input;
 
 	void Awake() {
+		if (instance != null) {
+			Debug.LogError("There are two players!");
+			return;
+		}
+
+		instance = this;
+
 		playerRB = GetComponent<Rigidbody2D>();
 		playerRB.gravityScale           = 0.0f;
 		playerRB.constraints            = RigidbodyConstraints2D.FreezeRotation;
@@ -118,6 +127,18 @@ public class PlayerController : MonoBehaviour {
 		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
 
 		MaybeMoveBoxes();
+	}
+
+	public void GoUpStairs(Vector3 stairPosition) {
+		SceneController.instance.LoadNextLevel();
+		transform.position = stairPosition;
+		Physics2D.SyncTransforms();
+	}
+
+	public void GoDownStairs(Vector3 stairPosition) {
+		SceneController.instance.LoadPreviousLevel();
+		transform.position = stairPosition;
+		Physics2D.SyncTransforms();
 	}
 
 #if UNITY_EDITOR
