@@ -163,7 +163,7 @@ public class SceneController : MonoBehaviour {
 
 		for (int i = 0; i < levels[level].scenes.Length; ++i) {
 			if (levels[level].scenes[i] != null) {
-				LoadScene(levels[level].scenes[i]);
+				LoadSceneIfNotLoaded(levels[level].scenes[i]);
 			}
 		}
 	}
