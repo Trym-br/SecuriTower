@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour {
     private const string rightPortraitTag = "rightPortrait";
     private const string layoutTag = "layout";
     private const string wordSpeedTag = "wordSpeed";
+    private const string endCutsceneTag = "endCutscene";
 
     //Typing effect
     private float showNextCharacterAt;
@@ -30,6 +31,7 @@ public class DialogueManager : MonoBehaviour {
 
     [Header("Booleans")] public bool dialogueIsPlaying;
     public bool typing;
+    private bool endCutsceneAfterDialogue;
 
     [Header("Word Speed")] public float wordSpeed;
 
@@ -92,12 +94,13 @@ public class DialogueManager : MonoBehaviour {
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        if (dialogueIsPlaying) return;
+
         currentStory = new Story(inkJSON.text);
         dialogueHolder.SetActive(true);
         continueSymbol.SetActive(false);
         dialogueIsPlaying = true;
         dialogueAnimator.Play("start");
-
         //reset tags so they don't carry over from previous story
         speakerName.text = "???";
         wordSpeed = 0.03f;
@@ -157,6 +160,11 @@ public class DialogueManager : MonoBehaviour {
     {
         dialogueHolder.SetActive(false);
         dialogueIsPlaying = false;
+        if (endCutsceneAfterDialogue)
+        {
+            Debug.Log("Ending cutscene.");
+            OpeningCutsceneManager.instance.EndCutscene();
+        }
     }
 
     #endregion
@@ -199,20 +207,23 @@ public class DialogueManager : MonoBehaviour {
                     }
                     catch (FormatException)
                     {
-                        string newTagValue = tagValue.Replace(',' ,'.');
+                        string newTagValue = tagValue.Replace(',', '.');
                         try
                         {
                             wordSpeed = float.Parse(newTagValue);
                         }
                         catch (FormatException)
                         {
-                            float defaultValue = 0.03f; 
+                            float defaultValue = 0.03f;
                             Debug.LogError($"Could not parse '{tagValue}' as a float for word speed! " +
                                            $"Using a default value of {defaultValue} instead.");
                             wordSpeed = defaultValue;
                         }
                     }
-
+                    break;
+                
+                case endCutsceneTag:
+                    endCutsceneAfterDialogue = true;
                     break;
 
                 default:
