@@ -8,7 +8,7 @@ I was wonderin' when you'd show up.
 
 (Name)! #speaker:Wizard #layout:left
 It's good to see you again.
-Say you wouldn't know anything about any intruders?
+Say, you wouldn't know anything about any intruders?
 Any unwanted guests?
 
 Oh, yeah. #speaker:Gnome#layout:right
@@ -27,7 +27,7 @@ Must have been evil chantin', if ya ask me.
 Oh no... #speaker:Wizard #layout:left
 
 Yup. Real scary stuff. #speaker:Gnome #layout:right
-I'd get going if I were you.
+I'd get goin' if I were you.
 Better find her before she curses all of us for eternity.
 
 Solid advice.#speaker:Wizard #layout:left

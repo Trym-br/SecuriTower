@@ -33,7 +33,7 @@ Leave!
 Huh?#speaker:Princess#layout:right
 I think you're a bit confused.
 This is my tower now!
-The current housing crisis has made it soo hard to aquire towers.
+The current housing crisis has made it sooo hard to aquire towers.
 It's, like, <i>such</i> a bother.
 And I've always wanted a tower for a summer home!
 You can imagine the struggle that's caused me.
@@ -42,14 +42,15 @@ A bit shabby, but with some work it'll do just fine.
 I'm sure you can find somewhere else!
 
 You–?#speaker:Wizard#layout:left
-Nuh-uh! You cannot just waltz in on someone's property and claim to own it.
+Nuh-uh!
+You cannot just waltz in on someone's property and claim to own it.
 
-?#speaker:Princess#layout:left
+Hm?#speaker:Princess#layout:right
 Yes I can.
 The key was just lying in the mail box.
 So it was really easy, actually.
 Your pet rock is soo cute, BTW!!!
-The maid girl is kinda weird tho... I think I'll get rid of her.
+The maid girl is kinda weird though... I think I'll get rid of her.
 
 Absolutely not.#speaker:Wizard#layout:left
 You're not getting rid of anyone.

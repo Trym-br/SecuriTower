@@ -1,37 +1,40 @@
 -> main
-
 === main ===
 #leftPortrait:wizard#rightPortrait:maid
-Oh my gosh! #speaker:Maid #layout:right
+
+Oh my gosh! #speaker:Maid#layout:right#wordSpeed:0,01
 Oh good heavens!!
 Oh goodness gracious!!!
-Is it safe? Is she gone?
+Is it safe? Is she gone?#wordSpeed:0,03
 
-Calm down! #speaker:Wizard #layout:left
+Calm down! #speaker:Wizard#layout:left
 What are you talking about?
 
-Someone... #speaker:Maid#layout:right
-Someone!! 
+Someone...#speaker:Maid#layout:right
+<b>Someone!!</b> #wordSpeed:0,01
 
-... #speaker:Wizard #layout:left
+... #speaker:Wizard #layout:left#wordSpeed:0,03
 
-Someone broke in... #speaker:Maid #layout:right
+Someone broke in... #speaker:Maid#layout:right
 I was cleaning the floors, when I heard dreadful commotion from downstairs. 
 Then, suddenly, these lasers turned on, trapping me!
 And then I heard a hideous sound...
 Laughter!
 A woman's laughter...
-Then, she walked up the stairs, and...
-OH GOD!
+<b>OH GOD!</b>#wordSpeed:0,01
 
-Chillax, name. #speaker:Wizard#layout:left
-Did you see what she looked like?
+Chillax, name. #speaker:Wizard#layout:left#wordSpeed:0,03
+Did you happen to see anything?
 
-N-no... #speaker:Maid#layout:right
-To be quite hoenst, I was so frightened that I covered my eyes.
-But I heard her move upstairs.
-You must find this horrid wench! For our safety!
+No... #speaker:Maid#layout:right
+To be quite honest, I was so frightened that I covered my eyes.
 
-Right on it, name. #speaker:Wizard#layout:left
+... #speaker:Wizard#layout:left
+
+Please, you must find this horrid wench! #speaker:Maid#layout:right
+
+Alright, alright, don't worry. #speaker:Wizard#layout:left
+I'll get right on it.
+
 
 -> END

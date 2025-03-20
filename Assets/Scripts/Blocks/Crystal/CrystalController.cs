@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 
-public class CrystalController : MonoBehaviour
+public class CrystalController : MonoBehaviour, IInteractable
 {
     [SerializeField] private Vector3[] InputPoints;
     [SerializeField] private Vector3[] OutputPoints;
@@ -114,8 +114,15 @@ public class CrystalController : MonoBehaviour
        Destroy(transform.parent.gameObject); 
     }
 
-    private void UpdateLineRenderer()
+    private void UpdateLineRenderer(bool turnOff = false)
     {
+        if (turnOff)
+        {
+            for (int i = 0; i < linePoints.Length; i++)
+            {
+                linePoints[i] = Vector3.one;
+            }
+        }
         lineRenderer.positionCount = linePoints.Length;
         lineRenderer.SetPositions(linePoints);
     }
@@ -139,11 +146,12 @@ public class CrystalController : MonoBehaviour
             {
                 SendLaser(i, false);
             }
+            UpdateLineRenderer(true);
         }
     }
 
     [ContextMenu("Interact")]
-    private void Interact()
+    void IInteractable.Interact()
     {
         //Rotate Crystal
         Array.Fill(ActiveInputs, isSender);

@@ -977,6 +977,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.125
       objectReference: {fileID: 0}
+    - target: {fileID: 8073970454744569099, guid: 0e88f16d69d43ee46b615609279ae93a, type: 3}
+      propertyPath: InteractRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8081719899566325561, guid: 0e88f16d69d43ee46b615609279ae93a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1000,6 +1004,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1866342208914725348, guid: 5504726f2816c09488f28c439b215fcd, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831110579077165893, guid: 5504726f2816c09488f28c439b215fcd, type: 3}
+      propertyPath: m_GridSnapping
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7330690496983076069, guid: 5504726f2816c09488f28c439b215fcd, type: 3}

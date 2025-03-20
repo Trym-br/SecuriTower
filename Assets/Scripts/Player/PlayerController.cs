@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(InputActions))]
 public class PlayerController : MonoBehaviour {
@@ -31,7 +33,26 @@ public class PlayerController : MonoBehaviour {
 
 		input = GetComponent<InputActions>();
 	}
+	void Update() {
+		currentMovementInput = input.movement;
+		if (input.interactBegin)
+		{
+			InteractWithNearest();	
+		}
+		// if (input.interactBegin) {
+		// 	playerWantsToInteract = true;
+		// }
+	}
+	void FixedUpdate() {
+		playerRB.linearVelocity += currentMovementInput.normalized * speed;
+		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
 
+		previousMoveDirection = moveDirection;
+		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
+
+		MaybeMoveBoxes();
+	}
+	
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
 		var result = Vector2.zero;
 
@@ -45,14 +66,6 @@ public class PlayerController : MonoBehaviour {
 
 		return result;
 	}
-
-	void Update() {
-		currentMovementInput = input.movement;
-		if (input.interactBegin) {
-			playerWantsToInteract = true;
-		}
-	}
-
 	public Vector2 boxCheckerSize = new Vector2(0.1f, 0.5f);
 	public float boxCheckerOffset = 0.65f;
 
@@ -119,14 +132,41 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	Vector2 previousMoveDirection;
-	void FixedUpdate() {
-		playerRB.linearVelocity += currentMovementInput.normalized * speed;
-		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
 
-		previousMoveDirection = moveDirection;
-		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
-
-		MaybeMoveBoxes();
+	[SerializeField] private float InteractRange = 0.5f;
+	// ("Do the dings" - August)
+	private void InteractWithNearest()
+	{
+		//		Find all objects in range
+		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, InteractRange);
+		// Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(InteractRange, InteractRange), 0);
+		//		Narrow down to objects with the Interactable Interface
+		List<GameObject> gameObjects = hitColliders
+			.Select(col => col.gameObject)                   // Get GameObject from Collider
+			.Where(go => go.GetComponentInChildren<IInteractable>() != null)    // Check if it has the interface
+			.ToList();      
+		
+		// print("hitColliders: " + hitColliders.Length + " / gameObjects: " + gameObjects.Count);
+		//		Finds the closest one out of the list
+		GameObject bestTarget = null;
+		float closestDistanceSqr = Mathf.Infinity;
+		Vector3 currentPosition = transform.position;
+		foreach(GameObject potentialTarget in gameObjects)
+		{
+			// print("Checking: " + potentialTarget.name);
+			Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+			float dSqrToTarget = directionToTarget.sqrMagnitude;
+			if(dSqrToTarget < closestDistanceSqr)
+			{
+				closestDistanceSqr = dSqrToTarget;
+				bestTarget = potentialTarget;
+			}
+		}
+		//		Interacts with the found object, if any found
+		if (bestTarget)
+		{
+			bestTarget.GetComponentInChildren<IInteractable>().Interact();
+		}
 	}
 
 	public void GoUpStairs(Vector3 stairPosition) {
