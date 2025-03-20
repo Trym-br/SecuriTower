@@ -10,10 +10,11 @@ She's downstairs, if you want to see her so bad.
 
 <b>Sally!</b>#speaker:Golem#layout:right#wordSpeed:0,1
 
-Not sure why she's taken such a liking to you...#speaker:Wizard #layout:left#wordSpeed:0,03
+Yes, Sally. #speaker:Wizard #layout:left#wordSpeed:0,03
+Not sure why she's taken such a liking to you...
 You're, like, a pile of rocks that sometimes says things.
 
-<b>Friend.</b> #speaker:Golem#layout:right
+<b>Friend.</b> #speaker:Golem#layout:right#wordSpeed:0,1
 
 Sure.#speaker:Wizard #layout:left#wordSpeed:0,03
 Sally friend.
