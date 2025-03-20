@@ -154,7 +154,7 @@ public class CrystalController : MonoBehaviour, IInteractable
     void IInteractable.Interact()
     {
         //Rotate Crystal
-        // Array.Fill(ActiveInputs, isSender);
+        Array.Fill(ActiveInputs, isSender);
         transform.Rotate(Vector3.forward, 45);
         CrystalLogic();
     }
