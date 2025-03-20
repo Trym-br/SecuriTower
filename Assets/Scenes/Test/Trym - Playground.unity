@@ -1002,6 +1002,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2831110579077165893, guid: 5504726f2816c09488f28c439b215fcd, type: 3}
+      propertyPath: m_GridSnapping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7330690496983076069, guid: 5504726f2816c09488f28c439b215fcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.0117774
