@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour {
 
 	void Update() {
 		currentMovementInput = input.movement;
+		if (input.interactBegin) {
+			playerWantsToInteract = true;
+		}
 	}
 
 	public Vector2 boxCheckerSize = new Vector2(0.1f, 0.5f);
@@ -46,6 +49,8 @@ public class PlayerController : MonoBehaviour {
 
 	Vector2 currentMovementInput;
 	Vector2 moveDirection = new Vector2(1.0f, 0.0f);
+
+	bool playerWantsToInteract;
 
 	Vector2 GetBoxCheckerSizeWithDirectionAdjustment() {
 		var result = boxCheckerSize;
@@ -93,7 +98,15 @@ public class PlayerController : MonoBehaviour {
 					moveableAtTarget.TryMoveInDirection(moveDirection);
 				}
 			}
+
+			// TODO: Should we prioritize NPCs instead of going with the first one it finds?
+			if (playerWantsToInteract && collidersAtTarget[i].TryGetComponent<IInteractable>(out var interactable)) {
+				interactable.Interact();
+				playerWantsToInteract = false;
+			}
 		}
+
+		playerWantsToInteract = false;
 	}
 
 	Vector2 previousMoveDirection;
