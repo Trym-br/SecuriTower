@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
 		input = GetComponent<InputActions>();
 
 #if UNITY_EDITOR
-		if (SceneController.instance.currentLevel == 0) {
+		if (SceneController.instance != null && SceneController.instance.currentLevel == 0) {
 			transform.position = Vector3.zero;
 		}
 #else
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start() {
 		FindStairsInCurrentLevel();
-		if (SceneController.instance.currentLevel != 0) {
+		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
 			transform.position = FindClosestStairPosition(transform.position, false);
 		}
 	}
@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour {
 
 	void FindStairsInCurrentLevel() {
 		SetLength(ref stairsInCurrentLevel, 0);
+		if (SceneController.instance == null) {
+			Debug.LogWarning("No Scene Controller loaded, no stairs to find.");
+			return;
+		}
+
 		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
 
 		for (int i = 0; i < levelObjectTransform.childCount; ++i) {
@@ -237,8 +242,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void GoUpOrDownStairs(Vector3 stairPosition, bool stairsGoUp) {
-		if (stairsGoUp) SceneController.instance.LoadNextLevel();
-		else            SceneController.instance.LoadPreviousLevel();
+		if (SceneController.instance != null) {
+			if (stairsGoUp) SceneController.instance.LoadNextLevel();
+			else            SceneController.instance.LoadPreviousLevel();
+		}
 
 		FindStairsInCurrentLevel();
 
