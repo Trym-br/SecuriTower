@@ -72,7 +72,7 @@ public class SceneController : MonoBehaviour {
 
 		if (loadOnStartup != null) {
 			for (int i = 0; i < loadOnStartup.Length; ++i) {
-				LoadScene(loadOnStartup[i]);
+				LoadSceneIfNotLoaded(loadOnStartup[i]);
 			}
 		}
 

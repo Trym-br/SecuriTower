@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4041005404862475984, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: AnyInputValid
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041005404862475984, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: InputPoints.Array.size
       value: 7
       objectReference: {fileID: 0}
