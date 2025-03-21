@@ -122,7 +122,7 @@ public class SceneController : MonoBehaviour {
 #endif
 
 	int previousCurrentLevel;
-	void Update() {
+	void ReloadLevelIfCurrentLevelChanged() {
 		if (previousCurrentLevel != currentLevel) {
 			if (currentLevel < 0 || levels.Length <= currentLevel) {
 				LogNoSuchLevelExists(currentLevel);
@@ -133,6 +133,10 @@ public class SceneController : MonoBehaviour {
 				previousCurrentLevel = currentLevel;
 			}
 		}
+	}
+
+	void Update() {
+		ReloadLevelIfCurrentLevelChanged();
 	}
 
 	void LogNoSuchLevelExists(int level) {
@@ -232,8 +236,15 @@ public class SceneController : MonoBehaviour {
 		}
 	}
 
-	public void LoadNextLevel()     => currentLevel += 1;
-	public void LoadPreviousLevel() => currentLevel -= 1;
+	public void LoadNextLevel() {
+		currentLevel += 1;
+		ReloadLevelIfCurrentLevelChanged();
+	}
+
+	public void LoadPreviousLevel(){
+		currentLevel -= 1;
+		ReloadLevelIfCurrentLevelChanged();
+	}
 
 	public bool SceneIsLoaded(int buildIndex) {
 		for (int i = 0; i < SceneManager.sceneCount; ++i) {
