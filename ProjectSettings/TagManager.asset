@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Crystal
+  - Stairs
+  - Levels Parent Object
   layers:
   - Default
   - TransparentFX

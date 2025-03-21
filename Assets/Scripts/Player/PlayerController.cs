@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
+using static AugustBase.All;
+
 [RequireComponent(typeof(Rigidbody2D), typeof(InputActions))]
 public class PlayerController : MonoBehaviour {
 	public static PlayerController instance;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	Rigidbody2D  playerRB;
 	InputActions input;
+	Camera       playerCamera;
 
 	void Awake() {
 		if (instance != null) {
@@ -33,9 +36,71 @@ public class PlayerController : MonoBehaviour {
 
 		input = GetComponent<InputActions>();
 
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
+		if (SceneController.instance.currentLevel == 0) {
+			transform.position = Vector3.zero;
+		}
+#else
 		transform.position = Vector3.zero;
 #endif
+
+		playerCamera = Camera.main;
+	}
+
+	void Start() {
+		FindStairsInCurrentLevel();
+		if (SceneController.instance.currentLevel != 0) {
+			transform.position = FindClosestStairPosition(transform.position, false);
+		}
+	}
+
+	const string parentLevelObjectTag = "Levels Parent Object";
+	const string stairsTag = "Stairs";
+
+	StairsController[] stairsInCurrentLevel = new StairsController[0];
+
+	void FindStairsInCurrentLevel() {
+		SetLength(ref stairsInCurrentLevel, 0);
+		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
+
+		for (int i = 0; i < levelObjectTransform.childCount; ++i) {
+			var child = levelObjectTransform.GetChild(i);
+
+			if (child.CompareTag(stairsTag)) {
+				if (child.TryGetComponent<StairsController>(out var stairs)) {
+					Append(ref stairsInCurrentLevel, stairs);
+				}
+			}
+		}
+
+		print($"FOUND {stairsInCurrentLevel.Length} STAIRS");
+		for (int i = 0; i < stairsInCurrentLevel.Length; ++i) {
+			print($"{stairsInCurrentLevel[i]}, position: {stairsInCurrentLevel[i].transform.position}");
+		}
+	}
+
+	Vector3 FindClosestStairPosition(Vector3 closestTo, bool stairsShouldGoUp) {
+		float closestDistanceSquared = Mathf.Infinity;
+		StairsController closestStair = null;
+
+		for (int i = 0; i < stairsInCurrentLevel.Length; ++i) {
+			if (stairsInCurrentLevel[i].stairsGoUpwards != stairsShouldGoUp) continue;
+
+			var delta = stairsInCurrentLevel[i].transform.position - closestTo;
+			float distSquared = Mathf.Abs(delta.x * delta.x) + Mathf.Abs(delta.y * delta.y);
+
+			if (distSquared < closestDistanceSquared) {
+				closestDistanceSquared = distSquared;
+				closestStair = stairsInCurrentLevel[i];
+			}
+		}
+
+		if (closestStair != null) {
+			return closestStair.transform.position;
+		}
+
+		// @Hack
+		return closestTo;
 	}
 
 	void Update() {
@@ -176,17 +241,29 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void GoUpStairs(Vector3 stairPosition) {
-		SceneController.instance.LoadNextLevel();
-		transform.position = stairPosition;
+	void GoUpOrDownStairs(Vector3 stairPosition, bool stairsGoUp) {
+		if (stairsGoUp) SceneController.instance.LoadNextLevel();
+		else            SceneController.instance.LoadPreviousLevel();
+
+		FindStairsInCurrentLevel();
+
+		var closest = FindClosestStairPosition(stairPosition, !stairsGoUp);
+
+		// Make sure the camera position relative to the player stays the same.
+		var deltaToCamera = transform.position - playerCamera.transform.position;
+		var newCameraPosition = closest;
+		newCameraPosition.x -= deltaToCamera.x;
+		newCameraPosition.y -= deltaToCamera.y;
+		// TODO: Check if cinemachine hates this.
+		playerCamera.transform.position = newCameraPosition;
+
+		transform.position = closest;
+
 		Physics2D.SyncTransforms();
 	}
 
-	public void GoDownStairs(Vector3 stairPosition) {
-		SceneController.instance.LoadPreviousLevel();
-		transform.position = stairPosition;
-		Physics2D.SyncTransforms();
-	}
+	public void GoUpStairs(Vector3 stairPosition)   => GoUpOrDownStairs(stairPosition, true);
+	public void GoDownStairs(Vector3 stairPosition) => GoUpOrDownStairs(stairPosition, false);
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
