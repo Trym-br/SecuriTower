@@ -32,7 +32,12 @@ public class PlayerController : MonoBehaviour {
 		playerRB.interpolation          = RigidbodyInterpolation2D.Interpolate;
 
 		input = GetComponent<InputActions>();
+
+#if !UNITY_EDITOR
+		transform.position = Vector3.zero;
+#endif
 	}
+
 	void Update() {
 		currentMovementInput = input.movement;
 		if (input.interactBegin)
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 		// 	playerWantsToInteract = true;
 		// }
 	}
+
 	void FixedUpdate() {
 		playerRB.linearVelocity += currentMovementInput.normalized * speed;
 		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour {
 
 		return result;
 	}
+
 	public Vector2 boxCheckerSize = new Vector2(0.1f, 0.5f);
 	public float boxCheckerOffset = 0.65f;
 
