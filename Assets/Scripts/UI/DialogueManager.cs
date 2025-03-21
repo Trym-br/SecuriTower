@@ -29,18 +29,22 @@ public class DialogueManager : MonoBehaviour {
     private float showNextCharacterAt;
     private string line;
 
-    [Header("Booleans")] public bool dialogueIsPlaying;
+    [Header("Booleans")] 
+    public bool dialogueIsPlaying;
     public bool typing;
     private bool endCutsceneAfterDialogue;
 
-    [Header("Word Speed")] public float wordSpeed;
+    [Header("Word Speed")] 
+    public float wordSpeed;
 
-    [Header("Dialogue UI")] public GameObject dialogueHolder;
+    [Header("Dialogue UI")] 
+    public GameObject dialogueHolder;
     public GameObject continueSymbol;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI speakerName;
 
-    [Header("Animators")] public Animator leftPortraitAnimator;
+    [Header("Animators")] 
+    public Animator leftPortraitAnimator;
     public Animator rightPortraitAnimator;
     public Animator layoutAnimator;
     public Animator panelAnimator;
@@ -100,12 +104,16 @@ public class DialogueManager : MonoBehaviour {
         dialogueHolder.SetActive(true);
         continueSymbol.SetActive(false);
         dialogueIsPlaying = true;
-        dialogueAnimator.Play("start");
+        dialogueAnimator.Play("default");
         //reset tags so they don't carry over from previous story
         speakerName.text = "???";
         wordSpeed = 0.03f;
-
         ContinueStory();
+    }
+
+    public void StartDialogueAnimation()
+    {
+        dialogueAnimator.Play("start");
     }
 
     public void ContinueStory()

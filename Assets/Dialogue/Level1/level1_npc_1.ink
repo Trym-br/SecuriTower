@@ -1,6 +1,6 @@
 -> main
 === main ===
-#leftPortrait:wizard#rightPortrait:maid
+#leftPortrait:wizard#rightPortrait:maidStressed
 
 Oh my gosh! #speaker:Maid#layout:right#wordSpeed:0,01
 Oh good heavens!!
@@ -27,11 +27,11 @@ Chillax, name. #speaker:Wizard#layout:left#wordSpeed:0,03
 Did you happen to see anything?
 
 No... #speaker:Maid#layout:right
-To be quite honest, I was so frightened that I covered my eyes.
+To be quite honest, I was so frightened that I covered my eyes.#rightPortrait:maid
 
 ... #speaker:Wizard#layout:left
 
-Please, you must find this horrid wench! #speaker:Maid#layout:right
+Please, you must find this horrid wench! #speaker:Maid#layout:right#rightPortrait:maidStressed
 
 Alright, alright, don't worry. #speaker:Wizard#layout:left
 I'll get right on it.
