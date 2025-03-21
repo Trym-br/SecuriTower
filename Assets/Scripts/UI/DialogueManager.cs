@@ -132,7 +132,6 @@ public class DialogueManager : MonoBehaviour {
 
         else if (!currentStory.canContinue)
         {
-            //EndDialogue();
             dialogueAnimator.Play("end");
         }
     }
@@ -171,7 +170,7 @@ public class DialogueManager : MonoBehaviour {
         if (endCutsceneAfterDialogue)
         {
             Debug.Log("Ending cutscene.");
-            OpeningCutsceneManager.instance.EndCutscene();
+            MainMenuManager.instance.EndIntroCutscene();
         }
     }
 
