@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 
+[RequireComponent(typeof(LineRenderer))]
 public class CrystalController : MonoBehaviour, IInteractable
 {
     [SerializeField] private Vector3[] InputPoints;
@@ -59,7 +60,7 @@ public class CrystalController : MonoBehaviour, IInteractable
     private void SendLaser(int OutputPointIndex, bool isOn)
     {
         Vector3 OutputPoint = OutputPoints[OutputPointIndex];
-        Vector3 origin = transform.TransformPoint(OutputPoint);
+        Vector3 origin = transform.position + OutputPoint;
         Vector3 dir = origin - transform.position;
         // print("Laser emitting in dir: " + dir + " / on layer: " + LayerMask.NameToLayer("Laser"));
         RaycastHit2D hit = Physics2D.Raycast(
@@ -73,8 +74,8 @@ public class CrystalController : MonoBehaviour, IInteractable
         {
             Debug.DrawLine(origin, hit.point, Color.green);
             linePoints[OutputPointIndex] = hit.point;
-            linePoints[OutputPointIndex+1] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
-            linePoints[OutputPointIndex+2] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
+            linePoints[OutputPointIndex+1] = transform.position + OutputPoints[OutputPointIndex];
+            linePoints[OutputPointIndex+2] = transform.position + OutputPoints[OutputPointIndex];
             // print("Hit: " + hit.collider.name);
             
             
@@ -90,8 +91,8 @@ public class CrystalController : MonoBehaviour, IInteractable
         else
         {
             linePoints[OutputPointIndex] = origin + dir*30;
-            linePoints[OutputPointIndex+1] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
-            linePoints[OutputPointIndex+2] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
+            linePoints[OutputPointIndex+1] = transform.position + OutputPoints[OutputPointIndex];
+            linePoints[OutputPointIndex + 2] = transform.position + OutputPoints[OutputPointIndex];
         }
         // If lost LOS on crystal, disable it
         if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex]))
@@ -105,11 +106,11 @@ public class CrystalController : MonoBehaviour, IInteractable
     
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
-        print("hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(InputPoints[0]) + " | " + transform.TransformPoint(OutputPoints[0]));
+        print("hitPoint/InputPoint" + hitPoint + " / " + transform.position + InputPoints[0] + " | " + transform.position + OutputPoints[0]);
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            if (hitPoint == transform.TransformPoint(OutputPoints[i]))
+            if (hitPoint == transform.position + OutputPoints[i])
             {
                 // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(OutputPoints[i]));
                 if (ActiveInputs.All(x => x))
@@ -120,7 +121,7 @@ public class CrystalController : MonoBehaviour, IInteractable
         }
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            if (hitPoint == transform.TransformPoint(InputPoints[i]) || forceTrue)
+            if (hitPoint == transform.position + InputPoints[i] || forceTrue)
             {
                 ActiveInputs[i] = isOn;
             }
@@ -206,12 +207,12 @@ public class CrystalController : MonoBehaviour, IInteractable
         foreach (var Point in InputPoints)
         {
             Gizmos.color = new Color(0, 1, 0, 0.5f);
-            Gizmos.DrawCube(transform.TransformPoint(Point), new Vector3(0.3f, 0.3f, 0.3f)); 
+            Gizmos.DrawCube(transform.position + Point, new Vector3(0.3f, 0.3f, 0.3f)); 
         }
         foreach (var Point in OutputPoints)
         {
             Gizmos.color = new Color(1, 0, 0, 0.5f);
-            Gizmos.DrawCube(transform.TransformPoint(Point), new Vector3(0.3f, 0.3f, 0.3f)); 
+            Gizmos.DrawCube(transform.position + Point, new Vector3(0.3f, 0.3f, 0.3f)); 
         }
     }
 }

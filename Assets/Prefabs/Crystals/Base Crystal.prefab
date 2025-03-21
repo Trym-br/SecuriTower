@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2565804433044961153}
   - component: {fileID: 264910044129537266}
   - component: {fileID: 7418415956531884968}
+  - component: {fileID: 2713880978647010285}
+  - component: {fileID: 6146334268383457788}
   m_Layer: 6
   m_Name: Base Crystal
   m_TagString: Crystal
@@ -32,8 +34,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 81644189307573151}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &442739920675841832
@@ -177,67 +178,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeMovedInConjunction: 1
---- !u!1 &7687328020190194353
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 81644189307573151}
-  - component: {fileID: 4041005404862475984}
-  - component: {fileID: 7847067744112276110}
-  m_Layer: 0
-  m_Name: Emitter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &81644189307573151
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7687328020190194353}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 482694086113367255}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4041005404862475984
+--- !u!114 &2713880978647010285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7687328020190194353}
+  m_GameObject: {fileID: 4273786917217003375}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0006570eb05e1e429b9fbbce21fe737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputPoints:
-  - {x: -0.5, y: 0, z: 0}
-  OutputPoints:
-  - {x: 0, y: -0.5, z: 0}
+  InputPoints: []
+  OutputPoints: []
   ActiveInputs: 
-  AnyInputValid: 0
+  AnyInputValid: 1
   Rotation: 0
   isLaserOn: 0
---- !u!120 &7847067744112276110
+--- !u!120 &6146334268383457788
 LineRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7687328020190194353}
+  m_GameObject: {fileID: 4273786917217003375}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
