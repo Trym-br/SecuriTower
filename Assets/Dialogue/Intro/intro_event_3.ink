@@ -2,9 +2,10 @@
 
 === main ===
 #leftPortrait:wizard #rightPortrait:none
-Easylicious! #speaker:Wizard #layout:left
-I truly am a genius...
-(Maid name) should be on the second floor. 
-Maybe she knows where my key has gotten to?
+Aw shucks. #speaker:Wizard#layout:left
+My <b>Securitower™</b> security system has been activated!
+<b>UGH!!!</b>
+I'll have to figure out how to turn off these stupid, deadly laser beams...
+Maybe if I (blah blah blah)
 
 -> END
