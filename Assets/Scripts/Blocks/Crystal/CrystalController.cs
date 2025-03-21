@@ -6,10 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class CrystalController : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Vector3[] InputPoints;
-    [SerializeField] private Vector3[] OutputPoints;
+    // [SerializeField] private Vector3[] InputPoints;
+    // [SerializeField] private Vector3[] OutputPoints;
+    [SerializeField] private int[] InputPoints;
+    [SerializeField] private int[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
-    private bool isSender = false;
+    [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
     public float Rotation;
 
@@ -25,7 +27,6 @@ public class CrystalController : MonoBehaviour, IInteractable
     // ];
     private Vector3[] ValidPositions = new Vector3[]
     {
-        new Vector3(-0.5f, 0.5f),
         new Vector3(0f, 0.5f),
         new Vector3(0.5f, 0.5f),
         new Vector3(0.5f, 0f),
@@ -33,20 +34,34 @@ public class CrystalController : MonoBehaviour, IInteractable
         new Vector3(0, -0.5f),
         new Vector3(-0.5f, -0.5f),
         new Vector3(-0.5f, 0f),
+        new Vector3(-0.5f, 0.5f),
     };
 
+    private void OnValidate()
+    {
+        for (int i = 0; i < InputPoints.Length; i++)
+        {
+            InputPoints[i] = Mathf.Clamp(InputPoints[i], 0, 7);
+        }
+
+        for (int i = 0; i < OutputPoints.Length; i++)
+        {
+            OutputPoints[i] = Mathf.Clamp(OutputPoints[i], 0, 7);
+        }
+    }
+    
     private void Awake()
     {
         if (InputPoints.Length == 0)
         {
-            InputPoints = new Vector3[1];
-            InputPoints[0] = new Vector3(0, 0, 0);
+            // InputPoints = new int[1];
+            // InputPoints[0] = new int(0, 0, 0);
             isSender = true;
         }
         ActiveInputs = new bool[InputPoints.Length];
         Array.Fill(ActiveInputs, isSender);
         
-        LastHits = new GameObject[InputPoints.Length];
+        LastHits = new GameObject[OutputPoints.Length];
         Array.Fill(LastHits, null);
         
         lineRenderer = GetComponent<LineRenderer>();
@@ -59,7 +74,7 @@ public class CrystalController : MonoBehaviour, IInteractable
     }
     private void SendLaser(int OutputPointIndex, bool isOn)
     {
-        Vector3 OutputPoint = OutputPoints[OutputPointIndex];
+        Vector3 OutputPoint = ValidPositions[OutputPoints[OutputPointIndex]];
         Vector3 origin = transform.position + OutputPoint;
         Vector3 dir = origin - transform.position;
         // print("Laser emitting in dir: " + dir + " / on layer: " + LayerMask.NameToLayer("Laser"));
@@ -74,8 +89,8 @@ public class CrystalController : MonoBehaviour, IInteractable
         {
             Debug.DrawLine(origin, hit.point, Color.green);
             linePoints[OutputPointIndex] = hit.point;
-            linePoints[OutputPointIndex+1] = transform.position + OutputPoints[OutputPointIndex];
-            linePoints[OutputPointIndex+2] = transform.position + OutputPoints[OutputPointIndex];
+            linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+            linePoints[OutputPointIndex+2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
             // print("Hit: " + hit.collider.name);
             
             
@@ -91,8 +106,8 @@ public class CrystalController : MonoBehaviour, IInteractable
         else
         {
             linePoints[OutputPointIndex] = origin + dir*30;
-            linePoints[OutputPointIndex+1] = transform.position + OutputPoints[OutputPointIndex];
-            linePoints[OutputPointIndex + 2] = transform.position + OutputPoints[OutputPointIndex];
+            linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+            linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
         }
         // If lost LOS on crystal, disable it
         if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex]))
@@ -106,11 +121,11 @@ public class CrystalController : MonoBehaviour, IInteractable
     
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
-        print("hitPoint/InputPoint" + hitPoint + " / " + transform.position + InputPoints[0] + " | " + transform.position + OutputPoints[0]);
+        // print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            if (hitPoint == transform.position + OutputPoints[i])
+            if (hitPoint == transform.position + ValidPositions[OutputPoints[i]])
             {
                 // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(OutputPoints[i]));
                 if (ActiveInputs.All(x => x))
@@ -121,7 +136,8 @@ public class CrystalController : MonoBehaviour, IInteractable
         }
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            if (hitPoint == transform.position + InputPoints[i] || forceTrue)
+            // print(this.name + ": " + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[i]]));
+            if (hitPoint == transform.position + ValidPositions[InputPoints[i]] || forceTrue)
             {
                 ActiveInputs[i] = isOn;
             }
@@ -160,7 +176,7 @@ public class CrystalController : MonoBehaviour, IInteractable
             shootFlag = ActiveInputs.All(x => x);
         }
         
-        if (shootFlag)
+        if (shootFlag || isSender)
         {
             isLaserOn = true;
             for (int i = 0; i < OutputPoints.Length; i++)
@@ -191,13 +207,21 @@ public class CrystalController : MonoBehaviour, IInteractable
         // Rotate Crystal V2
         Array.Fill(ActiveInputs, isSender);
         CrystalLogic();
+        // for (int i = 0; i < InputPoints.Length; i++)
+        // {
+        //     InputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, InputPoints[i]) + 1) % 8];
+        // }
+        // for (int i = 0; i < OutputPoints.Length; i++)
+        // {
+        //     OutputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, OutputPoints[i]) + 1) % 8];
+        // }
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            InputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, InputPoints[i]) + 1) % 8];
+            InputPoints[i] = ( InputPoints[i] + 1) % 8;
         }
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            OutputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, OutputPoints[i]) + 1) % 8];
+            OutputPoints[i] = (OutputPoints[i] + 1) % 8;
         }
     }
 
@@ -207,12 +231,12 @@ public class CrystalController : MonoBehaviour, IInteractable
         foreach (var Point in InputPoints)
         {
             Gizmos.color = new Color(0, 1, 0, 0.5f);
-            Gizmos.DrawCube(transform.position + Point, new Vector3(0.3f, 0.3f, 0.3f)); 
+            Gizmos.DrawCube(transform.position + ValidPositions[Point], new Vector3(0.3f, 0.3f, 0.3f)); 
         }
         foreach (var Point in OutputPoints)
         {
             Gizmos.color = new Color(1, 0, 0, 0.5f);
-            Gizmos.DrawCube(transform.position + Point, new Vector3(0.3f, 0.3f, 0.3f)); 
+            Gizmos.DrawCube(transform.position + ValidPositions[Point], new Vector3(0.3f, 0.3f, 0.3f)); 
         }
     }
 }
