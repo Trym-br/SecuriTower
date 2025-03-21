@@ -1,11 +1,8 @@
 -> main
 
 === main ===
-#leftPortrait:wizard #rightPortrait:none
-Aw shucks. #speaker:Wizard#layout:left
-My <b>Securitower™</b> security system has been activated!
-<b>UGH!!!</b>
-I'll have to figure out how to turn off these stupid, deadly laser beams...
-Maybe if I (blah blah blah)
-
+#leftPortrait:wizard#rightPortrait:none
+Who put all these crates here!?#speaker:Wizard#layout:left
+What a mess...
+Guess I'll have to <b>push my way through</b>.
 -> END
