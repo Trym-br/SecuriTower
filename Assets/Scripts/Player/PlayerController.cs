@@ -72,11 +72,6 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		}
-
-		print($"FOUND {stairsInCurrentLevel.Length} STAIRS");
-		for (int i = 0; i < stairsInCurrentLevel.Length; ++i) {
-			print($"{stairsInCurrentLevel[i]}, position: {stairsInCurrentLevel[i].transform.position}");
-		}
 	}
 
 	Vector3 FindClosestStairPosition(Vector3 closestTo, bool stairsShouldGoUp) {
