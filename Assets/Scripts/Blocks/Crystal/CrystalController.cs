@@ -18,6 +18,21 @@ public class CrystalController : MonoBehaviour, IInteractable
     public bool isLaserOn = false;
     private LineRenderer lineRenderer;
     private Vector3[] linePoints;  
+    
+    // private Vector3[] ValidPositions = [
+    //     new Vector3(0.5f, 0.5f),
+    // ];
+    private Vector3[] ValidPositions = new Vector3[]
+    {
+        new Vector3(-0.5f, 0.5f),
+        new Vector3(0f, 0.5f),
+        new Vector3(0.5f, 0.5f),
+        new Vector3(0.5f, 0f),
+        new Vector3(0.5f, -0.5f),
+        new Vector3(0, -0.5f),
+        new Vector3(-0.5f, -0.5f),
+        new Vector3(-0.5f, 0f),
+    };
 
     private void Awake()
     {
@@ -46,12 +61,13 @@ public class CrystalController : MonoBehaviour, IInteractable
         Vector3 OutputPoint = OutputPoints[OutputPointIndex];
         Vector3 origin = transform.TransformPoint(OutputPoint);
         Vector3 dir = origin - transform.position;
-        print("Laser emitting in dir: " + dir + " / on layer: " + LayerMask.NameToLayer("Laser"));
+        // print("Laser emitting in dir: " + dir + " / on layer: " + LayerMask.NameToLayer("Laser"));
         RaycastHit2D hit = Physics2D.Raycast(
             origin,
             dir,
-            Mathf.Infinity
-            // LayerMask.NameToLayer("Laser")
+            Mathf.Infinity,
+            // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
+            1 << LayerMask.NameToLayer("Laser")
         );
         if (hit)
         {
@@ -89,6 +105,7 @@ public class CrystalController : MonoBehaviour, IInteractable
     
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
+        print("hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(InputPoints[0]) + " | " + transform.TransformPoint(OutputPoints[0]));
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
@@ -101,7 +118,6 @@ public class CrystalController : MonoBehaviour, IInteractable
                 }
             }
         }
-        // print("hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(InputPoints[0]));
         for (int i = 0; i < InputPoints.Length; i++)
         {
             if (hitPoint == transform.TransformPoint(InputPoints[i]) || forceTrue)
@@ -167,9 +183,21 @@ public class CrystalController : MonoBehaviour, IInteractable
     void IInteractable.Interact()
     {
         //Rotate Crystal
+        // Array.Fill(ActiveInputs, isSender);
+        // CrystalLogic();
+        // transform.Rotate(Vector3.forward, RotationAngle);
+        
+        // Rotate Crystal V2
         Array.Fill(ActiveInputs, isSender);
-        transform.Rotate(Vector3.forward, RotationAngle);
         CrystalLogic();
+        for (int i = 0; i < InputPoints.Length; i++)
+        {
+            InputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, InputPoints[i]) + 1) % 8];
+        }
+        for (int i = 0; i < OutputPoints.Length; i++)
+        {
+            OutputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, OutputPoints[i]) + 1) % 8];
+        }
     }
 
     private void OnDrawGizmos()

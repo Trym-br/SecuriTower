@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2565804433044961153}
   - component: {fileID: 264910044129537266}
   - component: {fileID: 7418415956531884968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base Crystal
   m_TagString: Crystal
   m_Icon: {fileID: 0}
@@ -227,6 +227,7 @@ MonoBehaviour:
   OutputPoints:
   - {x: 0, y: -0.5, z: 0}
   ActiveInputs: 
+  AnyInputValid: 0
   Rotation: 0
   isLaserOn: 0
 --- !u!120 &7847067744112276110
