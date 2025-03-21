@@ -11,6 +11,8 @@ public class CrystalController : MonoBehaviour, IInteractable
     private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
     public float Rotation;
+
+    private float RotationAngle = -45;
     
     private GameObject[] LastHits;
     public bool isLaserOn = false;
@@ -44,11 +46,12 @@ public class CrystalController : MonoBehaviour, IInteractable
         Vector3 OutputPoint = OutputPoints[OutputPointIndex];
         Vector3 origin = transform.TransformPoint(OutputPoint);
         Vector3 dir = origin - transform.position;
-        // print("Laser emitting in dir: " + dir);
+        print("Laser emitting in dir: " + dir + " / on layer: " + LayerMask.NameToLayer("Laser"));
         RaycastHit2D hit = Physics2D.Raycast(
             origin,
             dir,
             Mathf.Infinity
+            // LayerMask.NameToLayer("Laser")
         );
         if (hit)
         {
@@ -70,7 +73,7 @@ public class CrystalController : MonoBehaviour, IInteractable
         }
         else
         {
-            linePoints[OutputPointIndex] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
+            linePoints[OutputPointIndex] = origin + dir*30;
             linePoints[OutputPointIndex+1] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
             linePoints[OutputPointIndex+2] = transform.TransformPoint(OutputPoints[OutputPointIndex]);
         }
@@ -165,7 +168,7 @@ public class CrystalController : MonoBehaviour, IInteractable
     {
         //Rotate Crystal
         Array.Fill(ActiveInputs, isSender);
-        transform.Rotate(Vector3.forward, 45);
+        transform.Rotate(Vector3.forward, RotationAngle);
         CrystalLogic();
     }
 
