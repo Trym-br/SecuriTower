@@ -194,6 +194,7 @@ MonoBehaviour:
   objectPushingDelay: 0.25
   boxCheckerSize: {x: 0.1, y: 0.5}
   boxCheckerOffset: 0.65
+  InteractRange: 0.8
 --- !u!114 &256993732285262562
 MonoBehaviour:
   m_ObjectHideFlags: 0

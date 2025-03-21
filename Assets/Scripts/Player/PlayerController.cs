@@ -196,6 +196,7 @@ public class PlayerController : MonoBehaviour {
 
 		Gizmos.color = Color.blue;
 		Gizmos.DrawWireCube(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment());
+		Gizmos.DrawWireSphere(transform.position, InteractRange);
 	}
 #endif
 }
