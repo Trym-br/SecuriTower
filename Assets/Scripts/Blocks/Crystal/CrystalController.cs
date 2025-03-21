@@ -9,6 +9,7 @@ public class CrystalController : MonoBehaviour, IInteractable
     [SerializeField] private Vector3[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
     private bool isSender = false;
+    [SerializeField] private bool AnyInputValid = false;
     public float Rotation;
     
     private GameObject[] LastHits;
@@ -129,7 +130,16 @@ public class CrystalController : MonoBehaviour, IInteractable
 
     private void CrystalLogic()
     {
-        bool shootFlag = ActiveInputs.All(x => x);
+        bool shootFlag = false;
+        if (AnyInputValid)
+        {
+            shootFlag = ActiveInputs.Any(x => x);
+        }
+        else
+        {
+            shootFlag = ActiveInputs.All(x => x);
+        }
+        
         if (shootFlag)
         {
             isLaserOn = true;
