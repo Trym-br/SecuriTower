@@ -136,7 +136,7 @@ public class CrystalController : MonoBehaviour, IInteractable
         }
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            print(this.name + ": " + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[i]]));
+            // print(this.name + ": " + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[i]]));
             if (hitPoint == transform.position + ValidPositions[InputPoints[i]] || forceTrue)
             {
                 ActiveInputs[i] = isOn;
