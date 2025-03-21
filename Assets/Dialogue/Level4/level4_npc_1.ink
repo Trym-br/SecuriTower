@@ -20,7 +20,7 @@ A horrible, evil, powerful witch.
 
 <b>HA!</b>#speaker:Dragon#layout:right
 A witch?
-Is that what (gnome name) told you?
+Is that what you think?
 
 Uhm...#speaker:Wizard#layout:left
 
