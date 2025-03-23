@@ -20,11 +20,13 @@ void Start()
     {
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
+        Cursor.visible = true;
     }
 
     public void StartIntroCutscene()
     {
         animator.Play("startIntroCutscene");
+        Cursor.visible = false;
     }
 
     public void EndIntroCutscene()
