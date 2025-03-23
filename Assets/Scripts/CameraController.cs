@@ -6,6 +6,12 @@ public class CameraController : MonoBehaviour
     public Transform target;
     public Vector3 targetPos;
     public float speed;
+    private float cameraZ = -10;
+
+    private void Awake()
+    {
+        cameraZ = transform.position.z;
+    }
 
     private void Start()
     {
@@ -18,7 +24,8 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
        // transform.position = new Vector3(target.position.x, target.position.y, transform.position.z); 
-       targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+       // targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+       targetPos = new Vector3(target.position.x, target.position.y, cameraZ);
        if (speed == -1)
        {
            transform.position = targetPos;
