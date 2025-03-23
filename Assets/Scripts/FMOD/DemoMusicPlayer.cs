@@ -1,4 +1,3 @@
-#if false
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
@@ -9,4 +8,3 @@ public class DemoMusicPlayer : MonoBehaviour {
 		RuntimeManager.PlayOneShot(musicEvent);
 	}
 }
-#endif
