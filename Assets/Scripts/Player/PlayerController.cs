@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	Rigidbody2D  playerRB;
 	InputActions input;
 	Camera       playerCamera;
+	Animator animator;
 
 	void Awake() {
 		if (instance != null) {
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour {
 		playerRB.interpolation          = RigidbodyInterpolation2D.Interpolate;
 
 		input = GetComponent<InputActions>();
+		
+		animator = GetComponent<Animator>();
 
 #if UNITY_EDITOR
 		if (SceneController.instance != null && SceneController.instance.currentLevel == 0) {
@@ -118,6 +121,9 @@ public class PlayerController : MonoBehaviour {
 		playerRB.linearVelocity += currentMovementInput.normalized * speed;
 		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
 
+		animator.SetFloat("x", playerRB.linearVelocityX);
+		animator.SetFloat("y", playerRB.linearVelocityY);
+		
 		previousMoveDirection = moveDirection;
 		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
 

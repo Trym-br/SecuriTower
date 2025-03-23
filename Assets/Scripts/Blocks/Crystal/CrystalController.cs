@@ -89,8 +89,8 @@ public class CrystalController : MonoBehaviour, IInteractable
         {
             Debug.DrawLine(origin, hit.point, Color.green);
             linePoints[OutputPointIndex] = hit.point;
-            linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-            linePoints[OutputPointIndex+2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+            // linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+            // linePoints[OutputPointIndex+2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
             // print("Hit: " + hit.collider.name);
             
             
@@ -106,10 +106,11 @@ public class CrystalController : MonoBehaviour, IInteractable
         else
         {
             linePoints[OutputPointIndex] = origin + dir*30;
-            linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-            linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
         }
+        linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+        linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
         // If lost LOS on crystal, disable it
+        // TODO needs to be checked before assigning LastHits aswell
         if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex]))
         {
             // print("UMBRELLA CASE");
@@ -143,7 +144,7 @@ public class CrystalController : MonoBehaviour, IInteractable
             }
         }
         // Cut Down on Delay
-        CrystalLogic();
+        // CrystalLogic();
     }
 
     private void DestroyCrystal()

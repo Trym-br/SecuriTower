@@ -190,9 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0006570eb05e1e429b9fbbce21fe737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputPoints: []
-  OutputPoints: []
+  InputPoints: 
+  OutputPoints: 
   ActiveInputs: 
+  isSender: 0
   AnyInputValid: 1
   Rotation: 0
   isLaserOn: 0
@@ -238,9 +239,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 57151405
+  m_SortingLayer: 3
+  m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
