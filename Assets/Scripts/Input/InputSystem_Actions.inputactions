@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "563f691f-1a56-40a6-83cf-3f3ffa4ea250",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -291,6 +300,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Parasol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b1fe0bc-e006-471d-affd-ab0e804befcc",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc3d0a75-ec54-447a-951a-438fe85a1b6c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Reset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

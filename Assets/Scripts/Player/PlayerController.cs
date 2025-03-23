@@ -5,7 +5,7 @@ using System.Linq;
 using static AugustBase.All;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(InputActions))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IResetable {
 	public static PlayerController instance;
 
 	public float speed = 2.35f;
@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour {
 		playerRB.interpolation          = RigidbodyInterpolation2D.Interpolate;
 
 		input = GetComponent<InputActions>();
-		
 		animator = GetComponent<Animator>();
 
 #if UNITY_EDITOR
@@ -55,6 +54,8 @@ public class PlayerController : MonoBehaviour {
 		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
 			transform.position = FindClosestStairPosition(transform.position, false);
 		}
+
+		playerSpawnPosition = transform.position;
 	}
 
 	const string parentLevelObjectTag = "Levels Parent Object";
@@ -115,6 +116,13 @@ public class PlayerController : MonoBehaviour {
 		// if (input.interactBegin) {
 		// 	playerWantsToInteract = true;
 		// }
+
+		// TODO: Hold to reset instead of press. This is just for the demo.
+		if (input.resetBegin) {
+			if (LevelResetController.instance != null) {
+				LevelResetController.instance.ResetLevel();
+			}
+		}
 	}
 
 	void FixedUpdate() {
@@ -123,13 +131,13 @@ public class PlayerController : MonoBehaviour {
 
 		animator.SetFloat("x", playerRB.linearVelocityX);
 		animator.SetFloat("y", playerRB.linearVelocityY);
-		
+
 		previousMoveDirection = moveDirection;
 		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
 
 		MaybeMoveBoxes();
 	}
-	
+
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
 		var result = Vector2.zero;
 
@@ -223,7 +231,7 @@ public class PlayerController : MonoBehaviour {
 			.Select(col => col.gameObject)                   // Get GameObject from Collider
 			.Where(go => go.GetComponentInChildren<IInteractable>() != null)    // Check if it has the interface
 			.ToList();      
-		
+
 		// print("hitColliders: " + hitColliders.Length + " / gameObjects: " + gameObjects.Count);
 		//		Finds the closest one out of the list
 		GameObject bestTarget = null;
@@ -265,13 +273,23 @@ public class PlayerController : MonoBehaviour {
 		// TODO: Check if cinemachine hates this.
 		playerCamera.transform.position = newCameraPosition;
 
-		transform.position = closest;
+		playerSpawnPosition = closest;
+		transform.position  = closest;
 
 		Physics2D.SyncTransforms();
 	}
 
 	public void GoUpStairs(Vector3 stairPosition)   => GoUpOrDownStairs(stairPosition, true);
 	public void GoDownStairs(Vector3 stairPosition) => GoUpOrDownStairs(stairPosition, false);
+
+	Vector3 playerSpawnPosition;
+
+	public void Reset() {
+		print("Reseting player hahah your mom");
+		transform.position = playerSpawnPosition;
+
+		Physics2D.SyncTransforms();
+	}
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
