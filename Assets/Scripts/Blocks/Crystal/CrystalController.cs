@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(LineRenderer))]
-public class CrystalController : MonoBehaviour, IInteractable
+public class CrystalController : MonoBehaviour, IInteractable, IResetable
 {
     // [SerializeField] private Vector3[] InputPoints;
     // [SerializeField] private Vector3[] OutputPoints;
@@ -13,18 +13,13 @@ public class CrystalController : MonoBehaviour, IInteractable
     [SerializeField] private bool[]    ActiveInputs;
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
-    public float Rotation;
-
-    private float RotationAngle = -45;
+    private int Rotation = 0;
     
     private GameObject[] LastHits;
     public bool isLaserOn = false;
     private LineRenderer lineRenderer;
     private Vector3[] linePoints;  
     
-    // private Vector3[] ValidPositions = [
-    //     new Vector3(0.5f, 0.5f),
-    // ];
     private Vector3[] ValidPositions = new Vector3[]
     {
         new Vector3(0f, 0.5f),
@@ -54,8 +49,6 @@ public class CrystalController : MonoBehaviour, IInteractable
     {
         if (InputPoints.Length == 0)
         {
-            // InputPoints = new int[1];
-            // InputPoints[0] = new int(0, 0, 0);
             isSender = true;
         }
         ActiveInputs = new bool[InputPoints.Length];
@@ -202,14 +195,6 @@ public class CrystalController : MonoBehaviour, IInteractable
         // Rotate Crystal V2
         Array.Fill(ActiveInputs, isSender);
         CrystalLogic();
-        // for (int i = 0; i < InputPoints.Length; i++)
-        // {
-        //     InputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, InputPoints[i]) + 1) % 8];
-        // }
-        // for (int i = 0; i < OutputPoints.Length; i++)
-        // {
-        //     OutputPoints[i] = ValidPositions[(Array.IndexOf(ValidPositions, OutputPoints[i]) + 1) % 8];
-        // }
         for (int i = 0; i < InputPoints.Length; i++)
         {
             InputPoints[i] = ( InputPoints[i] + 1) % 8;
@@ -217,6 +202,21 @@ public class CrystalController : MonoBehaviour, IInteractable
         for (int i = 0; i < OutputPoints.Length; i++)
         {
             OutputPoints[i] = (OutputPoints[i] + 1) % 8;
+        }
+        Rotation += 1;
+    }
+
+    void IResetable.Reset()
+    {
+        // Resets Inputs && Rotation
+        Array.Fill(ActiveInputs, isSender);
+        for (int i = 0; i < InputPoints.Length; i++)
+        {
+            InputPoints[i] = Mathf.Abs(InputPoints[i] - Rotation) % 8;
+        }
+        for (int i = 0; i < OutputPoints.Length; i++)
+        {
+            OutputPoints[i] = Mathf.Abs(OutputPoints[i] - Rotation) % 8;
         }
     }
 
