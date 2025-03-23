@@ -101,8 +101,9 @@ public class CrystalController : MonoBehaviour, IInteractable
         linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
-        if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
+        if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
             // print("UMBRELLA CASE");
+            // print("lasthit: " + LastHits[OutputPointIndex]);
             LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, false, true);
             LastHits[OutputPointIndex] = null;
         }
