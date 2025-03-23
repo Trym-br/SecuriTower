@@ -5,6 +5,15 @@ public class MakeMoveable : MonoBehaviour {
 
 	public bool canBeMovedInConjunction = true;
 
+	Vector3 originalPosition;
+	void Start() {
+		originalPosition = transform.position;
+	}
+
+	public void Reset() {
+		transform.position = originalPosition;
+	}
+
 	public bool TryMoveInDirection(Vector2 direction) {
 		var moveTo = direction;
 		moveTo.x += transform.position.x;

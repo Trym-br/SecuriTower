@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static AugustBase.All;
 
 public class LevelResetController : MonoBehaviour {
@@ -11,8 +12,20 @@ public class LevelResetController : MonoBehaviour {
 			GameObject level = SceneController.instance.levels[SceneController.instance.currentLevel];
 			allResetables = level.GetComponentsInChildren<IResetable>(true);
 		} else {
+			allResetables = new IResetable[0];
+
 			// There is no SceneController!
-			Debug.LogError("The level resetter currently depends on the scene controller being present as I have not yet made an alternative path.");
+			var roots = SceneManager.GetActiveScene().GetRootGameObjects();
+
+			// @Dogshit @Performance: This is just for testing in the editor. In the real thing, we'll have the SceneController available.
+			for (int i = 0; i < roots.Length; ++i) {
+				var resetables = roots[i].GetComponentsInChildren<IResetable>(true);
+				for (int j = 0; j < resetables.Length; ++j) {
+					Append(ref allResetables, resetables[j]);
+				}
+			}
+
+			Debug.LogWarning("The SceneController is not loaded, which means we don't know what game elements are part of which level. We therefore reset everything and not just the elements part of the active level.");
 		}
 
 		// The player

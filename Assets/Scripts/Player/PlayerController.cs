@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 	Rigidbody2D  playerRB;
 	InputActions input;
 	Camera       playerCamera;
-	Animator animator;
+	Animator     animator;
 
 	void Awake() {
 		if (instance != null) {
@@ -285,7 +285,13 @@ public class PlayerController : MonoBehaviour, IResetable {
 	Vector3 playerSpawnPosition;
 
 	public void Reset() {
-		print("Reseting player hahah your mom");
+		objectBeingPushedAgainstID = 0;
+		objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
+		objectBeingPushedAgainstPushDirection = default;
+		playerWantsToInteract = false;
+		currentMovementInput = default;
+		moveDirection = new Vector2(1.0f, 0.0f);
+
 		transform.position = playerSpawnPosition;
 
 		Physics2D.SyncTransforms();
