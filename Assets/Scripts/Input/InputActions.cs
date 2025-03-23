@@ -10,42 +10,50 @@ public class InputActions : MonoBehaviour {
 
 	// [HideInInspector] public Vector2 movement { get; private set; }
 	// [HideInInspector] public Vector2 looking  { get; private set; }
- //
+
 	// [HideInInspector] public bool jumpBegin { get; private set; }
 	// [HideInInspector] public bool jumpHeld  { get; private set; }
 	// [HideInInspector] public bool jumpEnd   { get; private set; }
- //
+
 	// [HideInInspector] public bool interactBegin { get; private set; }
 	// [HideInInspector] public bool interactHeld  { get; private set; }
 	// [HideInInspector] public bool interactEnd   { get; private set; }
- //
+
 	// [HideInInspector] public bool parasolBegin { get; private set; }
 	// [HideInInspector] public bool parasolHeld  { get; private set; }
 	// [HideInInspector] public bool parasolEnd   { get; private set; }
- //
- //    [HideInInspector] public bool submitBegin  { get; private set; }
- //    [HideInInspector] public bool submitHeld   { get; private set; }
- //    [HideInInspector] public bool submitEnd    { get; private set; }
+
+    // [HideInInspector] public bool resetBegin  { get; private set; }
+    // [HideInInspector] public bool resetHeld   { get; private set; }
+    // [HideInInspector] public bool resetEnd    { get; private set; }
+
+    // [HideInInspector] public bool submitBegin  { get; private set; }
+    // [HideInInspector] public bool submitHeld   { get; private set; }
+    // [HideInInspector] public bool submitEnd    { get; private set; }
 
 	public Vector2 movement;
 	public Vector2 looking;
 
 	public bool jumpBegin;
 	public bool jumpHeld;
-	public bool jumpEnd; 
+	public bool jumpEnd;
 
 	public bool interactBegin;
 	public bool interactHeld;
-	public bool interactEnd;  
+	public bool interactEnd;
 
 	public bool parasolBegin;
 	public bool parasolHeld;
 	public bool parasolEnd;
 
-	public bool submitBegin;
-	public bool submitHeld;
-	public bool submitEnd;  
-    
+    public bool resetBegin;
+    public bool resetHeld;
+    public bool resetEnd;
+
+    public bool submitBegin;
+    public bool submitHeld;
+    public bool submitEnd;
+
 	void Update() {
 		if (actions == null) actions = new InputSystem_Actions();
 
@@ -63,6 +71,10 @@ public class InputActions : MonoBehaviour {
 		parasolBegin = actions.Player.Parasol.WasPressedThisFrame();
 		parasolHeld  = actions.Player.Parasol.IsPressed();
 		parasolEnd   = actions.Player.Parasol.WasReleasedThisFrame();
+
+        resetBegin = actions.Player.Reset.WasPressedThisFrame();
+        resetHeld  = actions.Player.Reset.IsPressed();
+        resetEnd   = actions.Player.Reset.WasReleasedThisFrame();
 
         submitBegin = actions.UI.Submit.WasPressedThisFrame();
         submitHeld  = actions.UI.Submit.IsPressed();
