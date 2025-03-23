@@ -85,37 +85,30 @@ public class CrystalController : MonoBehaviour, IInteractable
             // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
             1 << LayerMask.NameToLayer("Laser")
         );
-        if (hit)
-        {
+        
+        if (hit) {
             Debug.DrawLine(origin, hit.point, Color.green);
             linePoints[OutputPointIndex] = hit.point;
-            // linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-            // linePoints[OutputPointIndex+2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-            // print("Hit: " + hit.collider.name);
-            
-            
-            // print("Hit: " + hit.collider.name + " / " + LastHits[OutputPointIndex]);
-            // If hit crystal, enable it
             if (hit.collider.CompareTag("Crystal"))
             { 
-                // print("");
                 hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn);
-                LastHits[OutputPointIndex] = hit.collider.gameObject;
             }
         }
-        else
-        {
+        else {
             linePoints[OutputPointIndex] = origin + dir*30;
         }
         linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
         linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
-        if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex]))
-        {
+        if (LastHits[OutputPointIndex] != null && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
             // print("UMBRELLA CASE");
             LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, false, true);
             LastHits[OutputPointIndex] = null;
+        }
+
+        if (hit) {
+            LastHits[OutputPointIndex] = hit.collider.gameObject;
         }
         Debug.DrawRay(origin, dir, Color.red);
     }
