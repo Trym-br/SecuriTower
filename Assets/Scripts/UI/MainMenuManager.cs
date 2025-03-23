@@ -23,6 +23,14 @@ void Start()
         Cursor.visible = true;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EndIntroCutscene();
+        }
+    }
+
     public void StartIntroCutscene()
     {
         animator.Play("startIntroCutscene");
