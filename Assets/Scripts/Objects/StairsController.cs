@@ -1,13 +1,50 @@
+using System.Linq;
 using UnityEngine;
 
 public class StairsController : MonoBehaviour, IInteractable {
 	public bool stairsGoUpwards;
+	[SerializeField] private GameObject LinkedStairs;
 
 	public void Interact() {
-		if (stairsGoUpwards) {
-			PlayerController.instance.GoUpStairs(transform.position);
-		} else {
-			PlayerController.instance.GoDownStairs(transform.position);
+		if (SceneController.instance != null)
+		{
+			print("Going up stairs" + this.name);
+			if (stairsGoUpwards) { SceneController.instance.LoadNextLevel(); }
+			else { SceneController.instance.LoadPreviousLevel(); }
 		}
+		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		
+		Vector3 closestStairs = (LinkedStairs) ? LinkedStairs.transform.position : FindClosestStairs(false);
+		
+		player.transform.position = closestStairs;
+		camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
+		
+		Physics2D.SyncTransforms();
+	}
+
+	private Vector3 FindClosestStairs(bool dir = false)
+	{
+		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
+		
+		var childrenWithTag = levelObjectTransform.Cast<Transform>()
+			.Where(t => t.CompareTag("Stairs") && t.GetComponent<StairsController>().stairsGoUpwards == dir)
+			.Select(t => t.gameObject)
+			.ToList();
+		
+		GameObject bestTarget = null;
+		Vector3 currentPosition = transform.position;
+		float closestDistanceSqr = Mathf.Infinity;
+		foreach(GameObject potentialTarget in childrenWithTag)
+		{
+			Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+			float dSqrToTarget = directionToTarget.sqrMagnitude;
+			if(dSqrToTarget < closestDistanceSqr)
+			{
+				closestDistanceSqr = dSqrToTarget;
+				bestTarget = potentialTarget;
+			}
+		}
+		return bestTarget.transform.position;
 	}
 }

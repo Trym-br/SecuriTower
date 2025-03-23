@@ -8,25 +8,44 @@ public class InputActions : MonoBehaviour {
 	void OnEnable()  => actions.Enable();
 	void OnDisable() => actions.Disable();
 
-	[HideInInspector] public Vector2 movement { get; private set; }
-	[HideInInspector] public Vector2 looking  { get; private set; }
+	// [HideInInspector] public Vector2 movement { get; private set; }
+	// [HideInInspector] public Vector2 looking  { get; private set; }
+ //
+	// [HideInInspector] public bool jumpBegin { get; private set; }
+	// [HideInInspector] public bool jumpHeld  { get; private set; }
+	// [HideInInspector] public bool jumpEnd   { get; private set; }
+ //
+	// [HideInInspector] public bool interactBegin { get; private set; }
+	// [HideInInspector] public bool interactHeld  { get; private set; }
+	// [HideInInspector] public bool interactEnd   { get; private set; }
+ //
+	// [HideInInspector] public bool parasolBegin { get; private set; }
+	// [HideInInspector] public bool parasolHeld  { get; private set; }
+	// [HideInInspector] public bool parasolEnd   { get; private set; }
+ //
+ //    [HideInInspector] public bool submitBegin  { get; private set; }
+ //    [HideInInspector] public bool submitHeld   { get; private set; }
+ //    [HideInInspector] public bool submitEnd    { get; private set; }
 
-	[HideInInspector] public bool jumpBegin { get; private set; }
-	[HideInInspector] public bool jumpHeld  { get; private set; }
-	[HideInInspector] public bool jumpEnd   { get; private set; }
+	public Vector2 movement;
+	public Vector2 looking;
 
-	[HideInInspector] public bool interactBegin { get; private set; }
-	[HideInInspector] public bool interactHeld  { get; private set; }
-	[HideInInspector] public bool interactEnd   { get; private set; }
+	public bool jumpBegin;
+	public bool jumpHeld;
+	public bool jumpEnd; 
 
-	[HideInInspector] public bool parasolBegin { get; private set; }
-	[HideInInspector] public bool parasolHeld  { get; private set; }
-	[HideInInspector] public bool parasolEnd   { get; private set; }
+	public bool interactBegin;
+	public bool interactHeld;
+	public bool interactEnd;  
 
-    [HideInInspector] public bool submitBegin  { get; private set; }
-    [HideInInspector] public bool submitHeld   { get; private set; }
-    [HideInInspector] public bool submitEnd    { get; private set; }
+	public bool parasolBegin;
+	public bool parasolHeld;
+	public bool parasolEnd;
 
+	public bool submitBegin;
+	public bool submitHeld;
+	public bool submitEnd;  
+    
 	void Update() {
 		if (actions == null) actions = new InputSystem_Actions();
 
