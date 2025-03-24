@@ -5,8 +5,8 @@ using System.Linq;
 using static AugustBase.All;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(InputActions))]
-public class PlayerController1 : MonoBehaviour {
-	public static PlayerController1 instance;
+public class PlayerController2 : MonoBehaviour, IResetable {
+	public static PlayerController2 instance;
 
 	public float speed = 2.35f;
 
@@ -18,7 +18,7 @@ public class PlayerController1 : MonoBehaviour {
 	Rigidbody2D  playerRB;
 	InputActions input;
 	Camera       playerCamera;
-	Animator animator;
+	Animator     animator;
 
 	void Awake() {
 		if (instance != null) {
@@ -36,7 +36,6 @@ public class PlayerController1 : MonoBehaviour {
 		playerRB.interpolation          = RigidbodyInterpolation2D.Interpolate;
 
 		input = GetComponent<InputActions>();
-		
 		animator = GetComponent<Animator>();
 
 #if UNITY_EDITOR
@@ -51,13 +50,62 @@ public class PlayerController1 : MonoBehaviour {
 	}
 
 	void Start() {
-		// FindStairsInCurrentLevel();
+		FindStairsInCurrentLevel();
 		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
-			transform.position = FindClosestStairs(false);
+			transform.position = FindClosestStairPosition(transform.position, false);
 		}
+
+		playerSpawnPosition = transform.position;
 	}
 
 	const string parentLevelObjectTag = "Levels Parent Object";
+	const string stairsTag = "Stairs";
+
+	StairsController[] stairsInCurrentLevel = new StairsController[0];
+
+	void FindStairsInCurrentLevel() {
+		SetLength(ref stairsInCurrentLevel, 0);
+		if (SceneController.instance == null) {
+			Debug.LogWarning("No Scene Controller loaded, no stairs to find.");
+			return;
+		}
+
+		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
+
+		for (int i = 0; i < levelObjectTransform.childCount; ++i) {
+			var child = levelObjectTransform.GetChild(i);
+
+			if (child.CompareTag(stairsTag)) {
+				if (child.TryGetComponent<StairsController>(out var stairs)) {
+					Append(ref stairsInCurrentLevel, stairs);
+				}
+			}
+		}
+	}
+
+	Vector3 FindClosestStairPosition(Vector3 closestTo, bool stairsShouldGoUp) {
+		float closestDistanceSquared = Mathf.Infinity;
+		StairsController closestStair = null;
+
+		for (int i = 0; i < stairsInCurrentLevel.Length; ++i) {
+			if (stairsInCurrentLevel[i].stairsGoUpwards != stairsShouldGoUp) continue;
+
+			var delta = stairsInCurrentLevel[i].transform.position - closestTo;
+			float distSquared = Mathf.Abs(delta.x * delta.x) + Mathf.Abs(delta.y * delta.y);
+
+			if (distSquared < closestDistanceSquared) {
+				closestDistanceSquared = distSquared;
+				closestStair = stairsInCurrentLevel[i];
+			}
+		}
+
+		if (closestStair != null) {
+			return closestStair.transform.position;
+		}
+
+		// @Hack
+		return closestTo;
+	}
 
 	void Update() {
 		currentMovementInput = input.movement;
@@ -68,6 +116,13 @@ public class PlayerController1 : MonoBehaviour {
 		// if (input.interactBegin) {
 		// 	playerWantsToInteract = true;
 		// }
+
+		// TODO: Hold to reset instead of press. This is just for the demo.
+		if (input.resetBegin) {
+			if (LevelResetController.instance != null) {
+				LevelResetController.instance.ResetLevel();
+			}
+		}
 	}
 
 	void FixedUpdate() {
@@ -76,13 +131,13 @@ public class PlayerController1 : MonoBehaviour {
 
 		animator.SetFloat("x", playerRB.linearVelocityX);
 		animator.SetFloat("y", playerRB.linearVelocityY);
-		
+
 		previousMoveDirection = moveDirection;
 		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
 
 		MaybeMoveBoxes();
 	}
-	
+
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
 		var result = Vector2.zero;
 
@@ -176,7 +231,7 @@ public class PlayerController1 : MonoBehaviour {
 			.Select(col => col.gameObject)                   // Get GameObject from Collider
 			.Where(go => go.GetComponentInChildren<IInteractable>() != null)    // Check if it has the interface
 			.ToList();      
-		
+
 		// print("hitColliders: " + hitColliders.Length + " / gameObjects: " + gameObjects.Count);
 		//		Finds the closest one out of the list
 		GameObject bestTarget = null;
@@ -196,36 +251,51 @@ public class PlayerController1 : MonoBehaviour {
 		//		Interacts with the found object, if any found
 		if (bestTarget)
 		{
-			print("Player interacts with: " + bestTarget.name);
 			bestTarget.GetComponentInChildren<IInteractable>().Interact();
 		}
 	}
-	
-	private Vector3 FindClosestStairs(bool dir = false)
-	{
-		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
-		
-		var childrenWithTag = levelObjectTransform.Cast<Transform>()
-			.Where(t => t.CompareTag("Stairs") && t.GetComponent<StairsController>().stairsGoUpwards == dir)
-			.Select(t => t.gameObject)
-			.ToList();
-		
-		GameObject bestTarget = null;
-		float closestDistanceSqr = Mathf.Infinity;
-		Vector3 currentPosition = transform.position;
-		foreach(GameObject potentialTarget in childrenWithTag)
-		{
-			Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-			float dSqrToTarget = directionToTarget.sqrMagnitude;
-			if(dSqrToTarget < closestDistanceSqr)
-			{
-				closestDistanceSqr = dSqrToTarget;
-				bestTarget = potentialTarget;
-			}
+
+	void GoUpOrDownStairs(Vector3 stairPosition, bool stairsGoUp) {
+		if (SceneController.instance != null) {
+			if (stairsGoUp) SceneController.instance.LoadNextLevel();
+			else            SceneController.instance.LoadPreviousLevel();
 		}
-		return bestTarget.transform.position;
+
+		FindStairsInCurrentLevel();
+
+		var closest = FindClosestStairPosition(stairPosition, !stairsGoUp);
+
+		// Make sure the camera position relative to the player stays the same.
+		var deltaToCamera = transform.position - playerCamera.transform.position;
+		var newCameraPosition = closest;
+		newCameraPosition.x -= deltaToCamera.x;
+		newCameraPosition.y -= deltaToCamera.y;
+		// TODO: Check if cinemachine hates this.
+		playerCamera.transform.position = newCameraPosition;
+
+		playerSpawnPosition = closest;
+		transform.position  = closest;
+
+		Physics2D.SyncTransforms();
 	}
 
+	public void GoUpStairs(Vector3 stairPosition)   => GoUpOrDownStairs(stairPosition, true);
+	public void GoDownStairs(Vector3 stairPosition) => GoUpOrDownStairs(stairPosition, false);
+
+	Vector3 playerSpawnPosition;
+
+	public void Reset() {
+		objectBeingPushedAgainstID = 0;
+		objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
+		objectBeingPushedAgainstPushDirection = default;
+		playerWantsToInteract = false;
+		currentMovementInput = default;
+		moveDirection = new Vector2(1.0f, 0.0f);
+
+		transform.position = playerSpawnPosition;
+
+		Physics2D.SyncTransforms();
+	}
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
