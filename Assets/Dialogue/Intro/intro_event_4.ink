@@ -2,9 +2,12 @@
 
 === main ===
 #leftPortrait:wizard #rightPortrait:none
-Easylicious! #speaker:Wizard #layout:left
-I truly am a genius...
-<b><color=\#800b67>Sally</color></b> should be on the next floor. 
-Maybe she knows where my key has gotten to?
+Aw shucks. #speaker:Wizard#layout:left
+My <b>Securitower™ Security System</b> has been activated!
+<b>UGH!!!</b>
+I'll have to figure out how to navigate these stupid laser beams...
+And of course I forgot my spell book!
+Without it, all I can do is push objects and rotate them by pressing <b>E</b>...
+Boring.
 
 -> END

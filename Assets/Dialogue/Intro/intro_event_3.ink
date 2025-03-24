@@ -1,13 +1,9 @@
 -> main
 
 === main ===
-#leftPortrait:wizard #rightPortrait:none
-Aw shucks. #speaker:Wizard#layout:left
-My <b>Securitower™ Security System</b> has been activated!
-<b>UGH!!!</b>
-I'll have to figure out how to navigate these stupid laser beams...
-And of course I forgot my spell book!
-Without it, all I can do is push objects and rotate them by pressing <b>E</b>...
-Boring.
+#leftPortrait:wizard#rightPortrait:none
+Even more crates...#speaker:Wizard#layout:left
+I'll have to remember my handy <b>reverse time spell</b> if I get stuck.
+All I have to do is <b>press R</b>, and I'm back at the beginning!
 
 -> END
