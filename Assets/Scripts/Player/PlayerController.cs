@@ -155,6 +155,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 				if (objectBeingPushedAgainstStartedAt + objectPushingDelay < Time.time) {
 					moveableAtTarget.TryMoveInDirection(moveDirection);
+					objectBeingPushedAgainstID = 0;
+					objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
 				}
 			}
 
