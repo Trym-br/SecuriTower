@@ -2314,7 +2314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2480696080571766635}
   m_Layer: 0
-  m_Name: Pretty_Levels
+  m_Name: Demo_Pretty_Levels
   m_TagString: Levels Parent Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
