@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour {
     private const string layoutTag = "layout";
     private const string wordSpeedTag = "wordSpeed";
     private const string endCutsceneTag = "endCutscene";
+    private const string yeetPrincessTag = "yeetPrincess";
 
     //Typing effect
     private float showNextCharacterAt;
@@ -33,6 +34,7 @@ public class DialogueManager : MonoBehaviour {
     public bool dialogueIsPlaying;
     public bool typing;
     private bool endCutsceneAfterDialogue;
+    private bool yeetPrincessAfterDialogue;
 
     [Header("Word Speed")] 
     public float wordSpeed;
@@ -104,10 +106,21 @@ public class DialogueManager : MonoBehaviour {
         dialogueHolder.SetActive(true);
         continueSymbol.SetActive(false);
         dialogueIsPlaying = true;
+        
+        //functions
+        currentStory.BindExternalFunction ("collectStaff", (string hi) => {
+            Debug.Log("staff collected");
+            NPC_StaffBehavior.instance.CollectStaff();
+        });
+        currentStory.BindExternalFunction ("yeetPrincess", (string hi) => {
+            NPC_PrincessBehaviour.instance.YeetPrincess();
+        });
+        
         dialogueAnimator.Play("default");
         //reset tags so they don't carry over from previous story
         speakerName.text = "???";
         wordSpeed = 0.03f;
+        
         ContinueStory();
     }
 
@@ -172,6 +185,11 @@ public class DialogueManager : MonoBehaviour {
             Debug.Log("Ending cutscene.");
             MainMenuManager.instance.EndIntroCutscene();
         }
+
+        if (yeetPrincessAfterDialogue)
+        {
+            NPC_PrincessBehaviour.instance.YeetPrincess();
+        }
     }
 
     #endregion
@@ -233,6 +251,11 @@ public class DialogueManager : MonoBehaviour {
                 case endCutsceneTag:
                     endCutsceneAfterDialogue = true;
                     break;
+                
+                case yeetPrincessTag:
+                    yeetPrincessAfterDialogue = true;
+                    break;
+                    
 
                 default:
                     Debug.LogWarning("Tag came in but is not currently being handled: " + tag);

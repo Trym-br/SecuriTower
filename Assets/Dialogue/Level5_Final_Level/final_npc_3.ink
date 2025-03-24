@@ -1,6 +1,7 @@
 -> main
 
 === main ===
+EXTERNAL yeetPrincess(hei)
 #leftPortrait:wizard#rightPortrait:princess
 
 Halt!#speaker:Wizard#layout:left
@@ -61,5 +62,5 @@ Nuh-uh.
 
 Alright.#speaker:Wizard#layout:left
 Abooga babooga... Alakazam... Lorem ipsum!!!#wordSpeed:0.06
-<b>RAHHH!!</b>
+<b>RAHHH!!</b>#yeetPrincess:yes
 -> END
