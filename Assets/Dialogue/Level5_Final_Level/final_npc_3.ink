@@ -60,6 +60,6 @@ Hmm...#speaker:Princess#layout:right
 Nuh-uh.
 
 Alright.#speaker:Wizard#layout:left
-Abooga babooga... Alakazam... Lorem ipsum!!!#wordSpeed:0,06
+Abooga babooga... Alakazam... Lorem ipsum!!!#wordSpeed:0.06
 <b>RAHHH!!</b>
 -> END
