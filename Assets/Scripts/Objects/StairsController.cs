@@ -15,7 +15,7 @@ public class StairsController : MonoBehaviour, IInteractable {
 		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		
-		Vector3 closestStairs = (LinkedStairs) ? LinkedStairs.transform.position : FindClosestStairs(false);
+		Vector3 closestStairs = (LinkedStairs) ? LinkedStairs.transform.position : FindClosestStairs(!stairsGoUpwards);
 		
 		player.transform.position = closestStairs;
 		camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
