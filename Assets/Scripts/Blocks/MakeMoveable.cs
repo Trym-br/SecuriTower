@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MakeMoveable : MonoBehaviour {
+public class MakeMoveable : MonoBehaviour, IResetable {
 	LayerMask getStoppedBy = ~0;
 
 	public bool canBeMovedInConjunction = true;
@@ -18,7 +18,7 @@ public class MakeMoveable : MonoBehaviour {
 		var moveTo = direction;
 		moveTo.x += transform.position.x;
 		moveTo.y += transform.position.y;
-		Collider2D[] collidersAtTarget = Physics2D.OverlapCircleAll(moveTo, 0.01f, getStoppedBy);
+		Collider2D[] collidersAtTarget = Physics2D.OverlapCircleAll(moveTo, 0.1f);
 
 		bool canMove = collidersAtTarget.Length == 0;
 		if (canBeMovedInConjunction) {
