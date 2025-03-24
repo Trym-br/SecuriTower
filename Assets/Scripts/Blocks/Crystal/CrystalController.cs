@@ -8,12 +8,12 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 {
     // [SerializeField] private Vector3[] InputPoints;
     // [SerializeField] private Vector3[] OutputPoints;
+    [SerializeField] private int Rotation = 0;
     [SerializeField] private int[] InputPoints;
     [SerializeField] private int[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
-    private int Rotation = 0;
     
     private GameObject[] LastHits;
     public bool isLaserOn = false;
@@ -212,12 +212,15 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Array.Fill(ActiveInputs, isSender);
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            InputPoints[i] = Mathf.Abs(InputPoints[i] - Rotation) % 8;
+            // InputPoints[i] = Mathf.Abs(InputPoints[i] - Rotation) % 8;
+            InputPoints[i] = (InputPoints[i] + 8 - Rotation%8) % 8;
         }
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            OutputPoints[i] = Mathf.Abs(OutputPoints[i] - Rotation) % 8;
+            // OutputPoints[i] = Mathf.Abs(OutputPoints[i] - Rotation) % 8;
+            OutputPoints[i] = (OutputPoints[i] + 8 - Rotation%8) % 8;
         }
+        Rotation = 0;
     }
 
     private void OnDrawGizmos()
