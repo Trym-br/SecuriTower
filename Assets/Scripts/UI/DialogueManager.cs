@@ -214,10 +214,11 @@ public class DialogueManager : MonoBehaviour {
                     }
                     catch (FormatException)
                     {
-                        string newTagValue = tagValue.Replace(',', '.');
+                        string newTagValue = tagValue.Replace('.', ',');
                         try
                         {
                             wordSpeed = float.Parse(newTagValue);
+                            Debug.Log(newTagValue);
                         }
                         catch (FormatException)
                         {
