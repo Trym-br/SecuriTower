@@ -74,7 +74,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     {
         CrystalLogic();
     }
-    private void SendLaser(int OutputPointIndex, bool isOn)
+    private void SendLaser(int OutputPointIndex, bool isOn, bool forceTrue = false)
     {
         Vector3 OutputPoint = ValidPositions[OutputPoints[OutputPointIndex]];
         Vector3 origin = transform.position + OutputPoint;
@@ -101,7 +101,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             linePoints[OutputPointIndex] = hit.point;
             if (hit.collider.CompareTag("Crystal"))
             { 
-                hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn);
+                hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn, forceTrue);
             }
         }
         else {
@@ -127,16 +127,16 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     // Laser hit Detection
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
-        // print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
+        print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
             if (hitPoint == transform.position + ValidPositions[OutputPoints[i]])
             {
-                // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(OutputPoints[i]));
-                if (!isSender && ActiveInputs.All(x => x))
+                print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + OutputPoints[i]);
+                if (!isSender && isLaserOn)
                 {
-                    DestroyCrystal();
+                    DestroyCrystal(isOn);
                 }
             }
         }
@@ -152,8 +152,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         // CrystalLogic();
     }
 
-    private void DestroyCrystal()
+    private void DestroyCrystal(bool fromBeyondTheGrave = false)
     {
+        print(this.name + ": is dying / " + fromBeyondTheGrave);
+        if (!fromBeyondTheGrave)
+        {
+            SendLaser(0,false, true);
+        }
        Destroy(transform.gameObject); 
     }
 
