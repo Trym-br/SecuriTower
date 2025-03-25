@@ -6,16 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class CrystalController : MonoBehaviour, IInteractable, IResetable
 {
-    // [SerializeField] private Vector3[] InputPoints;
-    // [SerializeField] private Vector3[] OutputPoints;
     [SerializeField] private int Rotation = 0;
     [SerializeField] private int[] InputPoints;
     [SerializeField] private int[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
+    
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
-    // [SerializeField] private bool isRotateAble = None;
-    
     [SerializeField] private bool isRotateable = true; // Default value
     [SerializeField, HideInInspector] private bool isRotateableSet = false; // Tracks if modified
     public bool IsRotateable {
@@ -23,8 +20,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         set { if (!isRotateableSet) isRotateableSet = true; isRotateable = value; }
     }
 
-    private GameObject[] LastHits;
     public bool isLaserOn = false;
+    private GameObject[] LastHits;
     private LineRenderer lineRenderer;
     private Vector3[] linePoints;  
     
@@ -90,6 +87,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
             1 << LayerMask.NameToLayer("Laser")
         );
+        // RaycastHit2D[] hits = Physics2D.RaycastAll(
+        //     origin,
+        //     dir,
+        //     Mathf.Infinity,
+        //     // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
+        //     1 << LayerMask.NameToLayer("Laser")
+        // );
+        // RaycastHit2D hit = hits.Skip(1).Where(hit => hit.collider.tag == "Crystal").FirstOrDefault();
         
         if (hit) {
             Debug.DrawLine(origin, hit.point, Color.green);
@@ -119,6 +124,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Debug.DrawRay(origin, dir, Color.red);
     }
     
+    // Laser hit Detection
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
         // print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
@@ -148,7 +154,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
     private void DestroyCrystal()
     {
-       Destroy(transform.parent.gameObject); 
+       Destroy(transform.gameObject); 
     }
 
     private void UpdateLineRenderer(bool turnOff = false)
