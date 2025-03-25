@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		input = GetComponent<InputActions>();
 		animator = GetComponent<Animator>();
 		collider = GetComponent<Collider2D>();
-		InteractRange = collider.bounds.extents.x;
+		BoxPushRange = collider.bounds.extents.x;
 
 #if UNITY_EDITOR
 		if (SceneController.instance != null && SceneController.instance.currentLevel == 0) {
@@ -135,9 +135,9 @@ public class PlayerController : MonoBehaviour, IResetable {
 	bool playerWantsToInteract;
 
 	Vector2 GetBoxCheckerSizeWithDirectionAdjustment() {
-		var result = boxCheckerSize;
+		var result = collider.bounds.size;
 
-		if (Mathf.Abs(moveDirection.x) < Mathf.Abs(moveDirection.y)) {
+		if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y)) {
 			(result.x, result.y) = (result.y, result.x);
 		}
 
@@ -153,11 +153,14 @@ public class PlayerController : MonoBehaviour, IResetable {
 			objectBeingPushedAgainstPushDirection = Vector2.zero;
 		}
 
-		var boxCheckerPosition = moveDirection * boxCheckerOffset;
+		// var boxCheckerPosition = moveDirection * boxCheckerOffset;
+		// var boxCheckerPosition = moveDirection * collider.bounds.extents;
+		var boxCheckerPosition = moveDirection * (collider.bounds.extents + new Vector3(0.2f, 0.2f));
 		boxCheckerPosition.x += collider.bounds.center.x;
 		boxCheckerPosition.y += collider.bounds.center.y;
 
-		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment(), 0.0f);
+		// Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment(), 0.0f);
+		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size, 0.0f);
 
 		if (collidersAtTarget.Length == 0) {
 			objectBeingPushedAgainstID = 0;
@@ -194,6 +197,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 	Vector2 previousMoveDirection;
 
 	[SerializeField] private float InteractRange = 0.5f;
+	[SerializeField] private float BoxPushRange = 0.5f;
 	// ("Do the dings" - August)
 	private void InteractWithNearest()
 	{
@@ -264,7 +268,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
-		var boxCheckerPosition = moveDirection * boxCheckerOffset;
+		// var boxCheckerPosition = moveDirection * boxCheckerOffset;
+		var boxCheckerPosition = moveDirection * new Vector3(boxCheckerOffset, boxCheckerOffset);
 		// boxCheckerPosition.x += transform.position.x;
 		// boxCheckerPosition.y += transform.position.y;
 		boxCheckerPosition.x += collider.bounds.center.x;
@@ -275,7 +280,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		// Gizmos.DrawWireSphere(transform.position, InteractRange);
 		
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment());
+		Gizmos.DrawWireCube(boxCheckerPosition, collider.bounds.size);
 		Gizmos.DrawWireSphere(collider.bounds.center, InteractRange);
 	}
 #endif
