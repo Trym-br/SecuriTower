@@ -8,27 +8,33 @@ using static AugustBase.All;
 public class PlayerController : MonoBehaviour, IResetable {
 	public static PlayerController instance;
 
+	// Movement
 	public float speed = 2.35f;
-
 	[Range(0.0f, 1.0f)]
 	public float friction = 0.425f;
 
+	// Block Pushing
 	public float objectPushingDelay = 0.25f;
+	
+	// Animation
 	public Vector3 lastDir = Vector3.zero;
 
+	// Components
 	Rigidbody2D  playerRB;
 	InputActions input;
 	Camera       playerCamera;
 	Animator animator;
+	[SerializeField] Collider2D collider;
 
 	void Awake() {
+		// Singleton stuff
 		if (instance != null) {
 			Debug.LogError("There are two players!");
 			return;
 		}
-
 		instance = this;
 
+		// Player physics
 		playerRB = GetComponent<Rigidbody2D>();
 		playerRB.gravityScale           = 0.0f;
 		playerRB.constraints            = RigidbodyConstraints2D.FreezeRotation;
@@ -36,9 +42,11 @@ public class PlayerController : MonoBehaviour, IResetable {
 		playerRB.bodyType               = RigidbodyType2D.Dynamic;
 		playerRB.interpolation          = RigidbodyInterpolation2D.Interpolate;
 
+		// Player Components
 		input = GetComponent<InputActions>();
-		
 		animator = GetComponent<Animator>();
+		collider = GetComponent<Collider2D>();
+		InteractRange = collider.bounds.extents.x;
 
 #if UNITY_EDITOR
 		if (SceneController.instance != null && SceneController.instance.currentLevel == 0) {
@@ -98,7 +106,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 		previousMoveDirection = moveDirection;
 		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
 
-		MaybeMoveBoxes();
+		if (currentMovementInput != Vector2.zero)
+		{
+			MaybeMoveBoxes();
+		}
 	}
 	
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
@@ -127,9 +138,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		var result = boxCheckerSize;
 
 		if (Mathf.Abs(moveDirection.x) < Mathf.Abs(moveDirection.y)) {
-			var temp = result.x;
-			result.x = result.y;
-			result.y = temp;
+			(result.x, result.y) = (result.y, result.x);
 		}
 
 		return result;
@@ -145,8 +154,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		}
 
 		var boxCheckerPosition = moveDirection * boxCheckerOffset;
-		boxCheckerPosition.x += transform.position.x;
-		boxCheckerPosition.y += transform.position.y;
+		boxCheckerPosition.x += collider.bounds.center.x;
+		boxCheckerPosition.y += collider.bounds.center.y;
 
 		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment(), 0.0f);
 
@@ -256,12 +265,18 @@ public class PlayerController : MonoBehaviour, IResetable {
 #if UNITY_EDITOR
 	void OnDrawGizmos() {
 		var boxCheckerPosition = moveDirection * boxCheckerOffset;
-		boxCheckerPosition.x += transform.position.x;
-		boxCheckerPosition.y += transform.position.y;
+		// boxCheckerPosition.x += transform.position.x;
+		// boxCheckerPosition.y += transform.position.y;
+		boxCheckerPosition.x += collider.bounds.center.x;
+		boxCheckerPosition.y += collider.bounds.center.y;
 
+		// Gizmos.color = Color.blue;
+		// Gizmos.DrawWireCube(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment());
+		// Gizmos.DrawWireSphere(transform.position, InteractRange);
+		
 		Gizmos.color = Color.blue;
 		Gizmos.DrawWireCube(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment());
-		Gizmos.DrawWireSphere(transform.position, InteractRange);
+		Gizmos.DrawWireSphere(collider.bounds.center, InteractRange);
 	}
 #endif
 }
