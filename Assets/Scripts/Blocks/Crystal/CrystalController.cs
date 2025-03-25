@@ -80,23 +80,24 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Vector3 origin = transform.position + OutputPoint;
         Vector3 dir = origin - transform.position;
         // print("Laser emitting in dir: " + dir + " / on layer: " + LayerMask.NameToLayer("Laser"));
-        RaycastHit2D hit = Physics2D.Raycast(
-            origin,
-            dir,
-            Mathf.Infinity,
-            // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
-            1 << LayerMask.NameToLayer("Laser")
-        );
-        // RaycastHit2D[] hits = Physics2D.RaycastAll(
+        // RaycastHit2D hit = Physics2D.Raycast(
         //     origin,
         //     dir,
         //     Mathf.Infinity,
         //     // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
         //     1 << LayerMask.NameToLayer("Laser")
         // );
-        // RaycastHit2D hit = hits.Skip(1).Where(hit => hit.collider.tag == "Crystal").FirstOrDefault();
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            origin,
+            dir,
+            Mathf.Infinity,
+            // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
+            1 << LayerMask.NameToLayer("Laser")
+        );
+        RaycastHit2D hit = hits.FirstOrDefault(h => h.collider.gameObject != this.gameObject);
         
         if (hit) {
+            // print("report: hits: " + hits.Length + " / " + hit.collider.gameObject.name);
             Debug.DrawLine(origin, hit.point, Color.green);
             linePoints[OutputPointIndex] = hit.point;
             if (hit.collider.CompareTag("Crystal"))
