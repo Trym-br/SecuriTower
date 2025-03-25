@@ -134,7 +134,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             if (hitPoint == transform.position + ValidPositions[OutputPoints[i]])
             {
                 // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + transform.TransformPoint(OutputPoints[i]));
-                if (ActiveInputs.All(x => x))
+                if (!isSender && ActiveInputs.All(x => x))
                 {
                     DestroyCrystal();
                 }
