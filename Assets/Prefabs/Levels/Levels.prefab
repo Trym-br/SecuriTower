@@ -11400,7 +11400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadOnStartup:
   - Player
-  currentLevel: 8
+  currentLevel: 6
   levels:
   - {fileID: 2441992936949728247}
   - {fileID: 4630606559338711425}
@@ -16105,11 +16105,11 @@ PrefabInstance:
       objectReference: {fileID: 7714047384332445353}
     - target: {fileID: 6897983558301706933, guid: d71eb6e18e2aba747b49b6e381f73dc6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6897983558301706933, guid: d71eb6e18e2aba747b49b6e381f73dc6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.5
+      value: -6.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 6897983558301706933, guid: d71eb6e18e2aba747b49b6e381f73dc6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21736,7 +21736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2138406797122007275, guid: b88fe8062ed38098987f2f8d07708bc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2138406797122007275, guid: b88fe8062ed38098987f2f8d07708bc4, type: 3}
       propertyPath: m_LocalPosition.y
