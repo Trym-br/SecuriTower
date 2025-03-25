@@ -127,13 +127,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     // Laser hit Detection
     public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
     {
-        print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
+        // print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
             if (hitPoint == transform.position + ValidPositions[OutputPoints[i]])
             {
-                print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + OutputPoints[i]);
+                // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + OutputPoints[i]);
                 if (!isSender && isLaserOn)
                 {
                     DestroyCrystal(isOn);
