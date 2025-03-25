@@ -14,7 +14,15 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private bool[]    ActiveInputs;
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
+    // [SerializeField] private bool isRotateAble = None;
     
+    [SerializeField] private bool isRotateable = true; // Default value
+    [SerializeField, HideInInspector] private bool isRotateableSet = false; // Tracks if modified
+    public bool IsRotateable {
+        get => isRotateable;
+        set { if (!isRotateableSet) isRotateableSet = true; isRotateable = value; }
+    }
+
     private GameObject[] LastHits;
     public bool isLaserOn = false;
     private LineRenderer lineRenderer;
@@ -50,6 +58,10 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         if (InputPoints.Length == 0)
         {
             isSender = true;
+            if (!isRotateableSet)
+            {
+                isRotateable = false;
+            }
         }
         ActiveInputs = new bool[InputPoints.Length];
         Array.Fill(ActiveInputs, isSender);
@@ -187,10 +199,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [ContextMenu("Interact")]
     void IInteractable.Interact()
     {
-        //Rotate Crystal
-        // Array.Fill(ActiveInputs, isSender);
-        // CrystalLogic();
-        // transform.Rotate(Vector3.forward, RotationAngle);
+        if (!isRotateable) { return; }
         
         // Rotate Crystal V2
         Array.Fill(ActiveInputs, isSender);
@@ -212,13 +221,11 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Array.Fill(ActiveInputs, isSender);
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            // InputPoints[i] = Mathf.Abs(InputPoints[i] - Rotation) % 8;
-            InputPoints[i] = (InputPoints[i] + 8 - Rotation%8) % 8;
+            InputPoints[i] = (InputPoints[i] + 8 - Rotation % 8) % 8;
         }
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            // OutputPoints[i] = Mathf.Abs(OutputPoints[i] - Rotation) % 8;
-            OutputPoints[i] = (OutputPoints[i] + 8 - Rotation%8) % 8;
+            OutputPoints[i] = (OutputPoints[i] + 8 - Rotation % 8) % 8;
         }
         Rotation = 0;
     }

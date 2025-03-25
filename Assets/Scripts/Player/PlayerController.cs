@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 	public float friction = 0.425f;
 
 	public float objectPushingDelay = 0.25f;
+	public Vector3 lastDir = Vector3.zero;
 
 	Rigidbody2D  playerRB;
 	InputActions input;
@@ -80,8 +81,19 @@ public class PlayerController : MonoBehaviour, IResetable {
 		playerRB.linearVelocity += currentMovementInput.normalized * speed;
 		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
 
-		animator.SetFloat("x", playerRB.linearVelocityX);
-		animator.SetFloat("y", playerRB.linearVelocityY);
+		// animator.SetFloat("x", playerRB.linearVelocityX);
+		// animator.SetFloat("y", playerRB.linearVelocityY);
+		if (currentMovementInput != Vector2.zero)
+		{
+			animator.SetFloat("x", currentMovementInput.normalized.x);
+			animator.SetFloat("y", currentMovementInput.normalized.y);
+			lastDir = currentMovementInput.normalized/2;
+		}
+		else
+		{
+			animator.SetFloat("x", lastDir.x);
+			animator.SetFloat("y", lastDir.y);
+		}
 		
 		previousMoveDirection = moveDirection;
 		moveDirection = GetHeaviestDirectionOfFour(currentMovementInput);
