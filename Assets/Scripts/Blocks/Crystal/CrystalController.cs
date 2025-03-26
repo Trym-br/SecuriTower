@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -10,11 +11,17 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private int[] InputPoints;
     [SerializeField] private int[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
+    [SerializeField] private bool[]    ActiveOutputs;
     
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
     [SerializeField] private bool isRotateable = true; // Default value
     [SerializeField, HideInInspector] private bool isRotateableSet = false; // Tracks if modified
+
+    [SerializeField] private float DestructionTime = 3f;
+    [SerializeField] private float DestructionTimer;
+    private bool isDying;
+        
     public bool IsRotateable {
         get => isRotateable;
         set { if (!isRotateableSet) isRotateableSet = true; isRotateable = value; }
@@ -132,12 +139,23 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         // Crystal Breaking logic
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            if (hitPoint == transform.position + ValidPositions[OutputPoints[i]])
+            if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && !isSender) || forceTrue)
             {
-                // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + OutputPoints[i]);
-                if (!isSender && isLaserOn)
+                // ActiveOutputs[i] = isOn;
+                // // print("DESTROY: hitPoint/InputPoint" + hitPoint + " / " + OutputPoints[i]);
+                // if (!isSender && isLaserOn)
+                // {
+                // DestroyCrystal(isOn);
+                // }
+                if (isOn && !isDying)
                 {
-                    DestroyCrystal(isOn);
+                    isDying = true;
+                    StartCoroutine(DestroyCrystalAnimation());
+                }
+                if (!isOn)
+                {
+                    isDying = false; 
+                    StopCoroutine(DestroyCrystalAnimation());
                 }
             }
         }
@@ -155,12 +173,25 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
     private void DestroyCrystal(bool fromBeyondTheGrave = false)
     {
-        print(this.name + ": is dying / " + fromBeyondTheGrave);
-        if (!fromBeyondTheGrave)
-        {
-            SendLaser(0,false, true);
-        }
-       Destroy(transform.gameObject); 
+        // print(this.name + ": is dying / " + fromBeyondTheGrave);
+        // if (!fromBeyondTheGrave)
+        // {
+        //     SendLaser(0,false, true);
+        // }
+        Destroy(transform.gameObject); 
+    }
+
+
+    IEnumerator DestroyCrystalAnimation()
+    {
+        print(this.name + "is getting destroyed in 3 seconds");
+        // print(this.name + ": 3...");
+        yield return new WaitForSeconds(1);
+        // print(this.name + ": 2...");
+        yield return new WaitForSeconds(1);
+        // print(this.name + ": 1...");
+        yield return new WaitForSeconds(1);
+        DestroyCrystal();       
     }
 
     private void UpdateLineRenderer(bool turnOff = false)
