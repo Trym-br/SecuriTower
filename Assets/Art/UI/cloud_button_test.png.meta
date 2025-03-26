@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 82414a91bb6818541b4c0578609c83a2
+guid: 6d71c3585ec4bbe4f933e58a9cb7b6ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8217898993593455859
-    second: wizard_tower_0
+      213: 6482403585881798539
+    second: cloud_button_test_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wizard_tower_0
+      name: cloud_button_test_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 640
-        height: 1440
+        y: 2
+        width: 505
+        height: 243
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f49d292897db0270800000000000000
-      internalID: 8217898993593455859
+      spriteID: b87f33357bf16f950800000000000000
+      internalID: 6482403585881798539
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wizard_tower_0: 8217898993593455859
+      cloud_button_test_0: 6482403585881798539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
