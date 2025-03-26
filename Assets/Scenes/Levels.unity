@@ -232,24 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde02cba757a3fc61a5ae76cff80cfee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToEventReference:
-  - sound: 1
-    eventReference:
-      Guid:
-        Data1: 1825085453
-        Data2: 1239512774
-        Data3: -1500663412
-        Data4: -1432857257
-      Path: event:/MX/mx_mainTheme
-  - sound: 2
-    eventReference:
-      Guid:
-        Data1: -156355195
-        Data2: 1154337981
-        Data3: 983487371
-        Data4: -1861267948
-      Path: event:/SFX/Player/sfx_walking
-  pauseAllAudio: 0
+  soundToSoundPath: []
+  pauseAudio: 0
   onVoiceLineEnd:
     m_PersistentCalls:
       m_Calls: []

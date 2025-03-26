@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using FMODUnity;
 using FMOD.Studio;
+using static AugustBase.All;
 
 public class FMODController : MonoBehaviour {
 	public static FMODController instance;
@@ -16,12 +17,12 @@ public class FMODController : MonoBehaviour {
 	}
 
 	[Serializable]
-	public struct SoundToEventReference {
+	public struct SoundToSoundPath {
 		public Sound sound;
-		public EventReference eventReference;
+		public string path;
 	}
 
-	public SoundToEventReference[] soundToEventReference;
+	public SoundToSoundPath[] soundToSoundPath;
 
 	void Awake() {
 		if (instance != null) {
@@ -32,13 +33,35 @@ public class FMODController : MonoBehaviour {
 		instance = this;
 
 		currentMusicStage = MusicStage.TitleScreen;
-		currentLevel = Level.Intro;
+		currentLevel = Level.IntroLevel;
 	}
 
 	public bool pauseAudio;
 
 	void Start() {
-		PlaySound(Sound.Music, true);
+		LoadSoundPathsFromDisk();
+
+		PlaySound(Sound.MX_MainTheme, true);
+	}
+
+	void LoadSoundPathsFromDisk() {
+		const string allSoundPathsTextFileName = "AllSoundPaths";
+
+		string[] soundPathsAsLines;
+		if (!LoadTextResourceAsLines(allSoundPathsTextFileName, out soundPathsAsLines)) return;
+
+		var countSounds = Enum.GetNames(typeof(Sound)).Length;
+		if (soundPathsAsLines.Length != countSounds) {
+			Debug.LogError($"The amount of lines in '{allSoundPathsTextFileName}' ({soundPathsAsLines.Length}) does not match the amount of items in the {nameof(Sound)} enum ({countSounds}).");
+			return;
+		}
+
+		soundToSoundPath = new SoundToSoundPath[soundPathsAsLines.Length];
+
+		for (int i = 0; i < soundPathsAsLines.Length; ++i) {
+			soundToSoundPath[i].sound = (Sound)i;
+			soundToSoundPath[i].path = soundPathsAsLines[i];
+		}
 	}
 
 	List<PlayingSound> currentlyPlayingSounds = new();
@@ -130,12 +153,12 @@ public class FMODController : MonoBehaviour {
 		RuntimeManager.StudioSystem.setParameterByName("Level", (float)currentLevel);
 	}
 
-	public EventReference GetSoundPath(Sound sound) {
-		if (soundToEventReference == null) return default;
+	public string GetSoundPath(Sound sound) {
+		if (soundToSoundPath == null) return default;
 
-		for (int i = 0; i < soundToEventReference.Length; ++i) {
-			if (soundToEventReference[i].sound == sound) {
-				return soundToEventReference[i].eventReference;
+		for (int i = 0; i < soundToSoundPath.Length; ++i) {
+			if (soundToSoundPath[i].sound == sound) {
+				return soundToSoundPath[i].path;
 			}
 		}
 
@@ -149,21 +172,23 @@ public class FMODController : MonoBehaviour {
 	public void PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
 		if (sound == Sound.None) return;
 
-		var soundEvent = GetSoundPath(sound);
-		PlayFMODSoundEvent(soundEvent, ignorePausing, isVoiceLine);
+		var soundPath = GetSoundPath(sound);
+		if (soundPath == default) return;
+		PlayFMODSoundEvent(soundPath, ignorePausing, isVoiceLine);
 	}
 
 	public void PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
 		if (sound == Sound.None) return;
 
-		var soundEvent = GetSoundPath(sound);
-		PlayFMODSoundEventFrom(soundEvent, obj, ignorePausing, isVoiceLine);
+		var soundPath = GetSoundPath(sound);
+		if (soundPath == default) return;
+		PlayFMODSoundEventFrom(soundPath, obj, ignorePausing, isVoiceLine);
 	}
 
 	public void PlayFootstepSound(FootstepSoundType sound) {
 		RuntimeManager.StudioSystem.setParameterByName("Footsteps", (float)sound);
 
-		var footstepSoundEvent = GetSoundPath(Sound.Walking);
+		var footstepSoundEvent = GetSoundPath(Sound.SFX_Walking);
 		PlayFMODSoundEvent(footstepSoundEvent);
 	}
 
@@ -230,13 +255,13 @@ public class FMODController : MonoBehaviour {
 	public MusicStage currentMusicStage;
 	public enum MusicStage {
 		TitleScreen,
-		Intro,
+		IntroCutscene,
 		MainStage,
 	}
 
 	public Level currentLevel;
 	public enum Level {
-		Intro,
+		IntroLevel,
 		Level1,
 		Level2,
 		Level3,
@@ -251,7 +276,34 @@ public class FMODController : MonoBehaviour {
 
 	public enum Sound {
 		None,
-		Music,
-		Walking,
+		MX_MainTheme,
+		SFX_Walking,
+		SFX_UISelect,
+		SFX_UIHover,
+		SFX_GateOpen,
+		SFX_GateClose,
+		SFX_GlassShatter,
+		VO_Wizard_PushGrunt,
+		VO_Wizard_LaserDeath,
+		SFX_ParasolOpen,
+		SFX_ParasolClose,
+		SFX_BoxDestroy,
+		SFX_BoxPush,
+		SFX_ResetSpell,
+		SFX_CrystalPush,
+		SFX_CrystalRotate,
+		SFX_CrystalDestroy,
+		SFX_CrystalExplode,
+		SFX_LaserHum,
+		SFX_LaserReceiver,
+		SFX_LaserCharge,
+		SFX_LaserChain,
+		SFX_LaserEmitter,
+		SFX_LaserSplitter,
+		SFX_LaserSplitterPush,
+		AMB_Wind,
+		AMB_Torch,
+		SFX_DoorLocked,
+		SFX_DoorOpen,
 	}
 }
