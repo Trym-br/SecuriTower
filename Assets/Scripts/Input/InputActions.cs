@@ -54,6 +54,10 @@ public class InputActions : MonoBehaviour {
     public bool submitHeld;
     public bool submitEnd;
 
+    public bool cancelBegin;
+    public bool cancelHeld;
+    public bool cancelEnd;
+
 	void Update() {
 		if (actions == null) actions = new InputSystem_Actions();
 
@@ -79,5 +83,9 @@ public class InputActions : MonoBehaviour {
         submitBegin = actions.UI.Submit.WasPressedThisFrame();
         submitHeld  = actions.UI.Submit.IsPressed();
         submitEnd   = actions.UI.Submit.WasReleasedThisFrame();
+        
+        cancelBegin = actions.UI.Cancel.WasPressedThisFrame();
+        cancelHeld  = actions.UI.Cancel.IsPressed();
+        cancelEnd   = actions.UI.Cancel.WasReleasedThisFrame();
 	}
 }
