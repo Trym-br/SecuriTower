@@ -149,11 +149,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 // }
                 if (isOn && !isDying)
                 {
+                    // print(this.name +  ": start destruction");
                     isDying = true;
                     StartCoroutine(DestroyCrystalAnimation());
                 }
                 if (!isOn)
                 {
+                    // print(this.name +  ": stop destruction");
                     isDying = false; 
                     StopCoroutine(DestroyCrystalAnimation());
                 }
@@ -184,7 +186,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
     IEnumerator DestroyCrystalAnimation()
     {
-        print(this.name + "is getting destroyed in 3 seconds");
+        print(this.name + " is getting destroyed in 3 seconds");
         // print(this.name + ": 3...");
         yield return new WaitForSeconds(1);
         // print(this.name + ": 2...");
