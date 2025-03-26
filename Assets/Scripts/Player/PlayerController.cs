@@ -160,7 +160,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		boxCheckerPosition.y += collider.bounds.center.y;
 
 		// Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment(), 0.0f);
-		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size, 0.0f);
+		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size - new Vector3(0.05f, 0.05f), 0.0f);
+		// Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size, 0.0f);
 
 		if (collidersAtTarget.Length == 0) {
 			objectBeingPushedAgainstID = 0;
