@@ -1,16 +1,33 @@
 using UnityEngine;
 
-public class PauseMenuManager : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+public class PauseMenuManager : MonoBehaviour {
+    [Header("UI Elements")] 
+    public GameObject pauseMenuHolder;
+
     void Start()
     {
-        
+        pauseMenuHolder.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TogglePauseMenu()
     {
-        
+        if (!pauseMenuHolder.activeInHierarchy)
+        {
+            pauseMenuHolder.SetActive(true);
+        }
+        else if (pauseMenuHolder.activeInHierarchy)
+        {
+            pauseMenuHolder.SetActive(false);
+        }
+    }
+
+    public void ActivatePauseMenu()
+    {
+        pauseMenuHolder.SetActive(true);
+    }
+
+    public void DeactivatePauseMenu()
+    {
+        pauseMenuHolder.SetActive(false);
     }
 }
