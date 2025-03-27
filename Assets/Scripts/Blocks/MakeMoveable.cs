@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public class MakeMoveable : MonoBehaviour, IResetable {
+	const string crystalTag = "Crystal";
+
 	LayerMask getStoppedBy = ~0;
 
 	public bool canBeMovedInConjunction = true;
@@ -37,6 +39,13 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		newPosition.x = moveTo.x;
 		newPosition.y = moveTo.y;
 		transform.position = newPosition;
+
+		// @Hardcoded
+		if (CompareTag(crystalTag)) {
+			FMODController.PlaySound(FMODController.Sound.SFX_CrystalPush);
+		} else {
+			FMODController.PlaySound(FMODController.Sound.SFX_BoxPush);
+		}
 
 		return true;
 	}
