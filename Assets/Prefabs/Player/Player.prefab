@@ -148,7 +148,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.015625, y: -0.453125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,7 +158,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6, y: 0.9}
+  m_Size: {x: 0.59375, y: 0.1875}
   m_EdgeRadius: 0
 --- !u!50 &5642780451358000783
 Rigidbody2D:
@@ -216,6 +216,9 @@ MonoBehaviour:
   submitBegin: 0
   submitHeld: 0
   submitEnd: 0
+  cancelBegin: 0
+  cancelHeld: 0
+  cancelEnd: 0
 --- !u!114 &3086938771266834931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +235,8 @@ MonoBehaviour:
   friction: 0.425
   objectPushingDelay: 0.25
   lastDir: {x: 0, y: 0, z: 0}
+  collider: {fileID: 814986580473526355}
   boxCheckerSize: {x: 0.1, y: 0.5}
-  boxCheckerOffset: 0.65
+  boxCheckerOffset: 0.45
   InteractRange: 0.8
+  BoxPushRange: 0.5
