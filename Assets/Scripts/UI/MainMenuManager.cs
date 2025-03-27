@@ -1,9 +1,10 @@
 using UnityEngine;
+using static AugustBase.All;
 
 public class MainMenuManager : MonoBehaviour {
-
-    public static MainMenuManager instance;
     
+    public static MainMenuManager instance;
+
     [Header("UI Elements")] 
     public GameObject mainMenuHolder;
 
@@ -11,44 +12,46 @@ public class MainMenuManager : MonoBehaviour {
     public TextAsset InkJSON;
 
     private Animator animator;
+    
+    [Header("Booleans")]
+    public bool introCutsceneIsPlaying;
 
     void Awake()
     {
         instance = this;
     }
-void Start()
+
+    void Start()
     {
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
-        Cursor.visible = true;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EndIntroCutscene();
-        }
     }
 
     public void StartIntroCutscene()
     {
         animator.Play("startIntroCutscene");
-        Cursor.visible = false;
+        introCutsceneIsPlaying = true;
     }
 
     public void EndIntroCutscene()
     {
         animator.Play("endIntroCutscene");
+        introCutsceneIsPlaying = false;
     }
 
     public void DisableMainMenu()
     {
         mainMenuHolder.SetActive(false);
+        animator.Play("default");
     }
 
     public void StartIntroDialogue()
     {
         DialogueManager.instance.EnterDialogueMode(InkJSON);
+    }
+
+    public void QuitGame()
+    {
+        StopProgram();
     }
 }

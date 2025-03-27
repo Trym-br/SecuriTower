@@ -42,19 +42,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Bits: 12
+    - _Bits: 32
     - _GradientNoiseScale: 4
-    - _LaserEdgeSmoothness: 6.5
+    - _LaserEdgeSmoothness: 6.1
     - _LaserThickness: 150
-    - _NoiseMoveSpeed: 10
+    - _NoiseMoveSpeed: 8
+    - _Posterization: 2.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SimpleNoiseScale: 15
+    - _SimpleNoiseScale: 10
     - _VoronoiScale: 3
     m_Colors:
-    - _Color: {r: 321.24738, g: 181.23201, b: 321.24738, a: 1}
+    - _Color: {r: 370.62622, g: 183.91449, b: 370.6262, a: 1}
     - _LaserSpeed: {r: 0, g: 0.1, b: 0, a: 0}
-    - _Remap: {r: -0.02, g: 1, b: 0, a: 0}
+    - _Remap: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6382573992338061987

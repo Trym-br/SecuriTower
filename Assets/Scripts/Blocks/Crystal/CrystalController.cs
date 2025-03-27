@@ -21,6 +21,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private float DestructionTime = 3f;
     [SerializeField] private float DestructionTimer;
     private bool isDying;
+    
+    private SpriteRenderer spriteRenderer;
         
     public bool IsRotateable {
         get => isRotateable;
@@ -43,6 +45,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         new Vector3(-0.5f, 0f),
         new Vector3(-0.5f, 0.5f),
     };
+    [SerializeField] private Sprite[] Sprites;
 
     private void OnValidate()
     {
@@ -75,6 +78,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         
         lineRenderer = GetComponent<LineRenderer>();
         linePoints = new Vector3[OutputPoints.Length*3];
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -258,6 +263,12 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         {
             OutputPoints[i] = (OutputPoints[i] + 1) % 8;
         }
+
+        if (OutputPoints.Length > 0)
+        {
+            spriteRenderer.sprite = Sprites[OutputPoints[0]];
+        }
+
         Rotation += 1;
 
 		FMODController.PlaySound(FMODController.Sound.SFX_CrystalRotate);
