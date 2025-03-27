@@ -1,9 +1,10 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SettingsMenuManager : MonoBehaviour {
     [Header("UI Elements")] 
     public GameObject settingsMenuHolder;
     public GameObject pauseMenu;
+    public Slider masterSlider;
 
     private bool fromPauseMenu;
 
@@ -21,6 +22,7 @@ public class SettingsMenuManager : MonoBehaviour {
         }
 
         settingsMenuHolder.SetActive(true);
+        masterSlider.Select();
     }
 
     public void DeactivateSettingsMenu()
