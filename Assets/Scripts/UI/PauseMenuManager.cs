@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour {
     [Header("UI Elements")] 
     public GameObject pauseMenuHolder;
+    public Button continueButton;
 
     void Start()
     {
@@ -18,16 +20,20 @@ public class PauseMenuManager : MonoBehaviour {
         else if (pauseMenuHolder.activeInHierarchy)
         {
             pauseMenuHolder.SetActive(false);
+            continueButton.Select();
         }
     }
 
     public void ActivatePauseMenu()
     {
         pauseMenuHolder.SetActive(true);
+        continueButton.Select();
+
     }
 
     public void DeactivatePauseMenu()
     {
         pauseMenuHolder.SetActive(false);
+        
     }
 }
