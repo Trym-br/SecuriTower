@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 127aa30bf3b67754d9a8f1c0ab1b2d15
+guid: 64f863915a270384d88ed101df7133b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3118995241122920714
-    second: crystal_reflector_DOWN_sprite_0
+      213: -2887840978542043612
+    second: crystal_reflector_BOTTOM_LEFT_sheet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crystal_reflector_DOWN_sprite_0
+      name: crystal_reflector_BOTTOM_LEFT_sheet_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 3
         y: 0
-        width: 21
-        height: 29
+        width: 25
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a09f34b85a5e84b20800000000000000
-      internalID: 3118995241122920714
+      spriteID: 42e5f223ee35ce7d0800000000000000
+      internalID: -2887840978542043612
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crystal_reflector_DOWN_sprite_0: 3118995241122920714
+      crystal_reflector_BOTTOM_LEFT_sheet_0: -2887840978542043612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

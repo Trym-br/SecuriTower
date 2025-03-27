@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7418415956531884968}
   - component: {fileID: 2713880978647010285}
   - component: {fileID: 6146334268383457788}
+  - component: {fileID: 5214408208217140612}
   m_Layer: 6
   m_Name: Base Crystal
   m_TagString: Crystal
@@ -81,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.81621456, b: 1, a: 1}
+  m_Sprite: {fileID: 6322668723345549597, guid: 33bef01e4e50f6e46aaef6a54dc23b25, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,7 +158,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.90625, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -190,13 +191,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0006570eb05e1e429b9fbbce21fe737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rotation: 0
   InputPoints: 
   OutputPoints: 
   ActiveInputs: 
+  ActiveOutputs: 
   isSender: 0
   AnyInputValid: 1
-  Rotation: 0
+  isRotateable: 1
+  isRotateableSet: 0
+  DestructionTime: 3
+  DestructionTimer: 0
   isLaserOn: 0
+  Sprites:
+  - {fileID: 4474214238252452602, guid: 0e077235d5aedd04ca5b859bb4be50e7, type: 3}
+  - {fileID: -894257639429070460, guid: 568c217b7fdf2a44e89f39d674127002, type: 3}
+  - {fileID: 6322668723345549597, guid: 33bef01e4e50f6e46aaef6a54dc23b25, type: 3}
+  - {fileID: 5976851008473922811, guid: 73f7fc18ea0578b45928f8e326258ade, type: 3}
+  - {fileID: 3118995241122920714, guid: 127aa30bf3b67754d9a8f1c0ab1b2d15, type: 3}
+  - {fileID: -2887840978542043612, guid: 64f863915a270384d88ed101df7133b6, type: 3}
+  - {fileID: 724773473765069965, guid: 78d7da733779682438e6c5d4fbed43aa, type: 3}
+  - {fileID: 2116928138634634866, guid: 702584ec016f6a345b4de9a507b36fca, type: 3}
 --- !u!120 &6146334268383457788
 LineRenderer:
   serializedVersion: 2
@@ -244,7 +259,7 @@ LineRenderer:
   m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -304,3 +319,25 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &5214408208217140612
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273786917217003375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
