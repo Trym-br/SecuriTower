@@ -169,15 +169,31 @@ public class FMODController : MonoBehaviour {
 		return default;
 	}
 
-	public void PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
+	public static void PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
+		if (FMODController.instance == null) {
+			Debug.LogError($"Trying to play sound '{sound}' without the '{nameof(FMODController)}' loaded!");
+			return;
+		}
+
+		instance._PlaySound(sound, ignorePausing, isVoiceLine);
+	}
+	void _PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
 		if (sound == Sound.None) return;
 
 		var soundPath = GetSoundPath(sound);
 		if (soundPath == default) return;
-		PlayFMODSoundEvent(soundPath, ignorePausing, isVoiceLine);
+		instance.PlayFMODSoundEvent(soundPath, ignorePausing, isVoiceLine);
 	}
 
-	public void PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+	public static void PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+		if (FMODController.instance == null) {
+			Debug.LogError($"Trying to play sound '{sound}' without the '{nameof(FMODController)}' loaded!");
+			return;
+		}
+
+		instance._PlaySoundFrom(sound, obj, ignorePausing, isVoiceLine);
+	}
+	void _PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
 		if (sound == Sound.None) return;
 
 		var soundPath = GetSoundPath(sound);
@@ -185,19 +201,37 @@ public class FMODController : MonoBehaviour {
 		PlayFMODSoundEventFrom(soundPath, obj, ignorePausing, isVoiceLine);
 	}
 
-	public void PlayFootstepSound(FootstepSoundType sound) {
+	public static void PlayFootstepSound(FootstepSoundType sound) {
+		if (FMODController.instance == null) {
+			Debug.LogError($"Trying to play footstep sound '{sound}' without the '{nameof(FMODController)}' loaded!");
+			return;
+		}
+
+		instance._PlayFootstepSound(sound);
+	}
+	void _PlayFootstepSound(FootstepSoundType sound) {
 		RuntimeManager.StudioSystem.setParameterByName("Footsteps", (float)sound);
 
 		var footstepSoundEvent = GetSoundPath(Sound.SFX_Walking);
 		PlayFMODSoundEvent(footstepSoundEvent);
 	}
 
-	public void PlayVoiceLineAudio(string path) {
-		PlayFMODSoundEvent(path, false, true);
+	public static void PlayVoiceLineAudio(string path) {
+		if (FMODController.instance == null) {
+			Debug.LogError($"Trying to play sound from path '{path}' without the '{nameof(FMODController)}' loaded!");
+			return;
+		}
+
+		FMODController.instance.PlayFMODSoundEvent(path, false, true);
 	}
 
-	public void PlayVoiceLineAudioFrom(string path, GameObject obj) {
-		PlayFMODSoundEventFrom(path, obj, false, true);
+	public static void PlayVoiceLineAudioFrom(string path, GameObject obj) {
+		if (FMODController.instance == null) {
+			Debug.LogError($"Trying to play sound from path '{path}' without the '{nameof(FMODController)}' loaded!");
+			return;
+		}
+
+		FMODController.instance.PlayFMODSoundEventFrom(path, obj, false, true);
 	}
 
 	string GetVolumeSliderParameterName(VolumeSlider slider) {

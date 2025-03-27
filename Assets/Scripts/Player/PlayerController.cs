@@ -111,6 +111,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 			MaybeMoveBoxes();
 		}
 	}
+
+	void FootstepsSound() {
+		FMODController.PlayFootstepSound(FMODController.FootstepSoundType.Stein); // .Teppe
+	}
 	
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
 		var result = Vector2.zero;

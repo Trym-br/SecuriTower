@@ -186,6 +186,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         //     SendLaser(0,false, true);
         // }
         Destroy(transform.gameObject); 
+		FMODController.PlaySoundFrom(FMODController.Sound.SFX_CrystalExplode, gameObject);
     }
 
 
@@ -269,6 +270,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         }
 
         Rotation += 1;
+
+		FMODController.PlaySound(FMODController.Sound.SFX_CrystalRotate);
     }
 
     void IResetable.Reset()
