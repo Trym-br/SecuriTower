@@ -112,17 +112,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		}
 	}
 
-	public float footstepSoundInterval;
-	float footstepSoundWasLastPlayedAt;
 	void FootstepsSound() {
-#if true
 		FMODController.PlayFootstepSound(FMODController.FootstepSoundType.Stein); // .Teppe
-#else
-		if (footstepSoundWasLastPlayedAt + footstepSoundInterval < Time.time) {
-			footstepSoundWasLastPlayedAt = Time.time;
-			FMODController.PlayFootstepSound(FMODController.FootstepSoundType.Stein); // .Teppe
-		}
-#endif
 	}
 	
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
