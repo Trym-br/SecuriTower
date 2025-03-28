@@ -65,7 +65,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 	void Start() {
 		// FindStairsInCurrentLevel();
 		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
-			transform.position = FindClosestStairs(false);
+			Vector3 StairPositon = FindClosestStairs(false).GetComponent<CircleCollider2D>().bounds.center;
+			transform.position = StairPositon;
 		}
 	}
 
@@ -241,7 +242,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		}
 	}
 	
-	private Vector3 FindClosestStairs(bool dir = false)
+	private GameObject FindClosestStairs(bool dir = false)
 	{
 		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
 		
@@ -268,13 +269,14 @@ public class PlayerController : MonoBehaviour, IResetable {
 				bestTarget = potentialTarget;
 			}
 		}
-		return bestTarget.transform.position;
+		return bestTarget;
 	}
 
 	void IResetable.Reset()
 	{
 		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
-			transform.position = FindClosestStairs(false);
+			Vector3 StairPositon = FindClosestStairs(false).GetComponent<CircleCollider2D>().bounds.center;
+			transform.position = StairPositon;
 		}
 	}
 
