@@ -3,12 +3,12 @@
 #leftPortrait;wizard#rightPortrait;maid
 
 Oh my gosh!#speaker;Sally#layout;right#wordSpeed;0.01#audio;event:/VO/Maid/vo_maid_scared_1
-Oh good heavens!!#audio;event:/VO/Maid/vo_maid_scared_2
-Oh goodness gracious!!!#audio;event:/VO/Maid/vo_maid_scared_3
+Oh good heavens!!
+Oh goodness gracious!!!#audio;event:/VO/Maid/vo_maid_scared_2
 Is it safe? Is she gone?#wordSpeed;0.03#audio;event:/VO/Maid/vo_maid_default
 
-Calm down! #speaker;Wizard#layout;left
-What are you talking about?
+Calm down! #speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_default
+What are you talking about?#audio;event:/VO/Wizard/vo_wizzard_default
 
 Someone...#speaker;Sally#layout;right
 <b>Someone!!</b>#wordSpeed;0.01
@@ -22,8 +22,8 @@ Laughter!#rightPortrait;maid
 A woman's laughter...
 <b>OH GOD!</b>#wordSpeed;0.01
 
-Chillax, Sally.#speaker;Wizard#layout;left#wordSpeed;0.03
-Did you happen to see anything?
+Chillax, Sally.#speaker;Wizard#layout;left#wordSpeed;0.03#audio;event:/VO/Wizard/vo_wizzard_default
+Did you happen to see anything?#audio;event:/VO/Wizard/vo_wizzard_thinking
 
 No...#speaker;Sally#layout;right
 To be quite honest, I was so frightened that I covered my eyes.
@@ -32,8 +32,8 @@ To be quite honest, I was so frightened that I covered my eyes.
 
 Please, you must find this horrid wench!#speaker;Sally#layout;right
 
-Alright, alright, don't worry.#speaker;Wizard#layout;left
-I'll get right on it.
+Alright, alright, don't worry.#speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_sigh
+I'll get right on it.#audio;event:/VO/Wizard/vo_wizzard_default
 
 
 -> END

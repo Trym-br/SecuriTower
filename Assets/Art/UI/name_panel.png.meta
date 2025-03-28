@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 77067f5bbe2daf4448c658a11fafd913
+guid: ad9631531dc472c41b2aa40add3a5d4a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4121085058697367118
-    second: wizard_tower_ui_name_0
+      213: -4682997312084913906
+    second: name_panel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wizard_tower_ui_name_0
+      name: name_panel_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4e83d4c609013930800000000000000
-      internalID: 4121085058697367118
+      spriteID: e01d11991c6a20fb0800000000000000
+      internalID: -4682997312084913906
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wizard_tower_ui_name_0: 4121085058697367118
+      name_panel_0: -4682997312084913906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
