@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (inMenu)
 		{
 			playerRB.linearVelocity = Vector3.zero;
+			animator.SetFloat("x", 0);
+			animator.SetFloat("y", -0.5f);
 			return;
 		}
 		currentMovementInput = input.movement;
