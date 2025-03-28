@@ -1,9 +1,9 @@
 -> main
 
 === main ===
-#leftPortrait:wizard #rightPortrait:none
+#leftPortrait;wizard #rightPortrait;none
 
-Finally home from holiday! #speaker:Wizard#layout:left
+Finally home from holiday! #speaker;Wizard#layout;left
 I can't wait to relax in my Wizard Tower.
 And thanks to my brand new <b>Securitower™ Security System</b>...
 I don't have to worry about unexpected guests!
@@ -15,5 +15,5 @@ And why is there glitter everywhere!?
 Hm. I must have lost it in the tower before I left...
 Luckily, the door's already unlocked!
 It shouldn't be too hard to find.
-Let's have a look.#endCutscene:yeah
+Let's have a look.#endCutscene;yeah
 -> END

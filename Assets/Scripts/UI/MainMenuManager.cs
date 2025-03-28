@@ -4,6 +4,10 @@ using static AugustBase.All;
 public class MainMenuManager : MonoBehaviour {
     
     public static MainMenuManager instance;
+    private MusicStageChanger musicStageChanger;
+    
+    [Header("Music Stage Changer")]
+    public GameObject musicStageChangerObject;
 
     [Header("UI Elements")] 
     public GameObject mainMenuHolder;
@@ -19,24 +23,31 @@ public class MainMenuManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
+        musicStageChanger = musicStageChangerObject.GetComponent<MusicStageChanger>();
     }
 
     void Start()
     {
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
+        musicStageChanger.TitleScreenMusic();
+        Debug.Log("changed music to title screen music");
     }
 
     public void StartIntroCutscene()
     {
         animator.Play("startIntroCutscene");
         introCutsceneIsPlaying = true;
+        musicStageChanger.IntroCutsceneMusic();
+        Debug.Log("changed music to introcutscene music");
     }
 
     public void EndIntroCutscene()
     {
         animator.Play("endIntroCutscene");
         introCutsceneIsPlaying = false;
+        musicStageChanger.MainStageMusic();
+        Debug.Log("changed music to mainstagemusic");
     }
 
     public void DisableMainMenu()
