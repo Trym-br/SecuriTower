@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour {
     private InputActions input;
     public static DialogueManager instance;
     private Story _currentStory;
-
+    
     // Story
     private Story currentStory;
 
@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour {
     private const string rightPortraitTag = "rightPortrait";
     private const string layoutTag = "layout";
     private const string wordSpeedTag = "wordSpeed";
+    private const string audioTag = "audio";
     private const string endCutsceneTag = "endCutscene";
     private const string yeetPrincessTag = "yeetPrincess";
 
@@ -201,7 +202,7 @@ public class DialogueManager : MonoBehaviour {
         // loop gjennom alle tags og håndter dem
         foreach (string tag in currentTags)
         {
-            string[] splitTag = tag.Split(':');
+            string[] splitTag = tag.Split(';');
             if (splitTag.Length != 2)
             {
                 Debug.LogError("Tag could not be parsed properly: " + tag);
@@ -246,6 +247,11 @@ public class DialogueManager : MonoBehaviour {
                             wordSpeed = defaultValue;
                         }
                     }
+                    break;
+                
+                case audioTag:
+                    FMODController.PlayVoiceLineAudio(tagValue);
+                    Debug.Log(tagValue);
                     break;
                 
                 case endCutsceneTag:
