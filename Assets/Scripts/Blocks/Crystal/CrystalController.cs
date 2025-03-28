@@ -159,6 +159,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 linePoints[i] = Vector3.one;
             }
         }
+        // FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
         lineRenderer.positionCount = linePoints.Length;
         lineRenderer.SetPositions(linePoints);
     }
@@ -213,6 +214,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         }
 
         UpdateSprite();
+        // FMODController.PlaySoundFrom(FMODController.Sound.SFX_CrystalRotate, this.gameObject);
 
         Rotation += 1;
 
