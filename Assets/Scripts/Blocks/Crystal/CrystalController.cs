@@ -107,19 +107,22 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         
         if (hit) {
             Debug.DrawLine(origin, hit.point, Color.green);
-            // linePoints[OutputPointIndex] = hit.point;
-            linePoints[OutputPointIndex] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
+            linePoints[OutputPointIndex] = hit.point;
             // linePoints[OutputPointIndex] = hit.collider.GetComponent<SpriteRenderer>().sprite.GetPhysicsShape();
             if (hit.collider.CompareTag("Crystal"))
             { 
+                linePoints[OutputPointIndex] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
                 hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn, forceTrue);
             }
         }
         else {
             linePoints[OutputPointIndex] = origin + dir*30;
         }
-        linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-        linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+        Vector3 CorrectedOutputPoint = this.GetComponent<PolygonCollider2D>().bounds.ClosestPoint(transform.position + ValidPositions[OutputPoints[OutputPointIndex]]);
+        // linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+        // linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
+        linePoints[OutputPointIndex+1] = CorrectedOutputPoint;
+        linePoints[OutputPointIndex + 2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
         if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
@@ -252,8 +255,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         if (OutputPoints.Length > 0)
         {
             spriteRenderer.sprite = Sprites[OutputPoints[0]];
-            UpdatePhysicsShape();
         }
+        UpdatePhysicsShape();
     }
     private void UpdatePhysicsShape()
     {
