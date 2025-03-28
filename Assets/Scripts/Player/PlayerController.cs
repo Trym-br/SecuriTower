@@ -89,9 +89,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 				LevelResetController.instance.ResetLevel();
 			}
 		}
-		// if (input.interactBegin) {
-		// 	playerWantsToInteract = true;
-		// }
 	}
 
 	void FixedUpdate()
@@ -122,6 +119,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 		{
 			MaybeMoveBoxes();
 		}
+		else
+		{
+			objectBeingPushedAgainstStartedAt = Time.time;
+		}
 	}
 
 	void FootstepsSound() {
@@ -148,7 +149,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 	Vector2 currentMovementInput;
 	Vector2 moveDirection = new Vector2(1.0f, 0.0f);
 
-	bool playerWantsToInteract;
 
 	Vector2 GetBoxCheckerSizeWithDirectionAdjustment() {
 		var result = collider.bounds.size;
@@ -168,16 +168,12 @@ public class PlayerController : MonoBehaviour, IResetable {
 			objectBeingPushedAgainstID = 0;
 			objectBeingPushedAgainstPushDirection = Vector2.zero;
 		}
-
-		// var boxCheckerPosition = moveDirection * boxCheckerOffset;
-		// var boxCheckerPosition = moveDirection * collider.bounds.extents;
+		
 		var boxCheckerPosition = moveDirection * (collider.bounds.extents + new Vector3(0.2f, 0.2f));
 		boxCheckerPosition.x += collider.bounds.center.x;
 		boxCheckerPosition.y += collider.bounds.center.y;
 
-		// Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment(), 0.0f);
 		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size - new Vector3(0.05f, 0.05f), 0.0f);
-		// Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size, 0.0f);
 
 		if (collidersAtTarget.Length == 0) {
 			objectBeingPushedAgainstID = 0;
@@ -200,15 +196,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 					objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
 				}
 			}
-
-			// TODO: Should we prioritize NPCs instead of going with the first one it finds?
-			if (playerWantsToInteract && collidersAtTarget[i].TryGetComponent<IInteractable>(out var interactable)) {
-				interactable.Interact();
-				playerWantsToInteract = false;
-			}
 		}
-
-		playerWantsToInteract = false;
 	}
 
 	Vector2 previousMoveDirection;
