@@ -183,6 +183,7 @@ public class DialogueManager : MonoBehaviour {
 
     public void EndDialogue()
     {
+        Debug.Log("Ended dialogue");
         dialogueHolder.SetActive(false);
         dialogueIsPlaying = false;
         PlayerController.instance.inMenu = false;

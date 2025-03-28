@@ -3,7 +3,7 @@
 === main ===
 #leftPortrait;wizard #rightPortrait;none
 
-Finally home from holiday! #speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_sigh
+Finally home from holiday! #speaker;Quentus#layout;left#audio;event:/VO/Wizard/vo_wizzard_sigh
 I can't wait to relax in my Wizard Tower.#audio;event:/VO/Wizard/vo_wizzard_default
 And thanks to my brand new <b>Securitower™ Security System</b>...#audio;event:/VO/Wizard/vo_wizzard_default
 I don't have to worry about unexpected guests!#audio;event:/VO/Wizard/vo_wizzard_victorious
