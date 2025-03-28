@@ -28,18 +28,18 @@ public class MainMenuManager : MonoBehaviour {
 
     void Start()
     {
+        PlayerController.instance.inMenu = true;
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
         musicStageChanger.TitleScreenMusic();
-        Debug.Log("changed music to title screen music");
     }
 
     public void StartIntroCutscene()
     {
+        
         animator.Play("startIntroCutscene");
         introCutsceneIsPlaying = true;
         musicStageChanger.IntroCutsceneMusic();
-        Debug.Log("changed music to introcutscene music");
     }
 
     public void EndIntroCutscene()
@@ -48,12 +48,14 @@ public class MainMenuManager : MonoBehaviour {
         introCutsceneIsPlaying = false;
         musicStageChanger.MainStageMusic();
         Debug.Log("changed music to mainstagemusic");
+        PlayerController.instance.inMenu = false;
     }
 
     public void DisableMainMenu()
     {
         mainMenuHolder.SetActive(false);
         animator.Play("default");
+        PlayerController.instance.inMenu = false;
     }
 
     public void StartIntroDialogue()

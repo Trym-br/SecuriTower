@@ -107,6 +107,7 @@ public class DialogueManager : MonoBehaviour {
         dialogueHolder.SetActive(true);
         continueSymbol.SetActive(false);
         dialogueIsPlaying = true;
+        PlayerController.instance.inMenu = true;
         
         //functions
         currentStory.BindExternalFunction ("collectStaff", (string hi) => {
@@ -181,6 +182,7 @@ public class DialogueManager : MonoBehaviour {
     {
         dialogueHolder.SetActive(false);
         dialogueIsPlaying = false;
+        PlayerController.instance.inMenu = false;
         if (endCutsceneAfterDialogue)
         {
             Debug.Log("Ending cutscene.");
@@ -269,6 +271,5 @@ public class DialogueManager : MonoBehaviour {
             }
         }
     }
-
     #endregion
 }
