@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour, IResetable {
 	Camera       playerCamera;
 	Animator animator;
 	[SerializeField] Collider2D collider;
+	
+	// ???
+	public bool inMenu = false;
 
 	void Awake() {
 		// Singleton stuff
@@ -68,7 +71,13 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	const string parentLevelObjectTag = "Levels Parent Object";
 
-	void Update() {
+	void Update()
+	{
+		if (inMenu)
+		{
+			playerRB.linearVelocity = Vector3.zero;
+			return;
+		}
 		currentMovementInput = input.movement;
 		if (input.interactBegin)
 		{
@@ -85,7 +94,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 		// }
 	}
 
-	void FixedUpdate() {
+	void FixedUpdate()
+	{
+		if (inMenu) { return; }
+		
 		playerRB.linearVelocity += currentMovementInput.normalized * speed;
 		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
 
