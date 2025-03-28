@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class StairsController : MonoBehaviour, IInteractable {
+public class StairsControllerLegacy : MonoBehaviour, IInteractable {
 	public bool stairsGoUpwards;
 	[SerializeField] private GameObject LinkedStairs;
 
@@ -16,23 +16,21 @@ public class StairsController : MonoBehaviour, IInteractable {
 		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		
-		GameObject closestStairs = (LinkedStairs) ? LinkedStairs : FindClosestStairs(!stairsGoUpwards);
+		Vector3 closestStairs = (LinkedStairs) ? LinkedStairs.transform.position : FindClosestStairs(!stairsGoUpwards);
 
-		Vector3 StairPositon = closestStairs.GetComponent<CircleCollider2D>().bounds.center;
-		
 		//TODO change TO A COLLIDER HITPOINT???
-		player.transform.position = StairPositon;
+		player.transform.position = closestStairs;
 		camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
 		
 		Physics2D.SyncTransforms();
 	}
 
-	private GameObject FindClosestStairs(bool dir = false)
+	private Vector3 FindClosestStairs(bool dir = false)
 	{
 		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
 		
 		var childrenWithTag = levelObjectTransform.Cast<Transform>()
-			.Where(t => t.CompareTag("Stairs") && t.TryGetComponent<StairsController>(out StairsController Stair) && Stair.stairsGoUpwards == dir)
+			.Where(t => t.CompareTag("Stairs") && t.TryGetComponent<StairsControllerLegacy>(out StairsControllerLegacy Stair) && Stair.stairsGoUpwards == dir)
 			.Select(t => t.gameObject)
 			.ToList();
 		
@@ -49,14 +47,6 @@ public class StairsController : MonoBehaviour, IInteractable {
 				bestTarget = potentialTarget;
 			}
 		}
-		return bestTarget;
-	}
-
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.CompareTag("Player"))
-		{
-			Interact();
-		}
+		return bestTarget.transform.position;
 	}
 }

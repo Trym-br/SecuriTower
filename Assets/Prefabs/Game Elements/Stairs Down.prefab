@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3262203630879075961
+--- !u!1001 &8595277480284161237
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,41 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -80191992983710045, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
+    - target: {fileID: 1756506874505951033, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: stairsGoUpwards
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1813595318756133107, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4304262965037058467, guid: 0068f71fdcc2824428b1f92b26559878, type: 3}
-    - target: {fileID: 1813595318756133107, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1813595318756133107, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1813595318756133107, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 431224191, guid: 0068f71fdcc2824428b1f92b26559878, type: 3}
     - target: {fileID: 1813595318756133107, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2431997983670113249, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Offset.y
-      value: -0.59
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 2521857702441933932, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4214785
+      value: -3.1929965
       objectReference: {fileID: 0}
     - target: {fileID: 2521857702441933932, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32204658
+      value: 0.05550587
       objectReference: {fileID: 0}
     - target: {fileID: 2521857702441933932, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77,20 +65,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423250494808481823, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423250494808481823, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Size.y
-      value: 0.375
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 4423250494808481823, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Offset.y
-      value: 0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 4423250494808481823, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3
+      value: -0.40625
       objectReference: {fileID: 0}
     - target: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Name
-      value: Stairs Up
+      value: Stairs Down
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
