@@ -28,6 +28,7 @@ public class MainMenuManager : MonoBehaviour {
 
     void Start()
     {
+        PlayerController.instance.inMenu = true;
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
         musicStageChanger.TitleScreenMusic();
@@ -48,6 +49,7 @@ public class MainMenuManager : MonoBehaviour {
         introCutsceneIsPlaying = false;
         musicStageChanger.MainStageMusic();
         Debug.Log("changed music to mainstagemusic");
+        PlayerController.instance.inMenu = false;
     }
 
     public void DisableMainMenu()
