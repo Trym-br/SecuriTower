@@ -245,11 +245,16 @@ public class PlayerController : MonoBehaviour, IResetable {
 	{
 		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
 		
-		var childrenWithTag = levelObjectTransform.Cast<Transform>()
-			.Where(t => t.CompareTag("Stairs") && t.GetComponent<StairsController>().stairsGoUpwards == dir)
+		var childrenWithTag1 = levelObjectTransform.Cast<Transform>()
+			.Where(t => t.CompareTag("Stairs") && t.TryGetComponent<StairsController>(out StairsController Stair) && Stair.stairsGoUpwards == dir)
 			.Select(t => t.gameObject)
 			.ToList();
-		
+		var childrenWithTag2 = levelObjectTransform.Cast<Transform>()
+			.Where(t => t.CompareTag("Stairs") && t.TryGetComponent<StairsControllerLegacy>(out StairsControllerLegacy Stair) && Stair.stairsGoUpwards == dir)
+			.Select(t => t.gameObject)
+			.ToList();
+		List<GameObject> childrenWithTag = childrenWithTag1.Concat(childrenWithTag2).ToList();
+			
 		GameObject bestTarget = null;
 		float closestDistanceSqr = Mathf.Infinity;
 		Vector3 currentPosition = transform.position;
