@@ -1,13 +1,12 @@
 -> main
 
 === main ===
-#leftPortrait:wizard #rightPortrait:none
-Aw shucks. #speaker:Wizard#layout:left
-My <b>Securitower™ Security System</b> has been activated!
-<b>UGH!!!</b>
-I'll have to figure out how to navigate these stupid laser beams...
-And of course I forgot my spell book!
-Without it, all I can do is push objects and rotate them by pressing <b>E</b>...
-Boring.
-
+#leftPortrait;wizard #rightPortrait;none
+Aw shucks. #speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_sigh
+My <b>Securitower™ Security System</b> has been activated!#audio;event:/VO/Wizard/vo_wizzard_default
+<b>UGH!!!</b>#audio;event:/VO/Wizard/vo_wizzard_annoyed
+I'll have to figure out how to navigate these stupid laser beams...#audio;event:/VO/Wizard/vo_wizzard_annoyed
+And of course I forgot my staff!#audio;event:/VO/Wizard/vo_wizzard_annoyed
+Without it, all I can do is push objects and rotate them by <b>pressing E</b>...#audio;event:/VO/Wizard/vo_wizzard_thinking
+Boring.#audio;event:/VO/Wizard/vo_wizzard_sigh
 -> END

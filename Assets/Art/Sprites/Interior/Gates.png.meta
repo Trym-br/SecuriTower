@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 77067f5bbe2daf4448c658a11fafd913
+guid: e209410ed1c5398469e396a26ea13cbe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4121085058697367118
-    second: wizard_tower_ui_name_0
+      213: 2179673419495629613
+    second: Gates_0
+  - first:
+      213: 1046721849985281810
+    second: Gates_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wizard_tower_ui_name_0
+      name: Gates_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 640
-        height: 200
+        width: 32
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4e83d4c609013930800000000000000
-      internalID: 4121085058697367118
+      spriteID: d23e5673d61cf3e10800000000000000
+      internalID: 2179673419495629613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gates_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21f230f0af3b68e00800000000000000
+      internalID: 1046721849985281810
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 5322d512a80f1ea4584ed265af372760
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wizard_tower_ui_name_0: 4121085058697367118
+      Gates_0: 2179673419495629613
+      Gates_1: 1046721849985281810
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
