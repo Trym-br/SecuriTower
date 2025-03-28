@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &149430060
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6259,6 +6259,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.8235294
       objectReference: {fileID: 0}
+    - target: {fileID: 5839507621625459125, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivatePauseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5889601467757489382, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6345,7 +6349,7 @@ PrefabInstance:
       objectReference: {fileID: 149430061}
     - target: {fileID: 6753131176643615402, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6861403786352061935, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
       propertyPath: m_fontColor.b
@@ -8995,7 +8999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7435267325877325998, guid: 642b150a7dcc04844924fe8821fe3a3c, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7435267325877325998, guid: 642b150a7dcc04844924fe8821fe3a3c, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
@@ -10671,7 +10675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7964936926060251231, guid: 642b150a7dcc04844924fe8821fe3a3c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8355083151456005855, guid: 642b150a7dcc04844924fe8821fe3a3c, type: 3}
       propertyPath: m_IsActive

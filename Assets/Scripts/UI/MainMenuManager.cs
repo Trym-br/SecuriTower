@@ -28,10 +28,12 @@ public class MainMenuManager : MonoBehaviour {
 
     void Start()
     {
-        PlayerController.instance.inMenu = true;
+        
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
         musicStageChanger.TitleScreenMusic();
+        PlayerController.instance.inMenu = true;
+        Debug.Log("STARTING MAIN MENU" + PlayerController.instance.inMenu);
     }
 
     public void StartIntroCutscene()
