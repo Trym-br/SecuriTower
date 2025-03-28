@@ -1,10 +1,10 @@
 -> main
 
 === main ===
-#leftPortrait:wizard #rightPortrait:none
-Easylicious! #speaker:Wizard #layout:left
-I truly am a genius...
-<b><color=\#800b67>Sally</color></b> should be on the next floor. 
-Maybe she knows where my key has gotten to?
+#leftPortrait;wizard #rightPortrait;none
+Easylicious! #speaker;Wizard #layout;left#audio;event:/VO/Wizard/vo_wizzard_victorious
+I truly am a genius...#audio;event:/VO/Wizard/vo_wizzard_thinking
+<b><color=\#800b67>Sally</color></b> should be on the next floor.#audio;event:/VO/Wizard/vo_wizzard_default
+Maybe she knows where my key has gotten to?#audio;event:/VO/Wizard/vo_wizzard_default
 
 -> END

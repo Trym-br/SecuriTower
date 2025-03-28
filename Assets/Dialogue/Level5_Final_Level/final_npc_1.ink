@@ -2,8 +2,8 @@
 
 === main ===
 EXTERNAL collectStaff(hei)
-#leftPortrait:wizard#rightPortrait:none
-My staff!!!#speaker:Wizard#layout:left
+#leftPortrait;wizard#rightPortrait;none
+My staff!!!#speaker;Wizard#layout;left
 ~ collectStaff("hei")
 Thank goodness.
 With this, I can do all my magic spells again.

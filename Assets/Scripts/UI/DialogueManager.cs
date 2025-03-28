@@ -171,8 +171,11 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    private void SkipDialogue()
+    public void SkipDialogue()
     {
+        if (!typing) {
+            ContinueStory();
+        }
         typing = false;
         continueSymbol.SetActive(true);
         dialogueText.maxVisibleCharacters = line.Length;

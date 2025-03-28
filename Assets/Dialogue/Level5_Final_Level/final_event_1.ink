@@ -1,8 +1,8 @@
 -> main
 
 === main ===
-#leftPortrait:wizard#rightPortrait:none
-Finally...#speaker:Wizard#layout:left
+#leftPortrait;wizard#rightPortrait;none
+Finally...#speaker;Wizard#layout;left
 Some peace and quiet.
 Man, that was a lot.
 ...
