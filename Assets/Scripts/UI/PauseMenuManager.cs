@@ -10,24 +10,10 @@ public class PauseMenuManager : MonoBehaviour {
     {
         pauseMenuHolder.SetActive(false);
     }
-    
-    public void TogglePauseMenu() // not used currently
-    {
-        if (!pauseMenuHolder.activeInHierarchy)
-        {
-            pauseMenuHolder.SetActive(true);
-        }
-        else if (pauseMenuHolder.activeInHierarchy)
-        {
-            pauseMenuHolder.SetActive(false);
-            continueButton.Select();
-        }
-    }
 
     public void ActivatePauseMenu()
     {
         pauseMenuHolder.SetActive(true);
-        continueButton.Select();
         PlayerController.instance.inMenu = true;
 
     }
