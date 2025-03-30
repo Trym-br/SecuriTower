@@ -180,11 +180,15 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 		if (collidersAtTarget.Length == 0) {
 			objectBeingPushedAgainstID = 0;
+			objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
 			objectBeingPushedAgainstPushDirection = Vector2.zero;
 		}
 
+		bool thereWasAMoveable = false;
 		for (int i = 0; i < collidersAtTarget.Length; ++i) {
 			if (collidersAtTarget[i].TryGetComponent<MakeMoveable>(out var moveableAtTarget)) {
+				thereWasAMoveable = true;
+
 				var id = collidersAtTarget[i].gameObject.GetInstanceID();
 				if (objectBeingPushedAgainstID == 0) {
 					objectBeingPushedAgainstID = id;
@@ -194,11 +198,21 @@ public class PlayerController : MonoBehaviour, IResetable {
 				objectBeingPushedAgainstPushDirection = moveDirection;
 
 				if (objectBeingPushedAgainstStartedAt + objectPushingDelay < Time.time) {
-					moveableAtTarget.TryMoveInDirection(moveDirection);
+					if (moveableAtTarget.TryMoveInDirection(moveDirection)) {
+						FMODController.PlaySound(FMODController.Sound.VO_Wizard_PushGrunt);
+					}
+
 					objectBeingPushedAgainstID = 0;
 					objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
+					objectBeingPushedAgainstPushDirection = Vector2.zero;
 				}
 			}
+		}
+
+		if (!thereWasAMoveable) {
+			objectBeingPushedAgainstID = 0;
+			objectBeingPushedAgainstStartedAt = -Mathf.Infinity;
+			objectBeingPushedAgainstPushDirection = Vector2.zero;
 		}
 	}
 

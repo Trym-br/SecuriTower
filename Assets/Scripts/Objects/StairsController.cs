@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class StairsController : MonoBehaviour, IInteractable {
+public class StairsController : MonoBehaviour {
 	public bool stairsGoUpwards;
 	[SerializeField] private GameObject LinkedStairs;
 
-	public void Interact() {
+	public void PerformStairing() {
 		if (SceneController.instance != null)
 		{
 			print("Going up stairs" + this.name);
@@ -50,13 +50,5 @@ public class StairsController : MonoBehaviour, IInteractable {
 			}
 		}
 		return bestTarget;
-	}
-
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.CompareTag("Player"))
-		{
-			Interact();
-		}
 	}
 }

@@ -612,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469618021}
   m_Layer: 0
-  m_Name: UNNAMED LEVEL
+  m_Name: UNNAMED LEVEL (More gatekeeping mechanic)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5591,12 +5591,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5573259370968042077, guid: 837b27698d388270ca1bf00620b97f5e, type: 3}
       propertyPath: currentLevel
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5573259370968042077, guid: 837b27698d388270ca1bf00620b97f5e, type: 3}
       propertyPath: levels.Array.size
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5573259370968042077, guid: 837b27698d388270ca1bf00620b97f5e, type: 3}
+      propertyPath: 'levels.Array.data[8]'
+      value: 
+      objectReference: {fileID: 469618020}
     - target: {fileID: 5573259370968042077, guid: 837b27698d388270ca1bf00620b97f5e, type: 3}
       propertyPath: 'levels.Array.data[9]'
       value: 
