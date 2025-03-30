@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class NPC_Dialogue_Dings : MonoBehaviour, IInteractable {
-
+public class NPC_GnomeBehaviour : MonoBehaviour, IInteractable
+{
     public int timesInteractedWith;
+    private Material outlineMaterial;
     
     [Header("InkJSONs")] 
     public TextAsset[] InkJSONs;
@@ -27,4 +28,5 @@ public class NPC_Dialogue_Dings : MonoBehaviour, IInteractable {
             }
         }
     }
+    
 }

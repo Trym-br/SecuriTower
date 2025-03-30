@@ -1,34 +1,47 @@
-using Ink.Parsed;
 using UnityEngine;
 
-public class NPC_MaidBehaviour : MonoBehaviour, IInteractable {
+public class Generic_NPC : MonoBehaviour, IInteractable {
+    
     private Animator animator;
+    private Material material;
     private Transform currentPoint;
-    private Material outlineMaterial;
-
-    public static NPC_MaidBehaviour instance;
+    
     public int timesInteractedWith;
+    
+    public static Generic_NPC instance;
+    
+    [Header("Which NPC is this?")]
+    public string npcName;
 
+    [Header("Does this NPC walk around?")] 
+    public bool walks;
+    
+    [Header("InkJSONs")] 
+    public TextAsset[] InkJSONs;
+    
     [Header("Movement")] 
     public GameObject point_a;
     public GameObject point_b;
     public float walkSpeed;
     private Vector3 point;
 
-    [Header("InkJSONs")] public TextAsset[] InkJSONs;
-
     void Awake() {
         animator = GetComponent<Animator>();
+        material = GetComponent<Renderer>().material;
+
         instance = this;
-        outlineMaterial = GetComponent<Renderer>().material;
     }
 
     void Start() {
-        animator.Play("walk_left");
-        currentPoint = point_a.transform;
+        if (walks) {
+            animator.Play("walk_left");
+            currentPoint = point_a.transform;
+        }
     }
 
     void Update() {
+        
+        if (!walks) return;
         if (DialogueManager.instance.dialogueIsPlaying) return;
         if (currentPoint == point_a.transform) {
             transform.position =
@@ -46,39 +59,46 @@ public class NPC_MaidBehaviour : MonoBehaviour, IInteractable {
                 animator.Play("walk_left");
             }
         }
+        
     }
-
     void OnTriggerStay2D(Collider2D other) {
         if (!other.CompareTag("Player")) return;
         if (DialogueManager.instance.dialogueIsPlaying) {
-            outlineMaterial.SetFloat("_Alpha", 0.0f);
+            material.SetFloat("_Alpha", 0.0f);
         }
         else {
-            outlineMaterial.SetFloat("_Alpha", 1.0f);
+            material.SetFloat("_Alpha", 1.0f);
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
         if (!other.CompareTag("Player")) return;
-        outlineMaterial.SetFloat("_Alpha", 0.0f);
+        material.SetFloat("_Alpha", 0.0f);
     }
 
-    public void EndedMaidDialogue() {
-        currentPoint = point_a.transform;
-        animator.Play("walk_left");
+    public void EndedDialogue() {
+        if (walks) {
+            animator.Play("walk_left");
+            currentPoint = point_a.transform;
+        }
     }
 
-    public void Interact() {
-        if (!DialogueManager.instance.dialogueIsPlaying) {
+    public void Interact()
+    {
+        if (!DialogueManager.instance.dialogueIsPlaying)
+        {
             animator.Play("idle");
-            if (timesInteractedWith < InkJSONs.Length) {
+            if (timesInteractedWith < InkJSONs.Length)
+            {
                 DialogueManager.instance.EnterDialogueMode(InkJSONs[timesInteractedWith]);
                 timesInteractedWith++;
             }
-            else if (timesInteractedWith == InkJSONs.Length) {
+            else if (timesInteractedWith == InkJSONs.Length)
+            {
                 DialogueManager.instance.EnterDialogueMode(InkJSONs[InkJSONs.Length - 1]);
             }
-            else {
+            else
+            {
                 Debug.LogError("Error related to Ink JSON files attached to the NPC.");
             }
         }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3661305393224405555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 9222627958663158195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: -4.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,6 +104,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2073191955806983093}
     m_Modifications:
+    - target: {fileID: 2047165051419641611, guid: b61c59ac0c57a2b49866b004ad9279ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b161bd437eb54d49b4acd6579679511, type: 2}
     - target: {fileID: 4063274190768545151, guid: b61c59ac0c57a2b49866b004ad9279ac, type: 3}
       propertyPath: m_Name
       value: NPC_Maid

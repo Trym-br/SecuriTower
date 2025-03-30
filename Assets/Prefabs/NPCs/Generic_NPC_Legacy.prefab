@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 675453199496627073}
   - component: {fileID: 6645055105559775066}
   m_Layer: 0
-  m_Name: Generic_NPC
+  m_Name: Generic_NPC_Legacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

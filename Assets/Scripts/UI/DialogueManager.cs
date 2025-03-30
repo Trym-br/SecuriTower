@@ -187,7 +187,7 @@ public class DialogueManager : MonoBehaviour {
         dialogueHolder.SetActive(false);
         dialogueIsPlaying = false;
         PlayerController.instance.inMenu = false;
-        NPC_MaidBehaviour.instance.EndedMaidDialogue();
+        Generic_NPC.instance.EndedDialogue();
         if (endCutsceneAfterDialogue)
         {
             Debug.Log("Ending cutscene.");
