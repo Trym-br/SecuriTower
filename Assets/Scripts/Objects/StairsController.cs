@@ -14,7 +14,7 @@ public class StairsController : MonoBehaviour {
 			else { SceneController.instance.LoadPreviousLevel(); }
 		}
 		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		GameObject player = PlayerController.instance.gameObject;
 		
 		GameObject closestStairs = (LinkedStairs) ? LinkedStairs : FindClosestStairs(!stairsGoUpwards);
 
@@ -24,6 +24,7 @@ public class StairsController : MonoBehaviour {
 		player.transform.position = StairPositon;
 		camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
 		
+		PlayerController.instance.StairingWasPerformed();
 		Physics2D.SyncTransforms();
 	}
 
