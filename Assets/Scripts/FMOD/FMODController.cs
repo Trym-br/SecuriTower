@@ -340,4 +340,10 @@ public class FMODController : MonoBehaviour {
 		SFX_DoorLocked,
 		SFX_DoorOpen,
 	}
+
+	public static void PlayLaserChainSound(GameObject playFrom) {
+		// @Temp TODO: change for actual sound when Robin has it in the thing.
+		PlaySoundFrom(Sound.SFX_GateClose, playFrom);
+		print($"Playing laser chain sound from {playFrom.name}");
+	}
 }
