@@ -235,8 +235,10 @@ MonoBehaviour:
   friction: 0.425
   objectPushingDelay: 0.25
   lastDir: {x: 0, y: 0, z: 0}
-  collider: {fileID: 814986580473526355}
+  playerCollider: {fileID: 0}
   inMenu: 0
+  resetHoldTime: 0.625
+  resetTimerProgress: 0
   boxCheckerSize: {x: 0.1, y: 0.5}
   boxCheckerOffset: 0.45
   InteractRange: 1.25

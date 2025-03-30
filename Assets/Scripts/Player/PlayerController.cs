@@ -72,8 +72,13 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	const string parentLevelObjectTag = "Levels Parent Object";
 
-	void Update()
-	{
+	public float resetHoldTime = 1.0f;
+	float resetTimer = 0.0f;
+
+	// A value from 0.0f to 1.0f, where 1.0f means we are about to reset the level.
+	[HideInInspector] public float resetTimerProgress;
+
+	void Update() {
 		if (inMenu)
 		{
 			playerRB.linearVelocity = Vector3.zero;
@@ -86,11 +91,23 @@ public class PlayerController : MonoBehaviour, IResetable {
 		{
 			InteractWithNearest();	
 		}
-		if (input.resetBegin) {
-			print("Resetting stage: " + LevelResetController.instance);
-			if (LevelResetController.instance != null) {
-				LevelResetController.instance.ResetLevel();
+
+		if (input.resetHeld) {
+			resetTimer += Time.deltaTime;
+
+			if (resetHoldTime < resetTimer) {
+				resetTimer = 0.0f;
+				// Time to reset the level!
+				if (LevelResetController.instance != null) {
+					LevelResetController.instance.ResetLevel();
+				}
 			}
+		} else {
+			resetTimer = 0.0f;
+		}
+
+		if (resetHoldTime != 0.0f) {
+			resetTimerProgress = Mathf.Clamp01(resetTimer / resetHoldTime);
 		}
 	}
 
