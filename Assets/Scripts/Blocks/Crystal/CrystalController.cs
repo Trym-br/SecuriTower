@@ -19,9 +19,9 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private bool isRotateable = true; // Default value
     [SerializeField, HideInInspector] private bool isRotateableSet = false; // Tracks if modified
 
-    [SerializeField] private float DestructionTime = 3f;
-    [SerializeField] private float DestructionTimer;
-    private bool isDying;
+    //[SerializeField] private float DestructionTime = 3f;
+    //[SerializeField] private float DestructionTimer;
+    //private bool isDying;
     private PolygonCollider2D polygonCollider2D;
     
     private SpriteRenderer spriteRenderer;

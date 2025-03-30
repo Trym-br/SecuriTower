@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 	InputActions input;
 	Camera       playerCamera;
 	Animator animator;
-	[SerializeField] Collider2D collider;
+	[SerializeField] Collider2D playerCollider;
 	
 	// ???
 	public bool inMenu = false;
@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		// Player Components
 		input = GetComponent<InputActions>();
 		animator = GetComponent<Animator>();
-		collider = GetComponent<Collider2D>();
-		BoxPushRange = collider.bounds.extents.x;
+		playerCollider = GetComponent<Collider2D>();
+		BoxPushRange = playerCollider.bounds.extents.x;
 
 #if UNITY_EDITOR
 		if (SceneController.instance != null && SceneController.instance.currentLevel == 0) {
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 
 	Vector2 GetBoxCheckerSizeWithDirectionAdjustment() {
-		var result = collider.bounds.size;
+		var result = playerCollider.bounds.size;
 
 		if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y)) {
 			(result.x, result.y) = (result.y, result.x);
@@ -172,11 +172,11 @@ public class PlayerController : MonoBehaviour, IResetable {
 			objectBeingPushedAgainstPushDirection = Vector2.zero;
 		}
 		
-		var boxCheckerPosition = moveDirection * (collider.bounds.extents + new Vector3(0.2f, 0.2f));
-		boxCheckerPosition.x += collider.bounds.center.x;
-		boxCheckerPosition.y += collider.bounds.center.y;
+		var boxCheckerPosition = moveDirection * (playerCollider.bounds.extents + new Vector3(0.2f, 0.2f));
+		boxCheckerPosition.x += playerCollider.bounds.center.x;
+		boxCheckerPosition.y += playerCollider.bounds.center.y;
 
-		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, collider.bounds.size - new Vector3(0.05f, 0.05f), 0.0f);
+		Collider2D[] collidersAtTarget = Physics2D.OverlapBoxAll(boxCheckerPosition, playerCollider.bounds.size - new Vector3(0.05f, 0.05f), 0.0f);
 
 		if (collidersAtTarget.Length == 0) {
 			objectBeingPushedAgainstID = 0;
@@ -300,16 +300,16 @@ public class PlayerController : MonoBehaviour, IResetable {
 		var boxCheckerPosition = moveDirection * new Vector3(boxCheckerOffset, boxCheckerOffset);
 		// boxCheckerPosition.x += transform.position.x;
 		// boxCheckerPosition.y += transform.position.y;
-		boxCheckerPosition.x += collider.bounds.center.x;
-		boxCheckerPosition.y += collider.bounds.center.y;
+		boxCheckerPosition.x += playerCollider.bounds.center.x;
+		boxCheckerPosition.y += playerCollider.bounds.center.y;
 
 		// Gizmos.color = Color.blue;
 		// Gizmos.DrawWireCube(boxCheckerPosition, GetBoxCheckerSizeWithDirectionAdjustment());
 		// Gizmos.DrawWireSphere(transform.position, InteractRange);
 		
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube(boxCheckerPosition, collider.bounds.size);
-		Gizmos.DrawWireSphere(collider.bounds.center, InteractRange);
+		Gizmos.DrawWireCube(boxCheckerPosition, playerCollider.bounds.size);
+		Gizmos.DrawWireSphere(playerCollider.bounds.center, InteractRange);
 	}
 #endif
 }
