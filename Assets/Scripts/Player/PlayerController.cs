@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	public float resetHoldTime = 1.0f;
 	float resetTimer = 0.0f;
+	bool didResetAndResetIsStillHeld;
 
 	// A value from 0.0f to 1.0f, where 1.0f means we are about to reset the level.
 	[HideInInspector] public float resetTimerProgress;
@@ -92,17 +93,20 @@ public class PlayerController : MonoBehaviour, IResetable {
 			InteractWithNearest();	
 		}
 
-		if (input.resetHeld) {
+		if (input.resetHeld && !didResetAndResetIsStillHeld) {
 			resetTimer += Time.deltaTime;
 
 			if (resetHoldTime < resetTimer) {
 				resetTimer = 0.0f;
+				didResetAndResetIsStillHeld = true;
+
 				// Time to reset the level!
 				if (LevelResetController.instance != null) {
 					LevelResetController.instance.ResetLevel();
 				}
 			}
 		} else {
+			didResetAndResetIsStillHeld = false;
 			resetTimer = 0.0f;
 		}
 
