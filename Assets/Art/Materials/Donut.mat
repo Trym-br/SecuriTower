@@ -57,8 +57,8 @@ Material:
     m_Floats:
     - _CircleRadius: 0.4
     - _FillAmount: 1
-    - _InnerCircleRadius: 0.4
-    - _OuterCircleRadius: 1
+    - _InnerCircleRadius: 0.3
+    - _OuterCircleRadius: 0.8
     - _QueueControl: 0
     - _QueueOffset: 0
     - _TwirlStrength: 10
