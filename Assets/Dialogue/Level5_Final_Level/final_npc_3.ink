@@ -4,16 +4,16 @@
 EXTERNAL yeetPrincess(hei)
 #leftPortrait;wizard#rightPortrait;princess
 
-Halt!#speaker;Wizard#layout;left
-What do you think you're doing?
+Halt!#speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_anger
+What do you think you're doing?#audio;event:/VO/Wizard/vo_wizzard_anger
 
 Eeee!!!!!!!#speaker;Princess#layout;right
 What do you think <i>you're</i> doing?!
 Get out!
 
-Excuse me?#speaker;Wizard#layout;left
-This is my room!
-This is MY tower!
+Excuse me?#speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
+This is my room!#audio;event:/VO/Wizard/vo_wizzard_annoyed
+This is MY tower!#audio;event:/VO/Wizard/vo_wizzard_annoyed
 
 Ohh.#speaker;Princess#layout;right
 Ooohh!!
@@ -26,10 +26,10 @@ Honestly, this tower is kinda ugly...
 So I'm redecorating!
 No need to thank me.
 
-What?#speaker;Wizard#layout;left
-No no, I'm kicking you out.
-No renovations! My tower is fine!
-Leave!
+What?#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
+No no, I'm kicking you out.#audio;event:/VO/Wizard/vo_wizzard_default
+No renovations! My tower is fine!#audio;event:/VO/Wizard/vo_wizzard_annoyed
+Leave!#audio;event:/VO/Wizard/vo_wizzard_anger
 
 Huh?#speaker;Princess#layout;right
 I think you're a bit confused.
@@ -42,9 +42,9 @@ Luckily, I found this one!
 A bit shabby, but with some work it'll do just fine.
 I'm sure you can find somewhere else!
 
-You–?#speaker;Wizard#layout;left
-Nuh-uh!
-You cannot just waltz in on someone's property and claim to own it.
+You–?#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
+No!#audio;event:/VO/Wizard/vo_wizzard_default
+You cannot just waltz in on someone's property and claim to own it.#audio;event:/VO/Wizard/vo_wizzard_default
 
 Hm?#speaker;Princess#layout;right
 Yes I can.
@@ -53,14 +53,14 @@ So it was really easy, actually.
 Your pet rock is soo cute, BTW!!!
 The maid girl is kinda weird though... I think I'll get rid of her.
 
-Absolutely not.#speaker;Wizard#layout;left
-You're not getting rid of anyone.
-You are going to leave, <b>right now</b>.
+Absolutely not.#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_anger
+You're not getting rid of anyone.#audio;event:/VO/Wizard/vo_wizzard_annoyed
+You are going to leave, <b>right now</b>.#audio;event:/VO/Wizard/vo_wizzard_annoyed
 
 Hmm...#speaker;Princess#layout;right
 Nuh-uh.
 
-Alright.#speaker;Wizard#layout;left
-Abooga babooga... Alakazam... Lorem ipsum!!!#wordSpeed;0.06
-<b>RAHHH!!</b>#yeetPrincess;yes
+Alright.#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_default
+Abooga babooga... Alakazam... Lorem ipsum!!!#wordSpeed;0.06#audio;event:/VO/Wizard/vo_wizzard_spell_s
+<b>RAHHH!!</b>#yeetPrincess;yes#audio;event:/VO/Wizard/vo_wizzard_spell_l
 -> END

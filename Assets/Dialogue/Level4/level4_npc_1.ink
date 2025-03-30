@@ -2,55 +2,55 @@
 
 === main ===
 #leftPortrait;wizard#rightPortrait;dragon
-Name!#speaker;Wizard #layout;left
-Are you alright?
+Name!#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_default
+Are you alright?#audio;event:/VO/Wizard/vo_wizzard_default
 
-Hm? #speaker;Dragon#layout;right
-Oh, hello there, Tom.
-I hope there's a good reason you're interrupting my reading?
+Hm? #speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
+Oh, hello there, Quintus.#audio;event:/VO/Dragon Librarian/vo_dragon_default
+I hope there's a good reason you're interrupting my reading?#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-Uh.#speaker;Wizard #layout;left
-Yes?
+Uh.#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
+Yes?#audio;event:/VO/Wizard/vo_wizzard_default
 
-Go on.#speaker;Dragon#layout;right
+Go on.#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-Well.#speaker;Wizard #layout;left
-You see, I fear there's an intruder in our tower.
-A horrible, evil, powerful witch.
+Well.#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_default
+You see, I fear there's an intruder in our tower.#audio;event:/VO/Wizard/vo_wizzard_default
+A horrible, evil, powerful witch.#audio;event:/VO/Wizard/vo_wizzard_default
 
-<b>HA!</b>#speaker;Dragon#layout;right
-A witch?
-Is that what you think?
+<b>HA!</b>#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_laugh
+A witch?#audio;event:/VO/Dragon Librarian/vo_dragon_default
+Is that what you think?#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-Uhm...#speaker;Wizard#layout;left
+Uhm...#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
 
-If it's the princess you're talking about, you can find her upstairs.#speaker;Dragon#layout;right
+If it's the princess you're talking about, you can find her upstairs.#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-Huh?#speaker;Wizard #layout;left
-Princess?
-But I thought...
+Huh?#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_shock
+Princess?#audio;event:/VO/Wizard/vo_wizzard_shock
+But I thought...#audio;event:/VO/Wizard/vo_wizzard_confused
 
-You thought wrong, it seems.#speaker;Dragon#layout;right
-Shocking.
-She stopped by earlier. We had a lovely chat.
+You thought wrong, it seems.#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
+Shocking.#audio;event:/VO/Dragon Librarian/vo_dragon_laugh
+She stopped by earlier. We had a lovely chat.#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-You– What?!#speaker;Wizard#layout;left
-And you didn't stop her??
-She's trespassing!
+You– What?!#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_shock
+And you didn't stop her??#audio;event:/VO/Wizard/vo_wizzard_shock
+She's trespassing!#audio;event:/VO/Wizard/vo_wizzard_annoyed
 
-I've got better things to do, haven't I?#speaker;Dragon#layout;right
-Not sure why I should clean up your mess for you.
+I've got better things to do, haven't I?#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
+Not sure why I should clean up your mess for you.#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-...#speaker;Wizard #layout;left
-Well.
-I'm glad to see you're alright.
+...#speaker;Quintus #layout;left
+Well.#audio;event:/VO/Wizard/vo_wizzard_sigh
+I'm glad to see you're alright.#audio;event:/VO/Wizard/vo_wizzard_default
 
-How sweet.#speaker;Dragon#layout;right
+How sweet.#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-I'll see to expelling this "princess" from the property.#speaker;Wizard #layout;left
+I'll see to expelling this "princess" from the property.#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_default
 
-Wonderful.#speaker;Dragon#layout;right
-Best of luck.
+Wonderful.#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
+Best of luck.#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-Thank you.#speaker;Wizard#layout;left
+Thank you.#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_default
 -> END
