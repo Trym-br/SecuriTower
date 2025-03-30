@@ -51,4 +51,10 @@ public class StairsController : MonoBehaviour {
 		}
 		return bestTarget;
 	}
+	
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.CompareTag("Player")) {
+			PerformStairing();
+		}
+	}
 }

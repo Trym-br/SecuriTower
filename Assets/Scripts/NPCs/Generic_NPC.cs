@@ -9,9 +9,13 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
     public int timesInteractedWith;
     
     public static Generic_NPC instance;
-    
-    [Header("Which NPC is this?")]
-    public string npcName;
+
+    [Header("Which NPC is this?")] 
+    public bool maid;
+    public bool gnome;
+    public bool golem;
+    public bool dragon;
+    public bool princess;
 
     [Header("Does this NPC walk around?")] 
     public bool walks;
@@ -26,7 +30,7 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
     private Vector3 point;
 
     void Awake() {
-        animator = GetComponent<Animator>();
+        TryGetComponent<Animator>(out animator);
         material = GetComponent<Renderer>().material;
 
         instance = this;
@@ -34,7 +38,7 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
 
     void Start() {
         if (walks) {
-            animator.Play("walk_left");
+            if (animator != null) animator.Play("walk_left");
             currentPoint = point_a.transform;
         }
     }
@@ -48,7 +52,7 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
                 Vector3.MoveTowards(transform.position, point_a.transform.position, walkSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, point_a.transform.position) < 0.1f) {
                 currentPoint = point_b.transform;
-                animator.Play("walk_right");
+                if (animator != null) animator.Play("walk_right");
             }
         }
         else if (currentPoint == point_b.transform) {
@@ -56,7 +60,7 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
                 Vector3.MoveTowards(transform.position, point_b.transform.position, walkSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, point_b.transform.position) < 0.1f) {
                 currentPoint = point_a.transform;
-                animator.Play("walk_left");
+                if (animator != null) animator.Play("walk_left");
             }
         }
         
@@ -78,7 +82,7 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
 
     public void EndedDialogue() {
         if (walks) {
-            animator.Play("walk_left");
+            if (animator != null) animator.Play("walk_left");
             currentPoint = point_a.transform;
         }
     }
@@ -87,7 +91,7 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
     {
         if (!DialogueManager.instance.dialogueIsPlaying)
         {
-            animator.Play("idle");
+            if (animator != null) animator.Play("idle");
             if (timesInteractedWith < InkJSONs.Length)
             {
                 DialogueManager.instance.EnterDialogueMode(InkJSONs[timesInteractedWith]);

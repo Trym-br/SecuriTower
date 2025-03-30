@@ -1,26 +1,21 @@
 using UnityEngine;
 
-public class NPC_PrincessBehaviour : MonoBehaviour
-{
+public class NPC_PrincessBehaviour : MonoBehaviour {
     public static NPC_PrincessBehaviour instance;
-    private Animator animator;
+    public Animator animator;
 
-    [Header("Ink JSON")] 
-    public TextAsset InkJSON;
+    [Header("Ink JSON")] public TextAsset InkJSON;
 
-    void Awake()
-    {
+    void Awake() {
         instance = this;
-        animator = GetComponent<Animator>();
     }
 
-    public void YeetPrincess()
-    {
+    public void YeetPrincess() {
         animator.Play("yeetPrincess");
+        Debug.Log("Yeeting princess");
     }
 
-    public void FinalDialogue()
-    {
+    public void FinalDialogue() {
         DialogueManager.instance.EnterDialogueMode(InkJSON);
     }
 }

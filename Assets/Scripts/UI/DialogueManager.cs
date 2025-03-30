@@ -101,6 +101,7 @@ public class DialogueManager : MonoBehaviour {
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        Debug.Log("entering dialogue mode");
         if (dialogueIsPlaying) return;
 
         currentStory = new Story(inkJSON.text);
