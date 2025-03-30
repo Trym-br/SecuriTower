@@ -93,16 +93,19 @@ public class PlayerController : MonoBehaviour, IResetable {
 			InteractWithNearest();	
 		}
 
-		if (input.resetHeld && !didResetAndResetIsStillHeld) {
-			resetTimer += Time.deltaTime;
+		if (input.resetHeld) {
+			// Do not merge these conditions.
+			if (!didResetAndResetIsStillHeld) {
+				resetTimer += Time.deltaTime;
 
-			if (resetHoldTime < resetTimer) {
-				resetTimer = 0.0f;
-				didResetAndResetIsStillHeld = true;
+				if (resetHoldTime < resetTimer) {
+					resetTimer = 0.0f;
+					didResetAndResetIsStillHeld = true;
 
-				// Time to reset the level!
-				if (LevelResetController.instance != null) {
-					LevelResetController.instance.ResetLevel();
+					// Time to reset the level!
+					if (LevelResetController.instance != null) {
+						LevelResetController.instance.ResetLevel();
+					}
 				}
 			}
 		} else {
