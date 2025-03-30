@@ -213,7 +213,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3725743593988685132, guid: be88ce94cf2faff049bd1c366fbffaac, type: 3}
       propertyPath: m_Name
-      value: NEW LEVELS
+      value: Levels
       objectReference: {fileID: 0}
     - target: {fileID: 6117753184501150305, guid: be88ce94cf2faff049bd1c366fbffaac, type: 3}
       propertyPath: m_LocalPosition.x
