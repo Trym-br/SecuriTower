@@ -8,12 +8,14 @@ public class GateController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Collider2D _collider2D;
     [SerializeField] private CrystalController[] Inputs;
+    private Animator animator;
     private bool isOpen = false;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -33,9 +35,10 @@ public class GateController : MonoBehaviour
 
     private void Open()
     {
-        spriteRenderer.enabled = false;
+        //spriteRenderer.enabled = false;
         _collider2D.enabled = false;
 
+        animator.Play("open");
 		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateOpen, gameObject);
     }
 
@@ -43,7 +46,8 @@ public class GateController : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         _collider2D.enabled = true;
-
+        
+        animator.Play("close");
 		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateClose, gameObject);
     }
 }
