@@ -98,6 +98,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 			InteractWithNearest();	
 		}
 
+		if (input.resetBegin) {
+			FMODController.BeginResetSpell();
+		}
+
 		if (input.resetHeld) {
 			// Do not merge these conditions.
 			if (!didResetAndResetIsStillHeld) {
@@ -110,6 +114,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 					// Time to reset the level!
 					if (LevelResetController.instance != null) {
+						FMODController.ResetSpellComplete();
 						LevelResetController.instance.ResetLevel();
 					}
 				}
@@ -117,6 +122,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		} else {
 			didResetAndResetIsStillHeld = false;
 			resetTimer = 0.0f;
+			FMODController.StopResetSpell();
 		}
 
 		if (resetHoldTime != 0.0f) {
