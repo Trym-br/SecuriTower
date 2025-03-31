@@ -29,6 +29,7 @@ public class NPC_DoorBehaviour : MonoBehaviour, IInteractable {
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            FMODController.PlaySoundFrom(FMODController.Sound.SFX_DoorOpen, gameObject);
         }
     }
 }
