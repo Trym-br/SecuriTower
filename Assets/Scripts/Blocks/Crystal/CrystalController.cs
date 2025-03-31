@@ -179,35 +179,22 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     }
     
     // Laser hit Detection
+    // Returns if it hit a crystal correctly and should connect a laser to it
     public bool OnLaserHitPoint(Vector3 hitPoint, Vector3 hitDir, bool isOn, bool forceTrue = false)
     {
-        // print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
+        // normal hit detection
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            // print(this.name + ": " + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[i]]));
-            // if (hitPoint == transform.position + ValidPositions[InputPoints[i]] || forceTrue)
             if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) == -0.25) || forceTrue)
             {
-                // print(this.name + "this/that/dot: " + ValidPositions[InputPoints[i]] + " / " + hitDir + " / " + Vector3.Dot(ValidPositions[InputPoints[i]], hitDir));
-                // if (Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) == -0.25)
                 ActiveInputs[i] = isOn;
                 return true;
             }
-
-            // let visually hit if cardinal anyway
-            // if (Array.Exists(CardinalPositions, pos => pos == new Vector3(0.5f, 0f));hitPoint - this.transform)
-            // print(this.name + ": pos: " + (hitPoint - this.transform.position) + " / " + CardinalPositions.Contains(hitPoint - this.transform.position));
-            // print(this.name + ": pos: " + (hitPoint - this.transform.position) + " / " + (CardinalPositions.Any(pos => Vector3.Distance(pos, hitPoint - this.transform.position) < 0.1f)));
-            // // if(CardinalPositions.Contains(hitPoint - this.transform.position))
-            // if(CardinalPositions.Any(pos => Vector3.Distance(pos, hitPoint - this.transform.position) < 0.1f))
-            // {
-            //     return true;
-            // }
         }
 
+        // visually if it hits output
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            // if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir) == -0.25) || forceTrue)
             if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir) == -0.25))
             {
                 return true;
