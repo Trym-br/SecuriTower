@@ -145,7 +145,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         
         if (hit) {
             Debug.DrawLine(origin, hit.point, Color.green);
-            linePoints[OutputPointIndex*2] = hit.point;
+            linePoints[OutputPointIndex*2 + 1] = hit.point;
             // print("hit: " + hit.collider.gameObject.name + " / " + hit.point);
             if (hit.collider.CompareTag("Crystal"))
             {
