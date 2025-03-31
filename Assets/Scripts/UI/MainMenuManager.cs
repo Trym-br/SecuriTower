@@ -37,6 +37,7 @@ public class MainMenuManager : MonoBehaviour {
             animator.Play("startIntroCutscene");
             introCutsceneIsPlaying = true;
             musicStageChanger.IntroCutsceneMusic();
+            Cursor.visible = false;
         }
     }
 
@@ -46,12 +47,14 @@ public class MainMenuManager : MonoBehaviour {
         musicStageChanger.MainStageMusic();
         Debug.Log("changed music to mainstagemusic");
         PlayerController.instance.inMenu = false;
+        Cursor.visible = false;
     }
 
     public void DisableMainMenu() {
         mainMenuHolder.SetActive(false);
         animator.Play("default");
         PlayerController.instance.inMenu = false;
+        Cursor.visible = false;
     }
 
     public void StartIntroDialogue() {
