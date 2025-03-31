@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3658591027163655413}
   - component: {fileID: 8414623202093383241}
   - component: {fileID: 3041974186126544592}
+  - component: {fileID: 7280660862860884258}
   m_Layer: 6
   m_Name: Horizontal_Gate
   m_TagString: Untagged
@@ -179,3 +180,25 @@ MonoBehaviour:
   _collider2D: {fileID: 0}
   Inputs:
   - {fileID: 0}
+--- !u!95 &7280660862860884258
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270395678746710648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5373633aea6bd975b9703e776892aaee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

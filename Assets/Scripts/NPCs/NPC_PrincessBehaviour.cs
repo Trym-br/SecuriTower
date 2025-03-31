@@ -10,9 +10,17 @@ public class NPC_PrincessBehaviour : MonoBehaviour {
         instance = this;
     }
 
+    void Start() {
+        animator.Play("idle");
+    }
+
     public void YeetPrincess() {
         animator.Play("yeetPrincess");
         Debug.Log("Yeeting princess");
+    }
+
+    public void ShatterGlassSFX() {
+        FMODController.PlaySound(FMODController.Sound.SFX_GlassShatter);
     }
 
     public void FinalDialogue() {
