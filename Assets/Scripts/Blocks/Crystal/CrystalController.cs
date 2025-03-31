@@ -131,6 +131,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     }
     private void SendLaser(int OutputPointIndex, bool isOn, bool forceTrue = false)
     {
+        bool flag = false;
         Vector3 OutputPoint = ValidPositions[OutputPoints[OutputPointIndex]];
         Vector3 origin = transform.position + OutputPoint;
         Vector3 dir = origin - transform.position;
@@ -151,8 +152,9 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             if (hit.collider.CompareTag("Crystal"))
             {
                 // print("hitP / SB: " + hit.point + " / " + hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point));
-                if (hit.collider.gameObject.GetComponentInChildren<CrystalController>()
-                    .OnLaserHitPoint(hit.point, dir, isOn, forceTrue))
+                flag = hit.collider.gameObject.GetComponentInChildren<CrystalController>()
+                    .OnLaserHitPoint(hit.point, dir, isOn, forceTrue);
+                if (flag)
                 {
                     linePoints[OutputPointIndex*2 + 1] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
                 } else {
@@ -167,7 +169,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         linePoints[OutputPointIndex*2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
-        if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
+        if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex] || !flag)) {
+            // print(this.name + "disconnected: " + LastHits[OutputPointIndex].name);
             LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, dir, false, true);
             LastHits[OutputPointIndex] = null;
         }
@@ -182,24 +185,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     // Returns if it hit a crystal correctly and should connect a laser to it
     public bool OnLaserHitPoint(Vector3 hitPoint, Vector3 hitDir, bool isOn, bool forceTrue = false)
     {
+        bool flag = false;
         // normal hit detection
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            if (hitPoint == transform.position + ValidPositions[InputPoints[i]])
-            {
-                // print(this.name + ": hitpoint: " + (transform.position + ValidPositions[InputPoints[i]]) + " / " + hitPoint);
-                // print(this.name + ": this/that/dir: " + ValidPositions[InputPoints[i]] + " / " + hitDir + " / " + Vector3.Dot(ValidPositions[InputPoints[i]], hitDir));
-            }
-
             if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Mathf.Abs(Vector3.Dot(ValidPositions[InputPoints[i]], hitDir)) > 0.1f) || forceTrue)
             {
                 ActiveInputs[i] = isOn;
-                return true;
-            }
-            else
-            {
-                // print(this.name + ": this/that/dir: " + ValidPositions[InputPoints[i]] + " / " + hitDir + " / " + Vector3.Dot(ValidPositions[InputPoints[i]], hitDir));
-                // print(this.name + ": hit/dir: " + (hitPoint == transform.position + ValidPositions[InputPoints[i]]) + " / " + (Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) < 0));
+                flag =  true;
             }
         }
 
@@ -208,10 +201,10 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         {
             if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir) == -0.25))
             {
-                return true;
+                flag = true;
             }
         }
-        return false;
+        return flag;
     }
     
     private void UpdateLineRenderer(bool turnOff = false)
