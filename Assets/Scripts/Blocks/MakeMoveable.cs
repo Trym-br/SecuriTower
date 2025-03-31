@@ -6,6 +6,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 
 	LayerMask getStoppedBy = ~0;
 	ContactFilter2D filter = new ContactFilter2D();
+	private Rigidbody2D rb;
 
 	public bool canBeMovedInConjunction = true;
 
@@ -13,6 +14,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	void Start() {
 		originalPosition = transform.position;
 		filter.useTriggers = false;
+		rb = GetComponent<Rigidbody2D>();
 	}
 
 	public void Reset() {
@@ -49,7 +51,12 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		var newPosition = transform.position;
 		newPosition.x = moveTo.x;
 		newPosition.y = moveTo.y;
-		transform.position = newPosition;
+		// transform.position = newPosition;
+		// Physics.SyncTransforms();
+		// Vector3 velocity = (newPosition - transform.position) / 0.5f;
+		// print("Moving: " + this.name + " with " + velocity + " speed");
+		// rb.linearVelocity = velocity;
+		rb.MovePosition(newPosition);
 
 		// @Hardcoded
 		if (CompareTag(crystalTag)) {

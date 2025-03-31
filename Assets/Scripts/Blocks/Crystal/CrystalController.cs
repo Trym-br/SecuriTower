@@ -134,6 +134,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Vector3 OutputPoint = ValidPositions[OutputPoints[OutputPointIndex]];
         Vector3 origin = transform.position + OutputPoint;
         Vector3 dir = origin - transform.position;
+        Vector3 CorrectedOutputPoint = this.GetComponent<PolygonCollider2D>().bounds.ClosestPoint(transform.position + ValidPositions[OutputPoints[OutputPointIndex]]);
         RaycastHit2D[] hits = Physics2D.RaycastAll(
             origin,
             dir,
@@ -155,15 +156,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 {
                     linePoints[OutputPointIndex*2 + 1] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
                 } else {
-                    linePoints[OutputPointIndex*2 + 1] = dir*30;
+                    linePoints[OutputPointIndex*2 + 1] = CorrectedOutputPoint + dir*30;
                 }
                 // print("the same: " + linePoints[OutputPointIndex + 1]);
             }
         }
         else {
-            linePoints[OutputPointIndex*2 + 1] = dir*30;
+            linePoints[OutputPointIndex*2 + 1] = CorrectedOutputPoint + dir*30;
         }
-        Vector3 CorrectedOutputPoint = this.GetComponent<PolygonCollider2D>().bounds.ClosestPoint(transform.position + ValidPositions[OutputPoints[OutputPointIndex]]);
         linePoints[OutputPointIndex*2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
@@ -185,15 +185,21 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         // normal hit detection
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            // if (hitPoint == transform.position + ValidPositions[InputPoints[i]])
-            // {
+            if (hitPoint == transform.position + ValidPositions[InputPoints[i]])
+            {
+                // print(this.name + ": hitpoint: " + (transform.position + ValidPositions[InputPoints[i]]) + " / " + hitPoint);
                 // print(this.name + ": this/that/dir: " + ValidPositions[InputPoints[i]] + " / " + hitDir + " / " + Vector3.Dot(ValidPositions[InputPoints[i]], hitDir));
-            // }
+            }
 
-            if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) < 0) || forceTrue)
+            if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Mathf.Abs(Vector3.Dot(ValidPositions[InputPoints[i]], hitDir)) > 0.1f) || forceTrue)
             {
                 ActiveInputs[i] = isOn;
                 return true;
+            }
+            else
+            {
+                // print(this.name + ": this/that/dir: " + ValidPositions[InputPoints[i]] + " / " + hitDir + " / " + Vector3.Dot(ValidPositions[InputPoints[i]], hitDir));
+                // print(this.name + ": hit/dir: " + (hitPoint == transform.position + ValidPositions[InputPoints[i]]) + " / " + (Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) < 0));
             }
         }
 

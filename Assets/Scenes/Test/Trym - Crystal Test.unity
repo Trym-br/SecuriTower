@@ -2010,6 +2010,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7336708453668722599, guid: 48d9dc984f7cde45cb87dc895cde7695, type: 3}
+      propertyPath: 'OutputPoints.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8878591193610992421, guid: 48d9dc984f7cde45cb87dc895cde7695, type: 3}
       propertyPath: m_Name
       value: Sender
