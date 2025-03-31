@@ -130,7 +130,9 @@ public class FMODController : MonoBehaviour {
 			for (int i = 0; i < currentlyPlayingSounds.Count; ++i) {
 				var it = currentlyPlayingSounds[i];
 
-				if (it.eventInstance.getPlaybackState(out PLAYBACK_STATE state) == FMOD.RESULT.OK) {
+				PLAYBACK_STATE state;
+				FMOD.RESULT fmod_result = it.eventInstance.getPlaybackState(out state);
+				if (fmod_result == FMOD.RESULT.OK) {
 					if (state == PLAYBACK_STATE.STOPPED) {
 						if (it.isVoiceLine) {
 							if (onVoiceLineEnd != null) {
@@ -155,7 +157,7 @@ public class FMODController : MonoBehaviour {
 						}
 					}
 				} else {
-					Debug.LogError($"Could not get playback state of {it.ToString()}");
+					Debug.LogError($"Could not get playback state of {it.eventInstance.ToString()}. (FMOD returned {fmod_result})");
 					currentlyPlayingSounds.RemoveAt(i);
 					i -= 1;
 				}
