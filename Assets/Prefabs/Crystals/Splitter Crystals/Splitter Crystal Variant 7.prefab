@@ -86,35 +86,39 @@ PrefabInstance:
       objectReference: {fileID: -4705337334157454803, guid: 6fdde19698272512db6d162d95390efc, type: 3}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: InputPoints.Array.size
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: OutputPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
-      propertyPath: 'InputPoints.Array.data[1]'
+      propertyPath: 'InputPoints.Array.data[0]'
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
-      propertyPath: 'InputPoints.Array.data[2]'
+      propertyPath: 'InputPoints.Array.data[1]'
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
-      propertyPath: 'InputPoints.Array.data[3]'
+      propertyPath: 'InputPoints.Array.data[2]'
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
-      propertyPath: 'InputPoints.Array.data[4]'
+      propertyPath: 'InputPoints.Array.data[3]'
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
-      propertyPath: 'InputPoints.Array.data[5]'
+      propertyPath: 'InputPoints.Array.data[4]'
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'InputPoints.Array.data[5]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'InputPoints.Array.data[6]'
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'InputPoints.Array.data[7]'
@@ -130,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4273786917217003375, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_Name
-      value: Splitter Crystal 0 (7) Variant
+      value: Splitter Crystal Variant 7
       objectReference: {fileID: 0}
     - target: {fileID: 4273786917217003375, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_IsActive
