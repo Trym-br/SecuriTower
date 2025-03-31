@@ -14,6 +14,7 @@ public class FMODController : MonoBehaviour {
 		public EventInstance eventInstance;
 		public bool ignorePausing;
 		public bool isVoiceLine;
+		public bool isResetSpell; // @Hardcoded
 	}
 
 	[Serializable]
@@ -66,7 +67,7 @@ public class FMODController : MonoBehaviour {
 
 	List<PlayingSound> currentlyPlayingSounds = new();
 
-	public void PlayFMODSoundEvent(EventReference eR, bool ignorePausing = false, bool isVoiceLine = false) {
+	public void PlayFMODSoundEvent(EventReference eR, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		eI.start();
 
@@ -74,11 +75,12 @@ public class FMODController : MonoBehaviour {
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
+		playingSound.isResetSpell = isResetSpell;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
-	public void PlayFMODSoundEvent(string eR, bool ignorePausing = false, bool isVoiceLine = false) {
+	public void PlayFMODSoundEvent(string eR, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		eI.start();
 
@@ -86,11 +88,12 @@ public class FMODController : MonoBehaviour {
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
+		playingSound.isResetSpell = isResetSpell;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
-	public void PlayFMODSoundEventFrom(string eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+	public void PlayFMODSoundEventFrom(string eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		RuntimeManager.AttachInstanceToGameObject(eI, obj);
 		eI.start();
@@ -99,11 +102,12 @@ public class FMODController : MonoBehaviour {
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
+		playingSound.isResetSpell = isResetSpell;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
-	public void PlayFMODSoundEventFrom(EventReference eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+	public void PlayFMODSoundEventFrom(EventReference eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		RuntimeManager.AttachInstanceToGameObject(eI, obj);
 		eI.start();
@@ -112,11 +116,14 @@ public class FMODController : MonoBehaviour {
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
+		playingSound.isResetSpell = isResetSpell;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
 	public UnityEvent onVoiceLineEnd = new();
+
+	bool shouldStopResetSpell;
 
 	void FixedUpdate() {
 		if (currentlyPlayingSounds != null) {
@@ -137,6 +144,14 @@ public class FMODController : MonoBehaviour {
 					} else {
 						if (!it.ignorePausing) {
 							currentlyPlayingSounds[i].eventInstance.setPaused(pauseAudio);
+						}
+
+						if (shouldStopResetSpell && it.isResetSpell) {
+							currentlyPlayingSounds[i].eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+							currentlyPlayingSounds.RemoveAt(i);
+							i -= 1;
+
+							shouldStopResetSpell = false;
 						}
 					}
 				} else {
@@ -339,6 +354,30 @@ public class FMODController : MonoBehaviour {
 		AMB_Torch,
 		SFX_DoorLocked,
 		SFX_DoorOpen,
+	}
+
+	public static void BeginResetSpell() {
+		if (FMODController.instance == null) return;
+		FMODController.instance.shouldStopResetSpell = false;
+		FMODController.instance.PlayFMODSoundEvent("event:/VO/Wizard/vo_wizzard_spell_s", false, false, true);
+	}
+
+	public static void StopResetSpell() {
+		if (FMODController.instance == null) return;
+		FMODController.instance.shouldStopResetSpell = true;
+	}
+
+	void _ResetSpellComplete() {
+		for (int i = 0; i < currentlyPlayingSounds.Count; ++i) {
+			// Dumbass C#
+			var it = currentlyPlayingSounds[i];
+			it.isResetSpell = false;
+			currentlyPlayingSounds[i] = it;
+		}
+	}
+	public static void ResetSpellComplete() {
+		if (FMODController.instance == null) return;
+		FMODController.instance._ResetSpellComplete();
 	}
 
 	public static void PlayLaserChainSound(GameObject playFrom) {

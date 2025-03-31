@@ -51,6 +51,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         new Vector3(-0.5f, 0f),
         new Vector3(-0.5f, 0.5f),
     };
+    private Vector3[] CardinalPositions = new Vector3[]
+    {
+        new Vector3(0f, 0.5f),
+        new Vector3(0.5f, 0f),
+        new Vector3(0, -0.5f),
+        new Vector3(-0.5f, 0f),
+    };
     [SerializeField] private Sprite[] Sprites;
 
     private void OnValidate()
@@ -143,9 +150,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             if (hit.collider.CompareTag("Crystal"))
             {
                 // print("hitP / SB: " + hit.point + " / " + hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point));
-                linePoints[OutputPointIndex*2 + 1] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
+                if (hit.collider.gameObject.GetComponentInChildren<CrystalController>()
+                    .OnLaserHitPoint(hit.point, dir, isOn, forceTrue))
+                {
+                    linePoints[OutputPointIndex*2 + 1] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
+                } else {
+                    linePoints[OutputPointIndex*2 + 1] = dir*30;
+                }
                 // print("the same: " + linePoints[OutputPointIndex + 1]);
-                hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn, forceTrue);
             }
         }
         else {
@@ -156,7 +168,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
         if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
-            LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, false, true);
+            LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, dir, false, true);
             LastHits[OutputPointIndex] = null;
         }
 
@@ -167,17 +179,28 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     }
     
     // Laser hit Detection
-    public void OnLaserHitPoint(Vector3 hitPoint, bool isOn, bool forceTrue = false)
+    // Returns if it hit a crystal correctly and should connect a laser to it
+    public bool OnLaserHitPoint(Vector3 hitPoint, Vector3 hitDir, bool isOn, bool forceTrue = false)
     {
-        // print("hitPoint/InputPoint" + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[0]]) + " | " + (transform.position + ValidPositions[OutputPoints[0]]));
+        // normal hit detection
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            // print(this.name + ": " + hitPoint + " / " + (transform.position + ValidPositions[InputPoints[i]]));
-            if (hitPoint == transform.position + ValidPositions[InputPoints[i]] || forceTrue)
+            if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) == -0.25) || forceTrue)
             {
                 ActiveInputs[i] = isOn;
+                return true;
             }
         }
+
+        // visually if it hits output
+        for (int i = 0; i < OutputPoints.Length; i++)
+        {
+            if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir) == -0.25))
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     private void UpdateLineRenderer(bool turnOff = false)
