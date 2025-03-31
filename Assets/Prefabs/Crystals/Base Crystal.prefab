@@ -381,12 +381,12 @@ MonoBehaviour:
   OutputPoints: 
   ActiveInputs: 
   ActiveOutputs: 
+  Lasers: []
   isSender: 0
   AnyInputValid: 1
   isRotateable: 1
   isRotateableSet: 0
-  DestructionTime: 3
-  DestructionTimer: 0
+  _laserPrefab: {fileID: 166157429924576966, guid: 9382a4eacbbe68845bea7fe9d8824fce, type: 3}
   isLaserOn: 0
   Sprites:
   - {fileID: -8583130746002135103, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}

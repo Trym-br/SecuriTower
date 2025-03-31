@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 
@@ -13,11 +14,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private int[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
     [SerializeField] private bool[]    ActiveOutputs;
+    [SerializeField] private LineRenderer[] Lasers;
     
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
     [SerializeField] private bool isRotateable = true; // Default value
     [SerializeField, HideInInspector] private bool isRotateableSet = false; // Tracks if modified
+    
+    [SerializeField] private GameObject _laserPrefab;
 
     //[SerializeField] private float DestructionTime = 3f;
     //[SerializeField] private float DestructionTimer;
@@ -79,12 +83,26 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Array.Fill(LastHits, null);
         
         lineRenderer = GetComponent<LineRenderer>();
-        linePoints = new Vector3[OutputPoints.Length*3];
+        Lasers = new LineRenderer[OutputPoints.Length];
+        linePoints = new Vector3[OutputPoints.Length*2];
         
         spriteRenderer = GetComponent<SpriteRenderer>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         
         UpdateSprite();
+    }
+
+    private void Start()
+    {
+       // create lasers 
+       for (int i = 0; i < OutputPoints.Length; i++)
+       {
+           // GameObject gc = new GameObject("Laser " + i.ToString());
+           // gc.transform.SetParent(this.transform);
+           // LineRenderer lr = gc.AddComponent(typeof(LineRenderer)) as LineRenderer;
+           GameObject gc = Instantiate(_laserPrefab, this.transform);
+           Lasers[i] = gc.GetComponent<LineRenderer>();
+       }
     }
 
 	bool playedReceiverNoise;
@@ -120,22 +138,21 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         
         if (hit) {
             Debug.DrawLine(origin, hit.point, Color.green);
-            linePoints[OutputPointIndex] = hit.point;
-            // linePoints[OutputPointIndex] = hit.collider.GetComponent<SpriteRenderer>().sprite.GetPhysicsShape();
+            linePoints[OutputPointIndex*2] = hit.point;
+            // print("hit: " + hit.collider.gameObject.name + " / " + hit.point);
             if (hit.collider.CompareTag("Crystal"))
-            { 
-                linePoints[OutputPointIndex] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
+            {
+                // print("hitP / SB: " + hit.point + " / " + hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point));
+                linePoints[OutputPointIndex*2 + 1] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
+                // print("the same: " + linePoints[OutputPointIndex + 1]);
                 hit.collider.gameObject.GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, isOn, forceTrue);
             }
         }
         else {
-            linePoints[OutputPointIndex] = origin + dir*30;
+            linePoints[OutputPointIndex*2 + 1] = dir*30;
         }
         Vector3 CorrectedOutputPoint = this.GetComponent<PolygonCollider2D>().bounds.ClosestPoint(transform.position + ValidPositions[OutputPoints[OutputPointIndex]]);
-        // linePoints[OutputPointIndex+1] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-        // linePoints[OutputPointIndex + 2] = transform.position + ValidPositions[OutputPoints[OutputPointIndex]];
-        linePoints[OutputPointIndex+1] = CorrectedOutputPoint;
-        linePoints[OutputPointIndex + 2] = CorrectedOutputPoint;
+        linePoints[OutputPointIndex*2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
         // TODO needs to be checked before assigning LastHits aswell
         if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex])) {
@@ -169,12 +186,18 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         {
             for (int i = 0; i < linePoints.Length; i++)
             {
-                linePoints[i] = Vector3.one;
+                linePoints[i] = Vector3.zero;
             }
         }
         // FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
-        lineRenderer.positionCount = linePoints.Length;
-        lineRenderer.SetPositions(linePoints);
+        for (int i = 0; i < Lasers.Length; i++)
+        {
+            Lasers[i].positionCount = 2;
+            Lasers[i].SetPosition(0, linePoints[i*2]);
+            Lasers[i].SetPosition(1, linePoints[i*2+1]);
+        }
+        // lineRenderer.positionCount = linePoints.Length;
+        // lineRenderer.SetPositions(linePoints);
     }
 
     private void CrystalLogic()

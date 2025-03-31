@@ -62,5 +62,5 @@ Nuh-uh.
 
 Alright.#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_default
 Abooga babooga... Alakazam... Lorem ipsum!!!#wordSpeed;0.06#audio;event:/VO/Wizard/vo_wizzard_spell_s
-<b>RAHHH!!</b>#yeetPrincess;yes#audio;event:/VO/Wizard/vo_wizzard_spell_l
+<b>RAHHH!!</b>#yeetPrincess;yes#audio;event:/VO/Wizard/vo_wizzard_anger
 -> END

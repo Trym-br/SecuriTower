@@ -22,13 +22,13 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 538684282950256514, guid: d4ea711ac33f7a746af014aac8941e41, type: 3}
-    - time: 0.13333334
+    - time: 0.33333334
       value: {fileID: 808245443430831879, guid: d4ea711ac33f7a746af014aac8941e41, type: 3}
-    - time: 0.26666668
+    - time: 0.6666667
       value: {fileID: -3937590957241048659, guid: d4ea711ac33f7a746af014aac8941e41, type: 3}
-    - time: 0.4
+    - time: 1
       value: {fileID: 8016988894306824704, guid: d4ea711ac33f7a746af014aac8941e41, type: 3}
-    - time: 0.53333336
+    - time: 1.3333334
       value: {fileID: 538684282950256514, guid: d4ea711ac33f7a746af014aac8941e41, type: 3}
     attribute: m_Sprite
     path: NPC_Princess
@@ -62,7 +62,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.55
+    m_StopTime: 1.35
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
