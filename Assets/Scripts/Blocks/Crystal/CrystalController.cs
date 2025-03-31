@@ -87,20 +87,20 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         UpdateSprite();
     }
 
-	//bool playedChainNoise;
+	bool playedReceiverNoise;
     private void FixedUpdate()
     {
-#if false
-		// TODO: Chain noise!
-		if (isLaserOn) {
-			if(!playedChainNoise) {
-				FMODController.PlayLaserChainSound(gameObject);
-				playedChainNoise = true;
+		if (OutputPoints.Length == 0) {
+			bool isActive = ActiveInputs.Any(x => x);
+			if (isActive) {
+				if(!playedReceiverNoise) {
+					FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserReceiver, gameObject);
+					playedReceiverNoise = true;
+				}
+			} else {
+				playedReceiverNoise = false;
 			}
-		} else {
-			playedChainNoise = false;
 		}
-#endif
 
         CrystalLogic();
     }
