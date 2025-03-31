@@ -9,14 +9,14 @@ public class NPC_DoorBehaviour : MonoBehaviour, IInteractable {
 
     [Header("Bools")] 
     public bool doorIsLocked = true;
-    
-    [Header("Sprite when opened")]
-    public Sprite openSprite;
+
+    private Animator animator;
     
 
     void Awake()
     {
         instance = this;
+        animator = GetComponent<Animator>();
     }
 
     public void Interact()
@@ -25,9 +25,8 @@ public class NPC_DoorBehaviour : MonoBehaviour, IInteractable {
         {
             DialogueManager.instance.EnterDialogueMode(InkJSON);
         }
-        else if (!doorIsLocked)
-        {
-            gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
+        else if (!doorIsLocked) {
+            animator.Play("open");
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             FMODController.PlaySoundFrom(FMODController.Sound.SFX_DoorOpen, gameObject);
         }

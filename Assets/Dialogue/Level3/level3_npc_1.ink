@@ -49,7 +49,7 @@ And you're definitely not supposed to let random strangers into my tower!#audio;
 Intruders are not nice people, you twat. #speaker;Quintus #layout;left#wordSpeed;0.03#audio;event:/VO/Wizard/vo_wizzard_annoyed
 Gosh, you're still as useless as ever.#audio;event:/VO/Wizard/vo_wizzard_sigh
 Well, I better head upstairs to the library.#audio;event:/VO/Wizard/vo_wizzard_default
-(Dragon name) should be there...#audio;event:/VO/Wizard/vo_wizzard_default
+Vera should be there...#audio;event:/VO/Wizard/vo_wizzard_default
 Maybe she has some idea of what's going on.#audio;event:/VO/Wizard/vo_wizzard_thinking
 I hope she's alright...#audio;event:/VO/Wizard/vo_wizzard_default
 I have to make sure this witch hasn't harmed her.#audio;event:/VO/Wizard/vo_wizzard_default
