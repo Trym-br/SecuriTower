@@ -1,37 +1,57 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 public class SettingsMenuManager : MonoBehaviour {
-    [Header("UI Elements")] 
-    public GameObject settingsMenuHolder;
-    public GameObject pauseMenu;
+    [Header("UI Elements")] public GameObject settingsMenuHolder;
+    public GameObject pauseMenuHolder;
     public Slider masterSlider;
+    public Slider sfxSlider;
+    public Slider musicSlider;
+    public Slider voSlider;
 
-    private bool fromPauseMenu;
+    public bool fromPauseMenu;
 
-    void Start()
-    {
+    void Start() {
         settingsMenuHolder.SetActive(false);
     }
 
-    public void ActivateSettingsMenu(bool parameterFromPauseMenu)
-    {
-        if (parameterFromPauseMenu)
-        {
+    public void ActivateSettingsMenu(bool parameterFromPauseMenu) {
+        if (parameterFromPauseMenu) {
             fromPauseMenu = true;
-            pauseMenu.SetActive(false);
+            pauseMenuHolder.SetActive(false);
         }
-
+        PlayerController.instance.inMenu = true;
         settingsMenuHolder.SetActive(true);
         masterSlider.Select();
     }
 
-    public void DeactivateSettingsMenu()
-    {
-        if (fromPauseMenu)
-        {
-            pauseMenu.SetActive(true);
+    public void DeactivateSettingsMenu() {
+        if (fromPauseMenu) {
+            PauseMenuManager.instance.ActivatePauseMenu(true);
             fromPauseMenu = false;
         }
         settingsMenuHolder.SetActive(false);
+        PlayerController.instance.inMenu = false;
     }
+
+    public void SetMasterVolume() {
+        if (FMODController.instance == null) return;
+        FMODController.instance.SetVolume(FMODController.VolumeSlider.Master, masterSlider.value);
+    }
+    
+    public void SetSFXVolume() {
+        if (FMODController.instance == null) return;
+        FMODController.instance.SetVolume(FMODController.VolumeSlider.SoundEffects, sfxSlider.value);
+    }
+    
+    public void SetMusicVolume() {
+        if (FMODController.instance == null) return;
+        FMODController.instance.SetVolume(FMODController.VolumeSlider.Music, musicSlider.value);
+    }
+    
+    public void SetVOVolume() {
+        if (FMODController.instance == null) return;
+        FMODController.instance.SetVolume(FMODController.VolumeSlider.VoiceLines, voSlider.value);
+    }
+    
 }

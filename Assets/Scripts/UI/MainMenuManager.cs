@@ -2,33 +2,27 @@ using UnityEngine;
 using static AugustBase.All;
 
 public class MainMenuManager : MonoBehaviour {
-    
     public static MainMenuManager instance;
     private MusicStageChanger musicStageChanger;
-    
-    [Header("Music Stage Changer")]
-    public GameObject musicStageChangerObject;
 
-    [Header("UI Elements")] 
-    public GameObject mainMenuHolder;
+    [Header("First time playing")] public bool firstTime = true;
 
-    [Header("InkJSON file")] 
-    public TextAsset InkJSON;
+    [Header("Music Stage Changer")] public GameObject musicStageChangerObject;
+
+    [Header("UI Elements")] public GameObject mainMenuHolder;
+
+    [Header("InkJSON file")] public TextAsset InkJSON;
 
     private Animator animator;
-    
-    [Header("Booleans")]
-    public bool introCutsceneIsPlaying;
 
-    void Awake()
-    {
+    [Header("Booleans")] public bool introCutsceneIsPlaying;
+
+    void Awake() {
         instance = this;
         musicStageChanger = musicStageChangerObject.GetComponent<MusicStageChanger>();
     }
 
-    void Start()
-    {
-        
+    void Start() {
         mainMenuHolder.SetActive(true);
         animator = GetComponent<Animator>();
         musicStageChanger.TitleScreenMusic();
@@ -36,16 +30,17 @@ public class MainMenuManager : MonoBehaviour {
         Debug.Log("STARTING MAIN MENU" + PlayerController.instance.inMenu);
     }
 
-    public void StartIntroCutscene()
-    {
-        
-        animator.Play("startIntroCutscene");
-        introCutsceneIsPlaying = true;
-        musicStageChanger.IntroCutsceneMusic();
+    public void StartIntroCutscene() {
+        if (!firstTime) animator.Play("endIntroCutscene");
+        else {
+            firstTime = false;
+            animator.Play("startIntroCutscene");
+            introCutsceneIsPlaying = true;
+            musicStageChanger.IntroCutsceneMusic();
+        }
     }
 
-    public void EndIntroCutscene()
-    {
+    public void EndIntroCutscene() {
         animator.Play("endIntroCutscene");
         introCutsceneIsPlaying = false;
         musicStageChanger.MainStageMusic();
@@ -53,20 +48,17 @@ public class MainMenuManager : MonoBehaviour {
         PlayerController.instance.inMenu = false;
     }
 
-    public void DisableMainMenu()
-    {
+    public void DisableMainMenu() {
         mainMenuHolder.SetActive(false);
         animator.Play("default");
         PlayerController.instance.inMenu = false;
     }
 
-    public void StartIntroDialogue()
-    {
+    public void StartIntroDialogue() {
         DialogueManager.instance.EnterDialogueMode(InkJSON);
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         StopProgram();
     }
 }

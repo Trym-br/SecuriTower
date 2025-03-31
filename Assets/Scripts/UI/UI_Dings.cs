@@ -38,7 +38,7 @@ public class UI_Dings : MonoBehaviour {
                 pauseMenuManager.DeactivatePauseMenu();
             }
             else if (!mainMenuManager.mainMenuHolder.activeInHierarchy) {
-                pauseMenuManager.ActivatePauseMenu();
+                pauseMenuManager.ActivatePauseMenu(false);
             }
         }
     }
