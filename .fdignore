@@ -1,0 +1,7 @@
+*
+!*/
+!Assets/
+!Assets/Scripts/
+!Assets/Scripts/**/*.cs
+# !*.txt
+# !*.md

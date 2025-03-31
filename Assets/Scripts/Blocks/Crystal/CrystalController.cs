@@ -143,28 +143,39 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
             1 << LayerMask.NameToLayer("Laser")
         );
-        RaycastHit2D hit = hits.FirstOrDefault(h => h.collider.gameObject != this.gameObject);
-        
-        if (hit) {
-            Debug.DrawLine(origin, hit.point, Color.green);
-            linePoints[OutputPointIndex*2 + 1] = hit.point;
-            // print("hit: " + hit.collider.gameObject.name + " / " + hit.point);
-            if (hit.collider.CompareTag("Crystal"))
+        // RaycastHit2D hit = hits.FirstOrDefault(h => h.collider.gameObject != this.gameObject);
+        RaycastHit2D hit = default;
+        foreach (RaycastHit2D iteratorHit in hits.Where(h => h.collider.gameObject != this.gameObject))
+        {
+            if (iteratorHit)
             {
-                // print("hitP / SB: " + hit.point + " / " + hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point));
-                flag = hit.collider.gameObject.GetComponentInChildren<CrystalController>()
-                    .OnLaserHitPoint(hit.point, dir, isOn, forceTrue);
-                if (flag)
+                Debug.DrawLine(origin, iteratorHit.point, Color.green);
+                linePoints[OutputPointIndex * 2 + 1] = iteratorHit.point;
+                // print("hit: " + hit.collider.gameObject.name + " / " + hit.point);
+                if (iteratorHit.collider.CompareTag("Crystal"))
                 {
-                    linePoints[OutputPointIndex*2 + 1] = hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point);
-                } else {
-                    linePoints[OutputPointIndex*2 + 1] = CorrectedOutputPoint + dir*30;
+                    // print("hitP / SB: " + hit.point + " / " + hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(hit.point));
+                    flag = iteratorHit.collider.gameObject.GetComponentInChildren<CrystalController>()
+                        .OnLaserHitPoint(iteratorHit.point, dir, isOn, forceTrue);
+                    if (flag)
+                    {
+                        linePoints[OutputPointIndex * 2 + 1] =
+                            iteratorHit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(iteratorHit.point);
+                        hit = iteratorHit;
+                        break;
+                    }
+                    else
+                    {
+                        linePoints[OutputPointIndex * 2 + 1] = CorrectedOutputPoint + dir * 30;
+                        continue;
+                    }
+                    // print("the same: " + linePoints[OutputPointIndex + 1]);
                 }
-                // print("the same: " + linePoints[OutputPointIndex + 1]);
             }
-        }
-        else {
-            linePoints[OutputPointIndex*2 + 1] = CorrectedOutputPoint + dir*30;
+            else
+            {
+                linePoints[OutputPointIndex * 2 + 1] = CorrectedOutputPoint + dir * 30;
+            }
         }
         linePoints[OutputPointIndex*2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
