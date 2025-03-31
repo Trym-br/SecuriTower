@@ -20,9 +20,11 @@ public class SettingsMenuManager : MonoBehaviour {
             fromPauseMenu = true;
             pauseMenuHolder.SetActive(false);
         }
+
         PlayerController.instance.inMenu = true;
         settingsMenuHolder.SetActive(true);
         masterSlider.Select();
+        Cursor.visible = true;
     }
 
     public void DeactivateSettingsMenu() {
@@ -30,28 +32,31 @@ public class SettingsMenuManager : MonoBehaviour {
             PauseMenuManager.instance.ActivatePauseMenu(true);
             fromPauseMenu = false;
         }
+        else {
+            PlayerController.instance.inMenu = false;
+            Cursor.visible = false;
+        }
+
         settingsMenuHolder.SetActive(false);
-        PlayerController.instance.inMenu = false;
     }
 
     public void SetMasterVolume() {
         if (FMODController.instance == null) return;
         FMODController.instance.SetVolume(FMODController.VolumeSlider.Master, masterSlider.value);
     }
-    
+
     public void SetSFXVolume() {
         if (FMODController.instance == null) return;
         FMODController.instance.SetVolume(FMODController.VolumeSlider.SoundEffects, sfxSlider.value);
     }
-    
+
     public void SetMusicVolume() {
         if (FMODController.instance == null) return;
         FMODController.instance.SetVolume(FMODController.VolumeSlider.Music, musicSlider.value);
     }
-    
+
     public void SetVOVolume() {
         if (FMODController.instance == null) return;
         FMODController.instance.SetVolume(FMODController.VolumeSlider.VoiceLines, voSlider.value);
     }
-    
 }

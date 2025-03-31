@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour {
     {
         Debug.Log("entering dialogue mode");
         if (dialogueIsPlaying) return;
-
+        
         currentStory = new Story(inkJSON.text);
         dialogueHolder.SetActive(true);
         continueSymbol.SetActive(false);
