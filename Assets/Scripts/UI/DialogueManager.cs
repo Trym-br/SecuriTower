@@ -119,7 +119,7 @@ public class DialogueManager : MonoBehaviour {
             NPC_PrincessBehaviour.instance.YeetPrincess();
         });
         
-        dialogueAnimator.Play("default");
+        dialogueAnimator.Play("start_initiator");
         //reset tags so they don't carry over from previous story
         speakerName.text = "???";
         wordSpeed = 0.03f;
