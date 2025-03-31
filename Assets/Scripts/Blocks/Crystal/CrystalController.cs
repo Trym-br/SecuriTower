@@ -185,7 +185,12 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         // normal hit detection
         for (int i = 0; i < InputPoints.Length; i++)
         {
-            if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) == -0.25) || forceTrue)
+            // if (hitPoint == transform.position + ValidPositions[InputPoints[i]])
+            // {
+                // print(this.name + ": this/that/dir: " + ValidPositions[InputPoints[i]] + " / " + hitDir + " / " + Vector3.Dot(ValidPositions[InputPoints[i]], hitDir));
+            // }
+
+            if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Vector3.Dot(ValidPositions[InputPoints[i]], hitDir) < 0) || forceTrue)
             {
                 ActiveInputs[i] = isOn;
                 return true;
