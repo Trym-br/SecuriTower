@@ -35,11 +35,15 @@ public class GateController : MonoBehaviour
     {
         spriteRenderer.enabled = false;
         _collider2D.enabled = false;
+
+		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateOpen, gameObject);
     }
 
     private void Close()
     {
         spriteRenderer.enabled = true;
         _collider2D.enabled = true;
+
+		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateClose, gameObject);
     }
 }

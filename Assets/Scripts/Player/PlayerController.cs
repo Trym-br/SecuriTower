@@ -79,6 +79,11 @@ public class PlayerController : MonoBehaviour, IResetable {
 	// A value from 0.0f to 1.0f, where 1.0f means we are about to reset the level.
 	[HideInInspector] public float resetTimerProgress;
 
+	public void StairingWasPerformed() {
+		resetTimer = 0.0f;
+		didResetAndResetIsStillHeld = true;
+	}
+
 	void Update() {
 		if (inMenu)
 		{
@@ -101,6 +106,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 				if (resetHoldTime < resetTimer) {
 					resetTimer = 0.0f;
 					didResetAndResetIsStillHeld = true;
+					FMODController.PlaySound(FMODController.Sound.SFX_ResetSpell);
 
 					// Time to reset the level!
 					if (LevelResetController.instance != null) {
