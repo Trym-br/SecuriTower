@@ -260,8 +260,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 	private void InteractWithNearest()
 	{
 		//		Find all objects in range
-		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, InteractRange);
-		// Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(InteractRange, InteractRange), 0);
+		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerCollider.bounds.center, InteractRange);
+		// Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerCollider.bounds.center, new Vector2(InteractRange, InteractRange), 0);
 		//		Narrow down to objects with the Interactable Interface
 		List<GameObject> gameObjects = hitColliders
 			.Select(col => col.gameObject)                   // Get GameObject from Collider
@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		//		Finds the closest one out of the list
 		GameObject bestTarget = null;
 		float closestDistanceSqr = Mathf.Infinity;
-		Vector3 currentPosition = transform.position;
+		Vector3 currentPosition = playerCollider.bounds.center;
 		foreach(GameObject potentialTarget in gameObjects)
 		{
 			// print("Checking: " + potentialTarget.name);

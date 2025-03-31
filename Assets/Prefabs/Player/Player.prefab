@@ -242,7 +242,7 @@ MonoBehaviour:
   resetTimerProgress: 0
   boxCheckerSize: {x: 0.1, y: 0.5}
   boxCheckerOffset: 0.45
-  InteractRange: 1.25
+  InteractRange: 0.98
   BoxPushRange: 0.5
 --- !u!1001 &8159976190204647077
 PrefabInstance:
