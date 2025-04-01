@@ -84,8 +84,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 		}
 	}
 
-	const string parentLevelObjectTag = "Levels Parent Object";
-
 	public float resetHoldTime = 1.0f;
 	float resetTimer = 0.0f;
 	bool didResetAndResetIsStillHeld;
