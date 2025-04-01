@@ -147,6 +147,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         RaycastHit2D hit = default;
         foreach (RaycastHit2D iteratorHit in hits.Where(h => h.collider.gameObject != this.gameObject))
         {
+            print(this.name + ": hitting " + iteratorHit.collider.gameObject.name);
             if (iteratorHit)
             {
                 Debug.DrawLine(origin, iteratorHit.point, Color.green);
@@ -176,6 +177,9 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             {
                 linePoints[OutputPointIndex * 2 + 1] = CorrectedOutputPoint + dir * 30;
             }
+
+            hit = iteratorHit;
+            break;
         }
         linePoints[OutputPointIndex*2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
