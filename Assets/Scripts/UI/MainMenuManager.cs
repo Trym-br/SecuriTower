@@ -9,8 +9,11 @@ public class MainMenuManager : MonoBehaviour {
 
     [Header("Music Stage Changer")] public GameObject musicStageChangerObject;
 
-    [Header("UI Elements")] public GameObject mainMenuHolder;
-
+    [Header("UI Elements")] 
+    public GameObject mainMenuHolder;
+    public GameObject credits;
+    public GameObject blackOverlay;
+    
     [Header("InkJSON file")] public TextAsset InkJSON;
 
     private Animator animator;
@@ -24,6 +27,8 @@ public class MainMenuManager : MonoBehaviour {
 
     void Start() {
         mainMenuHolder.SetActive(true);
+        credits.SetActive(false);
+        blackOverlay.SetActive(false);
         animator = GetComponent<Animator>();
         musicStageChanger.TitleScreenMusic();
         PlayerController.instance.inMenu = true;
@@ -63,5 +68,18 @@ public class MainMenuManager : MonoBehaviour {
 
     public void QuitGame() {
         StopProgram();
+    }
+
+    public void StartCredits() {
+        mainMenuHolder.SetActive(true);
+        credits.SetActive(true);
+        blackOverlay.SetActive(true);
+        PlayerController.instance.inMenu = true;
+        Cursor.visible = false;
+        animator.Play("startCredits");
+    }
+
+    public void DisableBlackOverlay() {
+        blackOverlay.SetActive(false);
     }
 }

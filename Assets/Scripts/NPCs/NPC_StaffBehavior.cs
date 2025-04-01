@@ -23,6 +23,7 @@ public class NPC_StaffBehavior : MonoBehaviour, IInteractable {
     public void CollectStaff()
     {
         NPC_DoorBehaviour.instance.doorIsLocked = false;
+        FMODController.PlaySoundFrom(FMODController.Sound.SFX_StaffPickup, gameObject);
         gameObject.SetActive(false);
     }
 }
