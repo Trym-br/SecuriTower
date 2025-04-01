@@ -14,6 +14,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private int[] OutputPoints;
     [SerializeField] private bool[]    ActiveInputs;
     [SerializeField] private bool[]    ActiveOutputs;
+    [SerializeField] private bool[]    ActivePoints;
     [SerializeField] private LineRenderer[] Lasers;
     
     [SerializeField] private bool isSender = false;
@@ -83,12 +84,16 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 isRotateable = false;
             }
         }
+        ActivePoints = new bool[ValidPositions.Length];
+        Array.Fill(ActiveInputs, isSender);
+            
         ActiveInputs = new bool[InputPoints.Length];
         Array.Fill(ActiveInputs, isSender);
         
         LastHits = new GameObject[OutputPoints.Length];
         Array.Fill(LastHits, null);
         
+            
         lineRenderer = GetComponent<LineRenderer>();
         Lasers = new LineRenderer[OutputPoints.Length];
         linePoints = new Vector3[OutputPoints.Length*2];
@@ -147,7 +152,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         RaycastHit2D hit = default;
         foreach (RaycastHit2D iteratorHit in hits.Where(h => h.collider.gameObject != this.gameObject))
         {
-            print(this.name + ": hitting " + iteratorHit.collider.gameObject.name);
+            // print(this.name + ": hitting " + iteratorHit.collider.gameObject.name);
             if (iteratorHit)
             {
                 Debug.DrawLine(origin, iteratorHit.point, Color.green);
@@ -172,13 +177,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                     // print("the same: " + linePoints[OutputPointIndex + 1]);
                 }
             }
-            else
-            {
-                linePoints[OutputPointIndex * 2 + 1] = CorrectedOutputPoint + dir * 30;
-            }
-
             hit = iteratorHit;
             break;
+        }
+        // print($"{this.name}: hit {hit}");
+        if (hit == default(RaycastHit2D))
+        {
+            linePoints[OutputPointIndex * 2 + 1] = CorrectedOutputPoint + dir * 30;
+            // print("no hits for shits");
         }
         linePoints[OutputPointIndex*2] = CorrectedOutputPoint;
         // If lost LOS on crystal, disable it
@@ -186,6 +192,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         if (LastHits[OutputPointIndex] != null && LastHits[OutputPointIndex].CompareTag("Crystal") && (!hit || hit.collider.gameObject != LastHits[OutputPointIndex] || !flag)) {
             // print(this.name + "disconnected: " + LastHits[OutputPointIndex].name);
             LastHits[OutputPointIndex].GetComponentInChildren<CrystalController>().OnLaserHitPoint(hit.point, dir, false, true);
+            // TODO make this disable the input and otherwise never reset it
+            Array.Fill(ActivePoints, isSender);
             LastHits[OutputPointIndex] = null;
         }
 
@@ -221,6 +229,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             if ((hitPoint == transform.position + ValidPositions[InputPoints[i]] && Mathf.Abs(Vector3.Dot(ValidPositions[InputPoints[i]], hitDir)) > 0.1f) || forceTrue)
             {
                 ActiveInputs[i] = isOn;
+                ActivePoints[InputPoints[i]] = isOn;
                 flag =  true;
             }
         }
@@ -298,14 +307,24 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         }
     }
 
+    // Rotate on Interact
     [ContextMenu("Interact")]
     void IInteractable.Interact()
     {
         if (!isRotateable) { return; }
         
-        // Rotate Crystal V2
-        Array.Fill(ActiveInputs, isSender);
-        CrystalLogic();
+        // int[] CurrentlyActiveInputs = ActiveInputs
+        //     .Select((value, index) => new { value, index })  // Capture value and index
+        //     .Where(x => x.value)  // Filter for true values
+        //     .Select(x => InputPoints[x.index]) // Select only the indices
+        //     .ToArray();
+        int[] CurrentlyActiveInputs = ActivePoints
+            .Select((value, index) => new { value, index })  // Capture value and index
+            .Where(x => x.value)  // Filter for true values
+            .Select(x => x.index) // Select only the indices
+            .ToArray();
+        
+        // Rotate points
         for (int i = 0; i < InputPoints.Length; i++)
         {
             InputPoints[i] = ( InputPoints[i] + 1) % 8;
@@ -314,11 +333,65 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         {
             OutputPoints[i] = (OutputPoints[i] + 1) % 8;
         }
+        
+        // Make sure to handle hits correctly
+        Array.Fill(ActiveInputs, isSender);
+        foreach (var point in CurrentlyActiveInputs)
+        {
+            int index = Array.IndexOf(InputPoints, point);
+            if (index > -1)
+            {
+                ActiveInputs[index] = true;
+            }
+        }
+        
+        
+        
+        // foreach (var point in CurrentlyActiveInputs)
+        // {
+        //     int index = Array.IndexOf(InputPoints, point);
+        //     if (index > -1)
+        //     {
+        //         ActiveInputs[index] = true;
+        //     }
+        // }
+        // Array.Fill(ActiveInputs, isSender);
+        // int j = 0;
+        // int AIL = ActiveInputs.Length;
+        // while (j < ActiveInputs.Length-1){
+        //     if (ActiveInputs[j])
+        //     {
+        //         ActiveInputs[j] = false;
+        //         // ActiveInputs[(j - 1)%8] = true;
+        //         print($"disabling {j} and moving the active point to {(j + AIL - 1 % AIL) % AIL}");
+        //         ActiveInputs[(j + AIL - 1 % AIL) % AIL] = true;
+        //         j += 2;
+        //         continue;
+        //     }
+        //     j += 1;
+        // }
+        // int[] CurrentlyActiveInputs = ActiveInputs.Where(x => x).ToArray();
+        // if (InputPoints.Contains(CurrentlyActiveInputs[0]))
+        // {
+        //     
+        // }
+        // Array.Fill(ActiveInputs, isSender);
+        // foreach (var point in CurrentlyActiveInputs)
+        // {
+        //     int index = Array.IndexOf(InputPoints, point);
+        //     if (index > -1)
+        //     {
+        //         ActiveInputs[index] = true;
+        //     }
+        // }
+        
+        
 
+        // Update Sprite and Lasers
         UpdateSprite();
+        CrystalLogic();
 
         Rotation += 1;
-
 		FMODController.PlaySound(FMODController.Sound.SFX_CrystalRotate);
     }
 
