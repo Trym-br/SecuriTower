@@ -308,6 +308,8 @@ public class FMODController : MonoBehaviour {
 		TitleScreen,
 		IntroCutscene,
 		MainStage,
+		WaitingSpace,
+		Credits,
 	}
 
 	public Level currentLevel;
