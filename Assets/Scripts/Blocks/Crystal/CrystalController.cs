@@ -313,11 +313,6 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     {
         if (!isRotateable) { return; }
         
-        // int[] CurrentlyActiveInputs = ActiveInputs
-        //     .Select((value, index) => new { value, index })  // Capture value and index
-        //     .Where(x => x.value)  // Filter for true values
-        //     .Select(x => InputPoints[x.index]) // Select only the indices
-        //     .ToArray();
         int[] CurrentlyActiveInputs = ActivePoints
             .Select((value, index) => new { value, index })  // Capture value and index
             .Where(x => x.value)  // Filter for true values
@@ -334,7 +329,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             OutputPoints[i] = (OutputPoints[i] + 1) % 8;
         }
         
-        // Make sure to handle hits correctly
+        // Reduces input delay by reapplying known active input points
         Array.Fill(ActiveInputs, isSender);
         foreach (var point in CurrentlyActiveInputs)
         {
@@ -345,48 +340,6 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             }
         }
         
-        
-        
-        // foreach (var point in CurrentlyActiveInputs)
-        // {
-        //     int index = Array.IndexOf(InputPoints, point);
-        //     if (index > -1)
-        //     {
-        //         ActiveInputs[index] = true;
-        //     }
-        // }
-        // Array.Fill(ActiveInputs, isSender);
-        // int j = 0;
-        // int AIL = ActiveInputs.Length;
-        // while (j < ActiveInputs.Length-1){
-        //     if (ActiveInputs[j])
-        //     {
-        //         ActiveInputs[j] = false;
-        //         // ActiveInputs[(j - 1)%8] = true;
-        //         print($"disabling {j} and moving the active point to {(j + AIL - 1 % AIL) % AIL}");
-        //         ActiveInputs[(j + AIL - 1 % AIL) % AIL] = true;
-        //         j += 2;
-        //         continue;
-        //     }
-        //     j += 1;
-        // }
-        // int[] CurrentlyActiveInputs = ActiveInputs.Where(x => x).ToArray();
-        // if (InputPoints.Contains(CurrentlyActiveInputs[0]))
-        // {
-        //     
-        // }
-        // Array.Fill(ActiveInputs, isSender);
-        // foreach (var point in CurrentlyActiveInputs)
-        // {
-        //     int index = Array.IndexOf(InputPoints, point);
-        //     if (index > -1)
-        //     {
-        //         ActiveInputs[index] = true;
-        //     }
-        // }
-        
-        
-
         // Update Sprite and Lasers
         UpdateSprite();
         CrystalLogic();
