@@ -160,8 +160,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                         .OnLaserHitPoint(iteratorHit.point, dir, isOn, forceTrue);
                     if (flag)
                     {
-                        linePoints[OutputPointIndex * 2 + 1] =
-                            iteratorHit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(iteratorHit.point);
+                        linePoints[OutputPointIndex * 2 + 1] = GetCrystalConnectionPoint(iteratorHit, dir);
                         hit = iteratorHit;
                         break;
                     }
@@ -195,6 +194,21 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         }
         Debug.DrawRay(origin, dir, Color.red);
     }
+
+    Vector3 GetCrystalConnectionPoint(RaycastHit2D Hit, Vector3 dir)
+    {
+        // return Hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(Hit.point);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            Hit.point,
+            dir,
+            1, 
+            // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
+            1 << LayerMask.NameToLayer("Laser")
+        );
+        // RaycastHit2D finalhit = hits.FirstOrDefault(h => h.collider.gameObject == Hit.collider.gameObject && h.collider is PolygonCollider2D);
+        RaycastHit2D finalhit = hits.FirstOrDefault(h => h.collider is PolygonCollider2D);
+        return finalhit.point;
+    }
     
     // Laser hit Detection
     // Returns if it hit a crystal correctly and should connect a laser to it
@@ -219,7 +233,17 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 flag = true;
             }
         }
+        if (isPointOnLine(transform.position, hitPoint, hitDir))
+        {
+            flag = true;
+        }
+        
         return flag;
+    }
+
+    bool isPointOnLine(Vector3 r, Vector3 p, Vector3 v)
+    {
+        return (p.x - r.x) * v.y - (p.y - r.y) * v.x == 0;
     }
     
     private void UpdateLineRenderer(bool turnOff = false)
