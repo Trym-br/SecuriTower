@@ -68,6 +68,20 @@ public class PlayerController : MonoBehaviour, IResetable {
 			Vector3 StairPositon = FindClosestStairs(false).GetComponent<CircleCollider2D>().bounds.center;
 			transform.position = StairPositon;
 		}
+
+		int levelsCount = 1;
+		if (SceneController.instance != null) {
+			levelsCount = SceneController.instance.levels.Length;
+		}
+
+		levelToResetPosition = new Vector3[levelsCount];
+		for (int i = 0; i < levelToResetPosition.Length; ++i) {
+			levelToResetPosition[i] = Vector3.zero;
+		}
+
+		if (SceneController.instance != null) {
+			levelToResetPosition[SceneController.instance.currentLevel] = transform.position;
+		}
 	}
 
 	const string parentLevelObjectTag = "Levels Parent Object";
@@ -79,9 +93,15 @@ public class PlayerController : MonoBehaviour, IResetable {
 	// A value from 0.0f to 1.0f, where 1.0f means we are about to reset the level.
 	[HideInInspector] public float resetTimerProgress;
 
-	public void StairingWasPerformed() {
+	[HideInInspector] public Vector3[] levelToResetPosition;
+
+	public void StairingWasPerformed(bool stairWasUpwards) {
 		resetTimer = 0.0f;
 		didResetAndResetIsStillHeld = true;
+
+		if (SceneController.instance != null && stairWasUpwards) {
+			levelToResetPosition[SceneController.instance.currentLevel] = transform.position;
+		}
 	}
 
 	void Update() {
@@ -324,9 +344,15 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	void IResetable.Reset()
 	{
-		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
-			Vector3 StairPositon = FindClosestStairs(false).GetComponent<CircleCollider2D>().bounds.center;
-			transform.position = StairPositon;
+		if (SceneController.instance != null) {
+			var currentLevel = SceneController.instance.currentLevel;
+			var newPosition = levelToResetPosition[currentLevel];
+
+			if (newPosition == Vector3.zero && currentLevel != 0) {
+				newPosition = FindClosestStairs(false).GetComponent<CircleCollider2D>().bounds.center;
+			}
+
+			transform.position = newPosition;
 		}
 	}
 

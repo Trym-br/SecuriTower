@@ -24,8 +24,10 @@ public class StairsController : MonoBehaviour {
 		player.transform.position = StairPositon;
 		camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
 		
-		PlayerController.instance.StairingWasPerformed();
 		Physics2D.SyncTransforms();
+
+		// Should be called after position updates!
+		PlayerController.instance.StairingWasPerformed(stairsGoUpwards);
 	}
 
 	private GameObject FindClosestStairs(bool dir = false)
