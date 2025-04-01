@@ -219,7 +219,17 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 flag = true;
             }
         }
+        if (isPointOnLine(transform.position, hitPoint, hitDir))
+        {
+            flag = true;
+        }
+        
         return flag;
+    }
+
+    bool isPointOnLine(Vector3 r, Vector3 p, Vector3 v)
+    {
+        return (p.x - r.x) * v.y - (p.y - r.y) * v.x == 0;
     }
     
     private void UpdateLineRenderer(bool turnOff = false)
