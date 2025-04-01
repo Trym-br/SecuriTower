@@ -12,9 +12,9 @@ I hope there's a good reason you're interrupting my reading?#audio;event:/VO/Dra
 Uh.#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
 Yes?#audio;event:/VO/Wizard/vo_wizzard_default
 
-Go on.#speaker;Dragon#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
+Go on.#speaker;Vera#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
-Well.#speaker;Vera #layout;left#audio;event:/VO/Wizard/vo_wizzard_default
+Well.#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_default
 You see, I fear there's an intruder in our tower.#audio;event:/VO/Wizard/vo_wizzard_default
 A horrible, evil, powerful witch.#audio;event:/VO/Wizard/vo_wizzard_default
 
