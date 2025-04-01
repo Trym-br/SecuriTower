@@ -160,8 +160,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                         .OnLaserHitPoint(iteratorHit.point, dir, isOn, forceTrue);
                     if (flag)
                     {
-                        linePoints[OutputPointIndex * 2 + 1] =
-                            iteratorHit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(iteratorHit.point);
+                        linePoints[OutputPointIndex * 2 + 1] = GetCrystalConnectionPoint(iteratorHit, dir);
                         hit = iteratorHit;
                         break;
                     }
@@ -194,6 +193,21 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             LastHits[OutputPointIndex] = hit.collider.gameObject;
         }
         Debug.DrawRay(origin, dir, Color.red);
+    }
+
+    Vector3 GetCrystalConnectionPoint(RaycastHit2D Hit, Vector3 dir)
+    {
+        // return Hit.collider.GetComponent<PolygonCollider2D>().ClosestPoint(Hit.point);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            Hit.point,
+            dir,
+            1, 
+            // doesn't work without 1 <<, FUCKING STUPID https://discussions.unity.com/t/raycast2d-not-working-with-layermask/132481
+            1 << LayerMask.NameToLayer("Laser")
+        );
+        // RaycastHit2D finalhit = hits.FirstOrDefault(h => h.collider.gameObject == Hit.collider.gameObject && h.collider is PolygonCollider2D);
+        RaycastHit2D finalhit = hits.FirstOrDefault(h => h.collider is PolygonCollider2D);
+        return finalhit.point;
     }
     
     // Laser hit Detection
