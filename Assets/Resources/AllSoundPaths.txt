@@ -28,3 +28,4 @@ event:/AMB/amb_wind
 event:/AMB/amb_tourch
 event:/SFX/Door/sfx_doorLocked
 event:/SFX/Door/sfx_doorOpen
+event:/SFX/Player/sfx_staffPickup

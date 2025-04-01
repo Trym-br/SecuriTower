@@ -358,6 +358,7 @@ public class FMODController : MonoBehaviour {
 		AMB_Torch,
 		SFX_DoorLocked,
 		SFX_DoorOpen,
+		SFX_StaffPickup,
 	}
 
 	public static void BeginResetSpell() {
