@@ -5,8 +5,6 @@ using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-
-[RequireComponent(typeof(LineRenderer))]
 public class CrystalController : MonoBehaviour, IInteractable, IResetable
 {
     [SerializeField] private int Rotation = 0;
@@ -31,6 +29,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     
     private SpriteRenderer spriteRenderer;
     private bool laserHumming = false;
+    private int hummingId = 0;
         
     public bool IsRotateable {
         get => isRotateable;
@@ -307,15 +306,17 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             UpdateLineRenderer(true);
         }
 
-        // if (!laserHumming && isLaserOn)
-        // {
-        //     FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
-        //     laserHumming = true;
-        // }
-        // else if (laserHumming && !isLaserOn)
-        // {
-        //     laserHumming = false;
-        // }
+        if (!laserHumming && isLaserOn)
+        {
+            hummingId = FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
+            laserHumming = true;
+        }
+        else if (laserHumming && !isLaserOn)
+        {
+            FMODController.StopSound(hummingId);
+            laserHumming = false;
+        }
+        // print($"{this.name}: laserHumming: {laserHumming}");
     }
 
     // Rotate on Interact
@@ -375,6 +376,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Rotation = 0;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         // Drawing input & output Points
@@ -389,6 +391,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             Gizmos.DrawCube(transform.position + ValidPositions[Point], new Vector3(0.3f, 0.3f, 0.3f)); 
         }
     }
+#endif
 
     private void UpdateSprite()
     {

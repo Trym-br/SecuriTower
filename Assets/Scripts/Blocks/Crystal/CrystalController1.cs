@@ -121,6 +121,7 @@ public class CrystalController1 : MonoBehaviour
        CrystalLogic(); 
     }
 
+#if UNITY_EDITOR
     // Debug Draw input and output points
     private void OnDrawGizmos()
     {
@@ -137,4 +138,5 @@ public class CrystalController1 : MonoBehaviour
             Gizmos.DrawCube(transform.TransformPoint(Point), new Vector3(0.3f, 0.3f, 0.3f)); 
         }
     }
+#endif
 }

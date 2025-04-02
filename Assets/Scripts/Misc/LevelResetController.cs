@@ -7,13 +7,19 @@ public class LevelResetController : MonoBehaviour {
 
 	IResetable[] allResetables;
 	void FindAllResetables() {
+		allResetables = new IResetable[0];
+
 		// Level elements
 		if (SceneController.instance != null) {
 			GameObject level = SceneController.instance.levels[SceneController.instance.currentLevel];
-			allResetables = level.GetComponentsInChildren<IResetable>(true);
-		} else {
-			allResetables = new IResetable[0];
 
+			// The level may have different sections to it that we don't want to reset.
+			if (level.TryGetComponent(out LevelResetSelector selector)) {
+				allResetables = selector.GetResetables();
+			} else {
+				allResetables = level.GetComponentsInChildren<IResetable>(true);
+			}
+		} else {
 			// There is no SceneController!
 			var roots = SceneManager.GetActiveScene().GetRootGameObjects();
 
