@@ -73,9 +73,12 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             OutputPoints[i] = Mathf.Clamp(OutputPoints[i], 0, 7);
         }
     }
-    
-    private void Awake()
+
+    private bool Awoken = false;
+    public void AwakeWrapper()
     {
+        if (Awoken) { return; }
+        else { Awoken = true;}
         if (InputPoints.Length == 0)
         {
             isSender = true;
@@ -93,7 +96,6 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         LastHits = new GameObject[OutputPoints.Length];
         Array.Fill(LastHits, null);
         
-            
         lineRenderer = GetComponent<LineRenderer>();
         Lasers = new LineRenderer[OutputPoints.Length];
         linePoints = new Vector3[OutputPoints.Length*2];
@@ -102,6 +104,11 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         
         UpdateSprite();
+    }
+    
+    private void Awake()
+    {
+        AwakeWrapper();
     }
 
     private void Start()
