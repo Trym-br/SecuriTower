@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		}
 		else
 		{
+			animator.SetBool("pushing", false);
 			objectBeingPushedAgainstStartedAt = Time.time;
 		}
 	}
@@ -241,6 +242,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (moveDirection != objectBeingPushedAgainstPushDirection) {
 			objectBeingPushedAgainstID = 0;
 			objectBeingPushedAgainstPushDirection = Vector2.zero;
+			animator.SetBool("pushing", false);
 		}
 		
 		var boxCheckerPosition = moveDirection * (playerCollider.bounds.extents + new Vector3(0.2f, 0.2f));
@@ -259,6 +261,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		for (int i = 0; i < collidersAtTarget.Length; ++i) {
 			if (collidersAtTarget[i].TryGetComponent<MakeMoveable>(out var moveableAtTarget)) {
 				thereWasAMoveable = true;
+				animator.SetBool("pushing", true);
 
 				var id = collidersAtTarget[i].gameObject.GetInstanceID();
 				if (objectBeingPushedAgainstID == 0) {

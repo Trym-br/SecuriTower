@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: ef5fe337d94b22d42809f1d5f340c47c
+guid: a9751c7aaec11e04b988ff6bf4c1541a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2438221898596782262
-    second: crystal_reflector_sprite_sheet_0
+      213: -1824440199064453726
+    second: crystal_reflector_sprite_sheet_crystal_0
   - first:
-      213: 1102758431542244024
-    second: crystal_reflector_sprite_sheet_1
+      213: 7290847373543006432
+    second: crystal_reflector_sprite_sheet_crystal_1
   - first:
-      213: -1913787833746056166
-    second: crystal_reflector_sprite_sheet_2
+      213: 6001028793684981959
+    second: crystal_reflector_sprite_sheet_crystal_2
   - first:
-      213: 4498062215597719578
-    second: crystal_reflector_sprite_sheet_3
+      213: -7743483974831000063
+    second: crystal_reflector_sprite_sheet_crystal_3
   - first:
-      213: 8881560662044938815
-    second: crystal_reflector_sprite_sheet_4
+      213: 3089058281569280805
+    second: crystal_reflector_sprite_sheet_crystal_4
   - first:
-      213: -2639693824654017350
-    second: crystal_reflector_sprite_sheet_5
+      213: 9033296671780086620
+    second: crystal_reflector_sprite_sheet_crystal_5
   - first:
-      213: -8583130746002135103
-    second: crystal_reflector_sprite_sheet_6
+      213: -7572180703258478678
+    second: crystal_reflector_sprite_sheet_crystal_6
   - first:
-      213: -3646308302006948790
-    second: crystal_reflector_sprite_sheet_7
+      213: -6548107806699118898
+    second: crystal_reflector_sprite_sheet_crystal_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_0
+      name: crystal_reflector_sprite_sheet_crystal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -153,20 +153,16 @@ TextureImporter:
         - {x: -14, y: -2}
         - {x: -3, y: -6}
         - {x: 10, y: -6}
-      - - {x: -14, y: 1}
-        - {x: -14, y: 1}
-        - {x: -14, y: 1}
-        - {x: -14, y: 1}
       tessellationDetail: 0
       bones: []
-      spriteID: 6b0907506ed46d120800000000000000
-      internalID: 2438221898596782262
+      spriteID: 2adf1d42e494ea6e0800000000000000
+      internalID: -1824440199064453726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_1
+      name: crystal_reflector_sprite_sheet_crystal_1
       rect:
         serializedVersion: 2
         x: 32
@@ -178,28 +174,17 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 11, y: 0}
-        - {x: 11, y: 6}
-        - {x: 9, y: 9}
-        - {x: 6, y: 11}
-        - {x: 0, y: 11}
-        - {x: -5, y: 6}
-        - {x: -9, y: 2}
-        - {x: -10, y: -1}
-        - {x: -12, y: -12}
-        - {x: -7, y: -12}
-        - {x: 2, y: -9}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b2742963f8cd4f00800000000000000
-      internalID: 1102758431542244024
+      spriteID: 0e0ee93ce0b4e2560800000000000000
+      internalID: 7290847373543006432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_2
+      name: crystal_reflector_sprite_sheet_crystal_2
       rect:
         serializedVersion: 2
         x: 64
@@ -211,26 +196,17 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 8, y: -4}
-        - {x: 8, y: 9}
-        - {x: 4, y: 12}
-        - {x: -3, y: 12}
-        - {x: -7, y: 9}
-        - {x: -7, y: 2}
-        - {x: -7, y: -4}
-        - {x: 0, y: -16}
-        - {x: 1, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1c1a1ada1cd075e0800000000000000
-      internalID: -1913787833746056166
+      spriteID: 7c8fb7e94efe74350800000000000000
+      internalID: 6001028793684981959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_3
+      name: crystal_reflector_sprite_sheet_crystal_3
       rect:
         serializedVersion: 2
         x: 96
@@ -242,27 +218,17 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 12, y: -12}
-        - {x: 12, y: -7}
-        - {x: 9, y: 2}
-        - {x: 0, y: 11}
-        - {x: -6, y: 11}
-        - {x: -9, y: 9}
-        - {x: -11, y: 6}
-        - {x: -11, y: 0}
-        - {x: -2, y: -8}
-        - {x: 8, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a100f4ad0c35c6e30800000000000000
-      internalID: 4498062215597719578
+      spriteID: 106b4440a5e998490800000000000000
+      internalID: -7743483974831000063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_4
+      name: crystal_reflector_sprite_sheet_crystal_4
       rect:
         serializedVersion: 2
         x: 128
@@ -274,25 +240,17 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 16, y: -1}
-        - {x: 16, y: 0}
-        - {x: 4, y: 7}
-        - {x: -11, y: 7}
-        - {x: -12, y: 6}
-        - {x: -12, y: -7}
-        - {x: -11, y: -8}
-        - {x: 4, y: -8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3295489d54a14b70800000000000000
-      internalID: 8881560662044938815
+      spriteID: 5236a6bf32a8eda20800000000000000
+      internalID: 3089058281569280805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_5
+      name: crystal_reflector_sprite_sheet_crystal_5
       rect:
         serializedVersion: 2
         x: 160
@@ -304,26 +262,17 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 0, y: -11}
-        - {x: 8, y: -3}
-        - {x: 12, y: 7}
-        - {x: 12, y: 12}
-        - {x: 7, y: 12}
-        - {x: -2, y: 9}
-        - {x: -11, y: 0}
-        - {x: -11, y: -6}
-        - {x: -6, y: -11}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abc74b1c37ced5bd0800000000000000
-      internalID: -2639693824654017350
+      spriteID: c53ab286677bc5d70800000000000000
+      internalID: 9033296671780086620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_6
+      name: crystal_reflector_sprite_sheet_crystal_6
       rect:
         serializedVersion: 2
         x: 192
@@ -335,25 +284,17 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 8, y: -9}
-        - {x: 8, y: 4}
-        - {x: 1, y: 16}
-        - {x: 0, y: 16}
-        - {x: -7, y: 4}
-        - {x: -7, y: -9}
-        - {x: -3, y: -12}
-        - {x: 4, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c72fc7df0892e880800000000000000
-      internalID: -8583130746002135103
+      spriteID: aa7f53ff4c53ae690800000000000000
+      internalID: -7572180703258478678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_7
+      name: crystal_reflector_sprite_sheet_crystal_7
       rect:
         serializedVersion: 2
         x: 224
@@ -365,21 +306,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 11, y: -6}
-        - {x: 11, y: 0}
-        - {x: 3, y: 8}
-        - {x: -7, y: 12}
-        - {x: -12, y: 12}
-        - {x: -12, y: 7}
-        - {x: -9, y: -2}
-        - {x: -5, y: -6}
-        - {x: 0, y: -11}
-        - {x: 8, y: -10}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4c61551be5b56dc0800000000000000
-      internalID: -3646308302006948790
+      spriteID: ece9cb6a4a27025a0800000000000000
+      internalID: -6548107806699118898
       vertices: []
       indices: 
       edges: []
@@ -388,7 +319,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 153d38644f4e6f744b42a94e2834d61b
+    spriteID: 812140fa1335c1d40b36fd6305a6adae
     internalID: 0
     vertices: []
     indices: 
@@ -398,14 +329,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crystal_reflector_sprite_sheet_0: 2438221898596782262
-      crystal_reflector_sprite_sheet_1: 1102758431542244024
-      crystal_reflector_sprite_sheet_2: -1913787833746056166
-      crystal_reflector_sprite_sheet_3: 4498062215597719578
-      crystal_reflector_sprite_sheet_4: 8881560662044938815
-      crystal_reflector_sprite_sheet_5: -2639693824654017350
-      crystal_reflector_sprite_sheet_6: -8583130746002135103
-      crystal_reflector_sprite_sheet_7: -3646308302006948790
+      crystal_reflector_sprite_sheet_crystal_0: -1824440199064453726
+      crystal_reflector_sprite_sheet_crystal_1: 7290847373543006432
+      crystal_reflector_sprite_sheet_crystal_2: 6001028793684981959
+      crystal_reflector_sprite_sheet_crystal_3: -7743483974831000063
+      crystal_reflector_sprite_sheet_crystal_4: 3089058281569280805
+      crystal_reflector_sprite_sheet_crystal_5: 9033296671780086620
+      crystal_reflector_sprite_sheet_crystal_6: -7572180703258478678
+      crystal_reflector_sprite_sheet_crystal_7: -6548107806699118898
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
