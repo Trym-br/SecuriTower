@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
         } 
     }
 
-    private void Update()
+    private void LateUpdate()
     {
        // transform.position = new Vector3(target.position.x, target.position.y, transform.position.z); 
        // targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
