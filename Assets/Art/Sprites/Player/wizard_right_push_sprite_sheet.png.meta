@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 21dd3921c4b296f48b43850f09e6baf0
+guid: 10fe1434e873bfe4081bbd62b1f9a059
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6212166364856139391
-    second: wizard_reset_sprite_sheet_0
+      213: -7530429054296503089
+    second: wizard_right_push_sprite_sheet_0
   - first:
-      213: 5009397798880770795
-    second: wizard_reset_sprite_sheet_1
+      213: 9058395918293038545
+    second: wizard_right_push_sprite_sheet_1
   - first:
-      213: 7806275824510506844
-    second: wizard_reset_sprite_sheet_2
+      213: -1330517469402043761
+    second: wizard_right_push_sprite_sheet_2
   - first:
-      213: -8434686520953862489
-    second: wizard_reset_sprite_sheet_3
+      213: -3476704266818458961
+    second: wizard_right_push_sprite_sheet_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wizard_reset_sprite_sheet_0
+      name: wizard_right_push_sprite_sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 181ce19ca93f9c9a0800000000000000
-      internalID: -6212166364856139391
+      spriteID: fcc406c4caa8e7790800000000000000
+      internalID: -7530429054296503089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard_reset_sprite_sheet_1
+      name: wizard_right_push_sprite_sheet_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bea79e4d1c4f48540800000000000000
-      internalID: 5009397798880770795
+      spriteID: 1d574b02813e5bd70800000000000000
+      internalID: 9058395918293038545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard_reset_sprite_sheet_2
+      name: wizard_right_push_sprite_sheet_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c571ba2c086755c60800000000000000
-      internalID: 7806275824510506844
+      spriteID: f8ae6d4396d098de0800000000000000
+      internalID: -1330517469402043761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard_reset_sprite_sheet_3
+      name: wizard_right_push_sprite_sheet_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a605ce4c49f1fa80800000000000000
-      internalID: -8434686520953862489
+      spriteID: faa6333c3e340cfc0800000000000000
+      internalID: -3476704266818458961
       vertices: []
       indices: 
       edges: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 013241320ca9e0943a5a925762f1485e
+    spriteID: 77189038ab5cebd49a7d99250d5d74f9
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wizard_reset_sprite_sheet_0: -6212166364856139391
-      wizard_reset_sprite_sheet_1: 5009397798880770795
-      wizard_reset_sprite_sheet_2: 7806275824510506844
-      wizard_reset_sprite_sheet_3: -8434686520953862489
+      wizard_right_push_sprite_sheet_0: -7530429054296503089
+      wizard_right_push_sprite_sheet_1: 9058395918293038545
+      wizard_right_push_sprite_sheet_2: -1330517469402043761
+      wizard_right_push_sprite_sheet_3: -3476704266818458961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

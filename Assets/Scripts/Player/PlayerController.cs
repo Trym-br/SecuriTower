@@ -28,9 +28,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 	
 	// ???
 	public bool inMenu = false;
+	private bool isResetting = false;
 
 	// Yeah I stole your epic name.
-	bool awoken;
+	bool awoken = false;
 	void Awake() {
 		if (awoken) return;
 		awoken = true;
@@ -108,19 +109,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 	}
 
 	void Update() {
-		if (inMenu)
-		{
-			playerRB.linearVelocity = Vector3.zero;
-			animator.SetFloat("x", 0);
-			animator.SetFloat("y", -0.5f);
-			return;
-		}
-		currentMovementInput = input.movement;
-		if (input.interactBegin)
-		{
-			InteractWithNearest();	
-		}
-
+		// Reset
 		if (input.resetBegin) {
 			FMODController.BeginResetSpell();
 		}
@@ -128,6 +117,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (input.resetHeld) {
 			// Do not merge these conditions.
 			if (!didResetAndResetIsStillHeld) {
+				isResetting = true;
+				animator.SetBool("resetting", true);
 				resetTimer += Time.deltaTime;
 
 				if (resetHoldTime < resetTimer) {
@@ -142,7 +133,14 @@ public class PlayerController : MonoBehaviour, IResetable {
 					}
 				}
 			}
+			else
+			{
+				animator.SetBool("resetting", false);
+				isResetting = false;
+			}
 		} else {
+			isResetting = false;
+			animator.SetBool("resetting", false);
 			didResetAndResetIsStillHeld = false;
 			resetTimer = 0.0f;
 			FMODController.StopResetSpell();
@@ -151,11 +149,25 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (resetHoldTime != 0.0f) {
 			resetTimerProgress = Mathf.Clamp01(resetTimer / resetHoldTime);
 		}
+		// Movement
+		if (inMenu || isResetting)
+		{
+			playerRB.linearVelocity = Vector3.zero;
+			animator.SetFloat("x", 0);
+			animator.SetFloat("y", -0.5f);
+			return;
+		}
+		currentMovementInput = input.movement;
+		if (input.interactBegin)
+		{
+			InteractWithNearest();	
+		}
+
 	}
 
 	void FixedUpdate()
 	{
-		if (inMenu) { return; }
+		if (inMenu || isResetting) { return; }
 		
 		playerRB.linearVelocity += currentMovementInput.normalized * speed;
 		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));

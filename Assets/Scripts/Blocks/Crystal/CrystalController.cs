@@ -244,7 +244,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         // visually if it hits output
         for (int i = 0; i < OutputPoints.Length; i++)
         {
-            if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir) == -0.25))
+            // print($"{this.name}: {Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir)}");
+            if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Mathf.Abs(Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir)) > 0.1f));
             {
                 flag = true;
             }
