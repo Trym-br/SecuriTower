@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +8,14 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 
 	LayerMask getStoppedBy = ~0;
 	ContactFilter2D filter = new ContactFilter2D();
+	// [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0,0,1,1);
+	[SerializeField] private AnimationCurve moveCurve;
+	[SerializeField] private float moveDuration = 1f;
 	private Rigidbody2D rb;
+	private Vector3 targetPosition;
+	private Vector3 startPosition;
+	private bool isMoving = false;
+	[SerializeField] private float snapAmount = 32f;
 
 	public bool canBeMovedInConjunction = true;
 
@@ -28,7 +37,10 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		transform.position = originalPosition;
 	}
 
-	public bool TryMoveInDirection(Vector2 direction) {
+	public bool TryMoveInDirection(Vector2 direction)
+	{
+		if (isMoving) { return false; }
+		startPosition = transform.position;
 		var moveTo = direction;
 		moveTo.x += transform.position.x;
 		moveTo.y += transform.position.y;
@@ -58,12 +70,15 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		var newPosition = transform.position;
 		newPosition.x = moveTo.x;
 		newPosition.y = moveTo.y;
+		targetPosition = newPosition;
+		StartCoroutine("MoveAnimation");
+		isMoving = true;
 		// transform.position = newPosition;
 		// Physics.SyncTransforms();
 		// Vector3 velocity = (newPosition - transform.position) / 0.5f;
 		// print("Moving: " + this.name + " with " + velocity + " speed");
 		// rb.linearVelocity = velocity;
-		rb.MovePosition(newPosition);
+		// rb.MovePosition(newPosition);
 
 		// @Hardcoded
 		if (CompareTag(crystalTag)) {
@@ -73,5 +88,46 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		}
 
 		return true;
+	}
+
+	// private void Update()
+	
+	private IEnumerator MoveAnimation()
+	{
+		// rb.MovePosition(moveCurve.Evaluate(Time.time));
+		// Track the elapsed time
+		float elapsedTime = 0f;
+
+		// Loop until the specified duration is reached
+		while (elapsedTime < moveDuration)
+		{
+			// print($"{this.name}: {elapsedTime}/{moveDuration}: {Time.time}");
+			// Increment the elapsed time
+			elapsedTime += Time.deltaTime;
+			float t = elapsedTime / moveDuration;
+
+			// Use the curve to get the scale factor (from 1 to 0 based on curve)
+			// float scaleFactor = moveCurve.Evaluate(t);
+			// rb.MovePosition(moveCurve.Evaluate(t));
+			Vector3 move = Vector3.Lerp(startPosition, targetPosition, moveCurve.Evaluate(t));
+			// print($"{this.name}: Here/there/where: {startPosition} / {targetPosition} / {move}");
+			// rb.MovePosition(move);
+			if (snapAmount != 0)
+			{
+				move = SnapToStep(move, 1f/snapAmount);
+			}
+			// print($"{this.name}: m/s: {move}/{snapped}");
+			rb.MovePosition(move);
+			yield return null;
+		}
+		isMoving = false;
+	}
+	Vector3 SnapToStep(Vector3 value, float step)
+	{
+		return new Vector3(
+			Mathf.Round(value.x / step) * step,
+			Mathf.Round(value.y / step) * step,
+			Mathf.Round(value.z / step) * step
+		);
 	}
 }
