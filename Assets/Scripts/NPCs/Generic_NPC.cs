@@ -41,6 +41,9 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
             if (animator != null) animator.Play("walk_left");
             currentPoint = point_a.transform;
         }
+        else {
+            if (animator != null) animator.Play("idle");
+        }
     }
 
     void Update() {
@@ -93,13 +96,17 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
             if (animator != null) animator.Play("walk_left");
             currentPoint = point_a.transform;
         }
+        else if (gnome) {
+            animator.Play("idle");
+        }
     }
 
     public void Interact()
     {
         if (!DialogueManager.instance.dialogueIsPlaying)
         {
-            if (animator != null) animator.Play("idle");
+            if (animator != null && !gnome) animator.Play("idle");
+            if (gnome) animator.Play("dialogue_idle");
             if (timesInteractedWith < InkJSONs.Length)
             {
                 DialogueManager.instance.EnterDialogueMode(InkJSONs[timesInteractedWith]);
