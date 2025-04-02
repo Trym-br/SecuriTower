@@ -15,7 +15,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	private Vector3 targetPosition;
 	private Vector3 startPosition;
 	private bool isMoving = false;
-	[SerializeField] private float snapAmount = 32f;
+	//[SerializeField] private float snapAmount = 32f;
 
 	public bool canBeMovedInConjunction = true;
 
@@ -71,8 +71,11 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		newPosition.x = moveTo.x;
 		newPosition.y = moveTo.y;
 		targetPosition = newPosition;
-		StartCoroutine("MoveAnimation");
+
+		//StartCoroutine("MoveAnimation");
 		isMoving = true;
+		elapsedMovingTime = 0.0f;
+
 		// transform.position = newPosition;
 		// Physics.SyncTransforms();
 		// Vector3 velocity = (newPosition - transform.position) / 0.5f;
@@ -90,8 +93,29 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		return true;
 	}
 
-	// private void Update()
-	
+#if true
+	// TODO: Rename
+	float elapsedMovingTime = Mathf.Infinity;
+	void Update() {
+		if (elapsedMovingTime < moveDuration) {
+			elapsedMovingTime += Time.deltaTime;
+
+			var move = Vector3.Lerp(startPosition, targetPosition,
+			                        moveCurve.Evaluate(elapsedMovingTime / moveDuration));
+
+			/* Snapping to the nearest pixel aint it.
+			if (snapAmount != 0.0f) {
+				move = SnapToStep(move, 1.0f / snapAmount);
+			}
+			*/
+
+			transform.position = move;
+			Physics2D.SyncTransforms();
+		} else {
+			isMoving = false;
+		}
+	}
+#else
 	private IEnumerator MoveAnimation()
 	{
 		// rb.MovePosition(moveCurve.Evaluate(Time.time));
@@ -122,6 +146,8 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		}
 		isMoving = false;
 	}
+#endif
+
 	Vector3 SnapToStep(Vector3 value, float step)
 	{
 		return new Vector3(
