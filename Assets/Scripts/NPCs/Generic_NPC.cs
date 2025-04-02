@@ -80,6 +80,14 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
         material.SetFloat("_Alpha", 0.0f);
     }
 
+    public void EnableOutline() {
+        material.SetFloat("_Alpha", 1.0f);
+    }
+
+    public void DisableOutline() {
+        material.SetFloat("_Alpha", 0.0f);
+    }
+
     public void EndedDialogue() {
         if (walks) {
             if (animator != null) animator.Play("walk_left");

@@ -2,11 +2,10 @@
 
 === main ===
 #leftPortrait;wizard #rightPortrait;maid
-Oh, and thank you for saving me. #speaker;Sally#layout;right#audio;event:/VO/Maid/vo_maid_shy
-That was quite a fright...#audio;event:/VO/Maid/vo_maid_shy
+Oh, and welcome back. #speaker;Sally#layout;right#audio;event:/VO/Maid/vo_maid_shy
+It's good to see you again.#audio;event:/VO/Maid/vo_maid_shy
 
-No prob, Sally. #speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_default
-I'm always ready to come to the rescue.#audio;event:/VO/Wizard/vo_wizzard_default
-
+Thanks, Sally. #speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_default
+And don't worry – I'll see to removing this intruder.#audio;event:/VO/Wizard/vo_wizzard_default
 
 -> END
