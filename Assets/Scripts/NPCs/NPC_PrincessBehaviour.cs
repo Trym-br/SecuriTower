@@ -15,8 +15,10 @@ public class NPC_PrincessBehaviour : MonoBehaviour {
     }
 
     public void YeetPrincess() {
+        FMODController.instance.currentMusicStage = FMODController.MusicStage.WaitingSpace;
+        FMODController.instance.currentLevel = FMODController.Level.IntroLevel;
         animator.Play("yeetPrincess");
-        Debug.Log("Yeeting princess");
+        
     }
 
     public void ShatterGlassSFX() {

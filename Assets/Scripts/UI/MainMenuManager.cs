@@ -43,6 +43,7 @@ public class MainMenuManager : MonoBehaviour {
             introCutsceneIsPlaying = true;
             musicStageChanger.IntroCutsceneMusic();
             Cursor.visible = false;
+            credits.SetActive(false);
         }
     }
 
@@ -71,6 +72,7 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void StartCredits() {
+        FMODController.instance.currentMusicStage = FMODController.MusicStage.Credits;
         mainMenuHolder.SetActive(true);
         credits.SetActive(true);
         blackOverlay.SetActive(true);
@@ -81,5 +83,6 @@ public class MainMenuManager : MonoBehaviour {
 
     public void DisableBlackOverlay() {
         blackOverlay.SetActive(false);
+        Cursor.visible = true;
     }
 }
