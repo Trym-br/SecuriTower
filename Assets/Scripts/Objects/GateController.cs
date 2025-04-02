@@ -21,16 +21,19 @@ public class GateController : MonoBehaviour
     private void FixedUpdate()
     {
         bool shouldOpen = Inputs.All(x=> x.isLaserOn == true);
-        if (shouldOpen && !isOpen)
-        {
-            Open();
-            isOpen = true;
-        }
-        else if(!shouldOpen && isOpen)
-        {
-            Close();
-            isOpen = false;
-        }
+
+		if (shouldOpen && !isOpen)
+		{
+			Open();
+			isOpen = true;
+		}
+		else if(!shouldOpen && isOpen)
+		{
+			Close();
+			isOpen = false;
+		}
+
+		animator.SetBool("Open", isOpen);
     }
 
     private void Open()
@@ -38,7 +41,6 @@ public class GateController : MonoBehaviour
         //spriteRenderer.enabled = false;
         _collider2D.enabled = false;
 
-        animator.Play("open");
 		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateOpen, gameObject);
     }
 
@@ -47,7 +49,6 @@ public class GateController : MonoBehaviour
         spriteRenderer.enabled = true;
         _collider2D.enabled = true;
         
-        animator.Play("close");
 		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateClose, gameObject);
     }
 }
