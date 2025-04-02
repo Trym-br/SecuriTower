@@ -9,7 +9,6 @@ public class StairsController : MonoBehaviour {
 	public void PerformStairing() {
 		if (SceneController.instance != null)
 		{
-			print("Going up stairs" + this.name);
 			if (stairsGoUpwards) { SceneController.instance.LoadNextLevel(); }
 			else { SceneController.instance.LoadPreviousLevel(); }
 		}
@@ -20,10 +19,14 @@ public class StairsController : MonoBehaviour {
 
 		Vector3 StairPositon = closestStairs.GetComponent<CircleCollider2D>().bounds.center;
 		
+		var delta = camera.transform.position - player.transform.position;
+		camera.transform.position = new Vector3(StairPositon.x + delta.x,
+		                                        StairPositon.y + delta.y,
+		                                        camera.transform.position.z);
+		
 		//TODO change TO A COLLIDER HITPOINT???
 		player.transform.position = StairPositon;
-		camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, camera.transform.position.z);
-		
+
 		Physics2D.SyncTransforms();
 
 		// Should be called after position updates!

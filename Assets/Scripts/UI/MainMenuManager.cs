@@ -1,5 +1,6 @@
 using UnityEngine;
 using static AugustBase.All;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour {
     public static MainMenuManager instance;
@@ -9,11 +10,13 @@ public class MainMenuManager : MonoBehaviour {
 
     [Header("Music Stage Changer")] public GameObject musicStageChangerObject;
 
-    [Header("UI Elements")] 
-    public GameObject mainMenuHolder;
+    [Header("UI Elements")] public GameObject mainMenuHolder;
     public GameObject credits;
     public GameObject blackOverlay;
-    
+    public Button startButton;
+    public Button settingsButton;
+    public Button quitButton;
+
     [Header("InkJSON file")] public TextAsset InkJSON;
 
     private Animator animator;
@@ -42,7 +45,6 @@ public class MainMenuManager : MonoBehaviour {
             animator.Play("startIntroCutscene");
             introCutsceneIsPlaying = true;
             musicStageChanger.IntroCutsceneMusic();
-            Cursor.visible = false;
             credits.SetActive(false);
         }
     }
@@ -53,14 +55,35 @@ public class MainMenuManager : MonoBehaviour {
         musicStageChanger.MainStageMusic();
         Debug.Log("changed music to mainstagemusic");
         PlayerController.instance.inMenu = false;
-        Cursor.visible = false;
+    }
+
+    public void EnableMainMenu() {
+        if (!mainMenuHolder.activeInHierarchy) {
+            animator.Play("default");
+            mainMenuHolder.SetActive(true);
+        }
+        EnableButtons();
+        PlayerController.instance.inMenu = true;
+        startButton.Select();
+        Debug.Log("opened main menu");
     }
 
     public void DisableMainMenu() {
         mainMenuHolder.SetActive(false);
         animator.Play("default");
         PlayerController.instance.inMenu = false;
-        Cursor.visible = false;
+    }
+
+    public void DisableButtons() {
+        startButton.enabled = false;
+        settingsButton.enabled = false;
+        quitButton.enabled = false;
+    }
+
+    public void EnableButtons() {
+        startButton.enabled = true;
+        settingsButton.enabled = true;
+        quitButton.enabled = true;
     }
 
     public void StartIntroDialogue() {
@@ -77,12 +100,11 @@ public class MainMenuManager : MonoBehaviour {
         credits.SetActive(true);
         blackOverlay.SetActive(true);
         PlayerController.instance.inMenu = true;
-        Cursor.visible = false;
         animator.Play("startCredits");
     }
 
     public void DisableBlackOverlay() {
         blackOverlay.SetActive(false);
-        Cursor.visible = true;
+        EnableButtons();
     }
 }

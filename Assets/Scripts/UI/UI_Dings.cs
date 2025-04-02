@@ -20,7 +20,7 @@ public class UI_Dings : MonoBehaviour {
     }
 
     void Start() {
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     void Update() {

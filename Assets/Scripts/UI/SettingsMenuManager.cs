@@ -20,11 +20,9 @@ public class SettingsMenuManager : MonoBehaviour {
             fromPauseMenu = true;
             pauseMenuHolder.SetActive(false);
         }
-
         PlayerController.instance.inMenu = true;
         settingsMenuHolder.SetActive(true);
         masterSlider.Select();
-        Cursor.visible = true;
     }
 
     public void DeactivateSettingsMenu() {
@@ -33,10 +31,8 @@ public class SettingsMenuManager : MonoBehaviour {
             fromPauseMenu = false;
         }
         else {
-            PlayerController.instance.inMenu = false;
-            Cursor.visible = false;
+            MainMenuManager.instance.EnableMainMenu();
         }
-
         settingsMenuHolder.SetActive(false);
     }
 

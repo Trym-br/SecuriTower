@@ -29,7 +29,12 @@ public class PlayerController : MonoBehaviour, IResetable {
 	// ???
 	public bool inMenu = false;
 
+	// Yeah I stole your epic name.
+	bool awoken;
 	void Awake() {
+		if (awoken) return;
+		awoken = true;
+
 		// Singleton stuff
 		if (instance != null) {
 			Debug.LogError("There are two players!");
@@ -51,6 +56,10 @@ public class PlayerController : MonoBehaviour, IResetable {
 		playerCollider = GetComponent<Collider2D>();
 		BoxPushRange = playerCollider.bounds.extents.x;
 
+		playerCamera = Camera.main;
+	}
+
+	void Start() {
 #if UNITY_EDITOR
 		if (SceneController.instance != null && SceneController.instance.currentLevel == 0) {
 			transform.position = Vector3.zero;
@@ -59,10 +68,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 		transform.position = Vector3.zero;
 #endif
 
-		playerCamera = Camera.main;
-	}
-
-	void Start() {
 		// FindStairsInCurrentLevel();
 		if (SceneController.instance != null && SceneController.instance.currentLevel != 0) {
 			Vector3 StairPositon = FindClosestStairs(false).GetComponent<CircleCollider2D>().bounds.center;
@@ -342,6 +347,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	void IResetable.Reset()
 	{
+		Awake();
+
 		if (SceneController.instance != null) {
 			var currentLevel = SceneController.instance.currentLevel;
 			var newPosition = levelToResetPosition[currentLevel];
@@ -352,6 +359,11 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 			transform.position = newPosition;
 		}
+	}
+
+	public void GameReset() {
+		// Yeah.
+		Start();
 	}
 
 #if UNITY_EDITOR
