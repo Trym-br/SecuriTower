@@ -5,13 +5,12 @@ using static AugustBase.All;
 public class LevelResetController : MonoBehaviour {
 	public static LevelResetController instance;
 
-	IResetable[] allResetables;
-	void FindAllResetables() {
-		allResetables = new IResetable[0];
+	public IResetable[] FindAllResetables(int levelNumber) {
+		var allResetables = new IResetable[0];
 
 		// Level elements
 		if (SceneController.instance != null) {
-			GameObject level = SceneController.instance.levels[SceneController.instance.currentLevel];
+			GameObject level = SceneController.instance.levels[levelNumber];
 
 			// The level may have different sections to it that we don't want to reset.
 			if (level.TryGetComponent(out LevelResetSelector selector)) {
@@ -38,6 +37,8 @@ public class LevelResetController : MonoBehaviour {
 		if (PlayerController.instance != null) {
 			Append(ref allResetables, PlayerController.instance.GetComponent<IResetable>());
 		}
+
+		return allResetables;
 	}
 
 	void Awake() {
@@ -51,15 +52,45 @@ public class LevelResetController : MonoBehaviour {
 
 	public void ResetLevel() {
 		// @Performance: Avoid doing FindAllResetables() every time we reset the level.
-		FindAllResetables();
+		var resetables = FindAllResetables(SceneController.instance.currentLevel);
 
-		if (allResetables != null) {
-			for (int i = 0; i < allResetables.Length; ++i) {
+		if (resetables != null) {
+			for (int i = 0; i < resetables.Length; ++i) {
 				// Should never be null. This is here in case Unity does dogshit.
-				if (allResetables[i] != null) {
-					allResetables[i].Reset();
+				if (resetables[i] != null) {
+					resetables[i].Reset();
 				}
 			}
 		}
+	}
+
+	public bool dothing;
+	void Update() {
+		if (dothing) {
+			dothing = false;
+
+			print("Reseting all levels");
+			ResetAllLevels();
+			print("DONE");
+		}
+	}
+
+	// TODO: This really should use an interface, but we're pressed for time.
+	public void ResetAllLevels() {
+		if (SceneController.instance == null) return;
+
+		for (int i = 0; i < SceneController.instance.levels.Length; ++i) {
+			var resetables = FindAllResetables(i);
+
+			for (int j = 0; j < resetables.Length; ++j) {
+				// Should never be null. This is here in case Unity does dogshit.
+				if (resetables[j] != null) {
+					resetables[j].Reset();
+				}
+			}
+		}
+
+		SceneController.instance.currentLevel = 0;
+		PlayerController.instance.GameReset();
 	}
 }

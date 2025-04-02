@@ -369,6 +369,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
     void IResetable.Reset()
     {
+		AwakeWrapper();
+
         // Resets Inputs && Rotation
         Array.Fill(ActiveInputs, isSender);
         for (int i = 0; i < InputPoints.Length; i++)

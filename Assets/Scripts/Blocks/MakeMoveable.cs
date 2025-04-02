@@ -11,13 +11,20 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	public bool canBeMovedInConjunction = true;
 
 	Vector3 originalPosition;
+
+	bool alreadyStarted;
 	void Start() {
+		if (alreadyStarted) return;
+		alreadyStarted = true;
+
 		originalPosition = transform.position;
 		filter.useTriggers = false;
 		rb = GetComponent<Rigidbody2D>();
 	}
 
 	public void Reset() {
+		Start();
+
 		transform.position = originalPosition;
 	}
 
