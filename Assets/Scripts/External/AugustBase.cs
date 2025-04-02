@@ -265,6 +265,15 @@ namespace AugustBase {
 			array[array.Length - 1] = item;
 		}
 
+		public static void AppendAll<T>(ref T[] array, T[] items) {
+			var oldLength = array.Length;
+			SetLength(ref array, array.Length + items.Length);
+
+			for (int i = 0; i < items.Length; ++i) {
+				array[oldLength + i] = items[i];
+			}
+		}
+
 		public static T[] Clone<T>(T[] array) {
 			return (T[])array.Clone();
 		}
