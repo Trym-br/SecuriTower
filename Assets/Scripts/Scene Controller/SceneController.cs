@@ -242,7 +242,10 @@ public class SceneController : MonoBehaviour {
 	}
 
 	public void LoadPreviousLevel(){
-		currentLevel -= 1;
+		if (currentLevel > 0) {
+			currentLevel -= 1;
+		}
+
 		ReloadLevelIfCurrentLevelChanged();
 	}
 
