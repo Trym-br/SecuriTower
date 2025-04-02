@@ -375,6 +375,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Rotation = 0;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         // Drawing input & output Points
@@ -389,6 +390,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             Gizmos.DrawCube(transform.position + ValidPositions[Point], new Vector3(0.3f, 0.3f, 0.3f)); 
         }
     }
+#endif
 
     private void UpdateSprite()
     {
