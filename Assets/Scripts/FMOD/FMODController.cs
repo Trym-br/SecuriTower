@@ -15,6 +15,7 @@ public class FMODController : MonoBehaviour {
 		public bool ignorePausing;
 		public bool isVoiceLine;
 		public bool isResetSpell; // @Hardcoded
+		public int  id;
 	}
 
 	[Serializable]
@@ -65,60 +66,87 @@ public class FMODController : MonoBehaviour {
 		}
 	}
 
+	// An id of 0 is invalid.
+	int currentId = 0;
+	int NewID() {
+		currentId += 1;
+		return currentId;
+	}
+
 	List<PlayingSound> currentlyPlayingSounds = new();
 
-	public void PlayFMODSoundEvent(EventReference eR, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
+	public int PlayFMODSoundEvent(EventReference eR, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		eI.start();
+
+		var id = NewID();
 
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
 		playingSound.isResetSpell = isResetSpell;
+		playingSound.id = id;
 
 		currentlyPlayingSounds.Add(playingSound);
+
+		return id;
 	}
 
-	public void PlayFMODSoundEvent(string eR, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
+	public int PlayFMODSoundEvent(string eR, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		eI.start();
+
+		var id = NewID();
 
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
 		playingSound.isResetSpell = isResetSpell;
+		playingSound.id = id;
 
 		currentlyPlayingSounds.Add(playingSound);
+
+		return id;
 	}
 
-	public void PlayFMODSoundEventFrom(string eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
+	public int PlayFMODSoundEventFrom(string eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		RuntimeManager.AttachInstanceToGameObject(eI, obj);
 		eI.start();
 
+		var id = NewID();
+
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
 		playingSound.isResetSpell = isResetSpell;
+		playingSound.id = id;
 
 		currentlyPlayingSounds.Add(playingSound);
+
+		return id;
 	}
 
-	public void PlayFMODSoundEventFrom(EventReference eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
+	public int PlayFMODSoundEventFrom(EventReference eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false, bool isResetSpell = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		RuntimeManager.AttachInstanceToGameObject(eI, obj);
 		eI.start();
 
+		var id = NewID();
+
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAudio;
 		playingSound.isVoiceLine = isVoiceLine;
 		playingSound.isResetSpell = isResetSpell;
+		playingSound.id = id;
 
 		currentlyPlayingSounds.Add(playingSound);
+
+		return id;
 	}
 
 	public UnityEvent onVoiceLineEnd = new();
@@ -186,36 +214,36 @@ public class FMODController : MonoBehaviour {
 		return default;
 	}
 
-	public static void PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
+	public static int PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
 		if (FMODController.instance == null) {
 			Debug.LogError($"Trying to play sound '{sound}' without the '{nameof(FMODController)}' loaded!");
-			return;
+			return 0;
 		}
 
-		instance._PlaySound(sound, ignorePausing, isVoiceLine);
+		return instance._PlaySound(sound, ignorePausing, isVoiceLine);
 	}
-	void _PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
-		if (sound == Sound.None) return;
+	int _PlaySound(Sound sound, bool ignorePausing = false, bool isVoiceLine = false) {
+		if (sound == Sound.None) return 0;
 
 		var soundPath = GetSoundPath(sound);
-		if (soundPath == default) return;
-		instance.PlayFMODSoundEvent(soundPath, ignorePausing, isVoiceLine);
+		if (soundPath == default) return 0;
+		return instance.PlayFMODSoundEvent(soundPath, ignorePausing, isVoiceLine);
 	}
 
-	public static void PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+	public static int PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
 		if (FMODController.instance == null) {
 			Debug.LogError($"Trying to play sound '{sound}' without the '{nameof(FMODController)}' loaded!");
-			return;
+			return 0;
 		}
 
-		instance._PlaySoundFrom(sound, obj, ignorePausing, isVoiceLine);
+		return instance._PlaySoundFrom(sound, obj, ignorePausing, isVoiceLine);
 	}
-	void _PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
-		if (sound == Sound.None) return;
+	int _PlaySoundFrom(Sound sound, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+		if (sound == Sound.None) return 0;
 
 		var soundPath = GetSoundPath(sound);
-		if (soundPath == default) return;
-		PlayFMODSoundEventFrom(soundPath, obj, ignorePausing, isVoiceLine);
+		if (soundPath == default) return 0;
+		return PlayFMODSoundEventFrom(soundPath, obj, ignorePausing, isVoiceLine);
 	}
 
 	public static void PlayFootstepSound(FootstepSoundType sound) {
@@ -233,22 +261,48 @@ public class FMODController : MonoBehaviour {
 		PlayFMODSoundEvent(footstepSoundEvent);
 	}
 
-	public static void PlayVoiceLineAudio(string path) {
+	public static int PlayVoiceLineAudio(string path) {
 		if (FMODController.instance == null) {
 			Debug.LogError($"Trying to play sound from path '{path}' without the '{nameof(FMODController)}' loaded!");
-			return;
+			return 0;
 		}
 
-		FMODController.instance.PlayFMODSoundEvent(path, false, true);
+		return FMODController.instance.PlayFMODSoundEvent(path, false, true);
 	}
 
-	public static void PlayVoiceLineAudioFrom(string path, GameObject obj) {
+	public static int PlayVoiceLineAudioFrom(string path, GameObject obj) {
 		if (FMODController.instance == null) {
 			Debug.LogError($"Trying to play sound from path '{path}' without the '{nameof(FMODController)}' loaded!");
+			return 0;
+		}
+
+		return FMODController.instance.PlayFMODSoundEventFrom(path, obj, false, true);
+	}
+
+	public static void StopSound(int id) {
+		if (FMODController.instance == null) {
+			Debug.LogError($"Trying to stop sound '{id}' without the '{nameof(FMODController)}' loaded!");
 			return;
 		}
 
-		FMODController.instance.PlayFMODSoundEventFrom(path, obj, false, true);
+		if (id <= 0) {
+			Debug.LogError($"Trying to stop a sound with an invalid id of {id}!");
+			return;
+		}
+
+		FMODController.instance._StopSound(id);
+	}
+	void _StopSound(int id) {
+		if (currentlyPlayingSounds == null) return;
+
+		for (int i = 0; i < currentlyPlayingSounds.Count; ++i) {
+			if (currentlyPlayingSounds[i].id == id) {
+				currentlyPlayingSounds[i].eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+				// There shouldn't be multiple sounds with the same id.
+				break;
+			}
+		}
 	}
 
 	string GetVolumeSliderParameterName(VolumeSlider slider) {
