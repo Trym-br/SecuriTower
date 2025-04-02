@@ -307,15 +307,15 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             UpdateLineRenderer(true);
         }
 
-        if (!laserHumming && isLaserOn)
-        {
-            FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
-            laserHumming = true;
-        }
-        else if (laserHumming && !isLaserOn)
-        {
-            laserHumming = false;
-        }
+        // if (!laserHumming && isLaserOn)
+        // {
+        //     FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
+        //     laserHumming = true;
+        // }
+        // else if (laserHumming && !isLaserOn)
+        // {
+        //     laserHumming = false;
+        // }
     }
 
     // Rotate on Interact
