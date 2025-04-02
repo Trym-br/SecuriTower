@@ -107,7 +107,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 119
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -129,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 119
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -150,8 +150,8 @@ TextureImporter:
       name: NOSHADOWSBookshelves_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 55
+        x: 128
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -172,8 +172,8 @@ TextureImporter:
       name: NOSHADOWSBookshelves_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 55
+        x: 160
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -194,8 +194,8 @@ TextureImporter:
       name: NOSHADOWSBookshelves_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 23
+        x: 192
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -216,8 +216,8 @@ TextureImporter:
       name: NOSHADOWSBookshelves_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 23
+        x: 128
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -230,6 +230,336 @@ TextureImporter:
       bones: []
       spriteID: a8c56563e4f531048a78225b4c59785f
       internalID: 2040421664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20461617820329a41ac7ed4f4026747f
+      internalID: 668992683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab984368e0f2fe439f6d4fd363c76fb
+      internalID: -635272442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d100fb46ea1a84d9bb83f1b838a8f4
+      internalID: -1283902024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abe3e35e48015340a16ce75fa730cb3
+      internalID: 1594749659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 800225cb6ebfccf4ea0c57ae188a44c4
+      internalID: 350383673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a86c02a06e00d864b9039fc25234c065
+      internalID: 1413667686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae2bca3b38b3014b8d51c6b403970e4
+      internalID: 1593407443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c7d20cbd09fc34f96b46a325a32cd4
+      internalID: -1920117959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082f2a70d466ed3489ab4657e1882937
+      internalID: -230018013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7648ff050598822479e17e3356f26cd6
+      internalID: 841240573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebe3d4285dfbff4bb575839a3b4872a
+      internalID: 256497340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e381d4db4a8d692449a5ad6e9370593d
+      internalID: -778318961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a2a47bce68d9f46b010f2c8a0ae500
+      internalID: -1645860558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466b7f899b9d4e243991ce02008f25eb
+      internalID: 1778981650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NOSHADOWSBookshelves_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ebcdd93ba2ddd3498592b0937e8818e
+      internalID: -294890789
       vertices: []
       indices: 
       edges: []
@@ -250,10 +580,25 @@ TextureImporter:
     nameFileIdTable:
       NOSHADOWSBookshelves_0: 7771124562119060635
       NOSHADOWSBookshelves_1: -7686734058072980665
+      NOSHADOWSBookshelves_10: 350383673
+      NOSHADOWSBookshelves_11: 1413667686
+      NOSHADOWSBookshelves_12: 1593407443
+      NOSHADOWSBookshelves_13: -1920117959
+      NOSHADOWSBookshelves_14: -230018013
+      NOSHADOWSBookshelves_15: 841240573
+      NOSHADOWSBookshelves_16: 256497340
+      NOSHADOWSBookshelves_17: -778318961
+      NOSHADOWSBookshelves_18: -1645860558
+      NOSHADOWSBookshelves_19: 1778981650
       NOSHADOWSBookshelves_2: 1353280238
+      NOSHADOWSBookshelves_20: -294890789
       NOSHADOWSBookshelves_3: -282028415
       NOSHADOWSBookshelves_4: -987119907
       NOSHADOWSBookshelves_5: 2040421664
+      NOSHADOWSBookshelves_6: 668992683
+      NOSHADOWSBookshelves_7: -635272442
+      NOSHADOWSBookshelves_8: -1283902024
+      NOSHADOWSBookshelves_9: 1594749659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

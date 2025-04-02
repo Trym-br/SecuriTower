@@ -58,7 +58,6 @@ public class PlayerController2 : MonoBehaviour, IResetable {
 		playerSpawnPosition = transform.position;
 	}
 
-	const string parentLevelObjectTag = "Levels Parent Object";
 	const string stairsTag = "Stairs";
 
 	StairsController[] stairsInCurrentLevel = new StairsController[0];
