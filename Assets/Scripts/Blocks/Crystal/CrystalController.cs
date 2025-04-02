@@ -30,6 +30,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     private PolygonCollider2D polygonCollider2D;
     
     private SpriteRenderer spriteRenderer;
+    private bool laserHumming = false;
         
     public bool IsRotateable {
         get => isRotateable;
@@ -304,6 +305,16 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
                 SendLaser(i, false);
             }
             UpdateLineRenderer(true);
+        }
+
+        if (!laserHumming && isLaserOn)
+        {
+            FMODController.PlaySoundFrom(FMODController.Sound.SFX_LaserHum, this.gameObject);
+            laserHumming = true;
+        }
+        else if (laserHumming && !isLaserOn)
+        {
+            laserHumming = false;
         }
     }
 
