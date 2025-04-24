@@ -188,7 +188,7 @@ public class DialogueManager : MonoBehaviour {
     private void HandleTags(List<string> currentTags) {
         // loop gjennom alle tags og håndter dem
         foreach (string tag in currentTags) {
-            string[] splitTag = tag.Split(';');
+            string[] splitTag = tag.Split(';'); 
             if (splitTag.Length != 2) {
                 Debug.LogError("Tag could not be parsed properly: " + tag);
             }
