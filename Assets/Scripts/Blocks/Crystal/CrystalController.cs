@@ -14,7 +14,6 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private bool[]    ActiveOutputs;
     [SerializeField] private bool[]    ActivePoints;
     [SerializeField] private LineRenderer[] Lasers;
-    private CrystalChildHitbox crystalChild;
     
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
@@ -105,7 +104,6 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
-        crystalChild = GetComponentInChildren<CrystalChildHitbox>();
         UpdateSprite();
     }
     
