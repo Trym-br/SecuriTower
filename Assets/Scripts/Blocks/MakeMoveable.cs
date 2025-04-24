@@ -17,6 +17,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	private Vector3 startPosition;
 	private bool isMoving = false;
 	public UnityEvent OnMoveComplete;
+	public UnityEvent OnMoveStart;
 
 	private bool FinishedMoving = false;
 	//[SerializeField] private float snapAmount = 32f;
@@ -103,6 +104,10 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	float elapsedMovingTime = Mathf.Infinity;
 	void Update() {
 		if (elapsedMovingTime < moveDuration) {
+			if (FinishedMoving)
+			{
+				OnMoveStart.Invoke();
+			}
 			elapsedMovingTime += Time.deltaTime;
 
 			var move = Vector3.Lerp(startPosition, targetPosition,
