@@ -202,9 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
   looking: {x: 0, y: 0}
-  jumpBegin: 0
-  jumpHeld: 0
-  jumpEnd: 0
   interactBegin: 0
   interactHeld: 0
   interactEnd: 0
@@ -214,6 +211,9 @@ MonoBehaviour:
   resetBegin: 0
   resetHeld: 0
   resetEnd: 0
+  sprintBegin: 0
+  sprintHeld: 0
+  sprintEnd: 0
   submitBegin: 0
   submitHeld: 0
   submitEnd: 0
@@ -236,10 +236,11 @@ MonoBehaviour:
   friction: 0.425
   objectPushingDelay: 0.25
   lastDir: {x: 0, y: 0, z: 0}
-  playerCollider: {fileID: 0}
+  playerCollider: {fileID: 814986580473526355}
   inMenu: 0
   resetHoldTime: 0.625
   resetTimerProgress: 0
+  levelToResetPosition: []
   boxCheckerSize: {x: 0.1, y: 0.5}
   boxCheckerOffset: 0.45
   InteractRange: 0.98

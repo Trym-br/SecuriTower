@@ -34,10 +34,6 @@ public class InputActions : MonoBehaviour {
 	public Vector2 movement;
 	public Vector2 looking;
 
-	public bool jumpBegin;
-	public bool jumpHeld;
-	public bool jumpEnd;
-
 	public bool interactBegin;
 	public bool interactHeld;
 	public bool interactEnd;
@@ -49,6 +45,10 @@ public class InputActions : MonoBehaviour {
     public bool resetBegin;
     public bool resetHeld;
     public bool resetEnd;
+
+    public bool sprintBegin;
+    public bool sprintHeld;
+    public bool sprintEnd;
 
     public bool submitBegin;
     public bool submitHeld;
@@ -64,10 +64,6 @@ public class InputActions : MonoBehaviour {
 		movement = actions.Player.Move.ReadValue<Vector2>();
 		looking  = actions.Player.Look.ReadValue<Vector2>();
 
-		jumpBegin = actions.Player.Jump.WasPressedThisFrame();
-		jumpHeld  = actions.Player.Jump.IsPressed();
-		jumpEnd   = actions.Player.Jump.WasReleasedThisFrame();
-
 		interactBegin = actions.Player.Interact.WasPressedThisFrame();
 		interactHeld  = actions.Player.Interact.IsPressed();
 		interactEnd   = actions.Player.Interact.WasReleasedThisFrame();
@@ -80,10 +76,14 @@ public class InputActions : MonoBehaviour {
         resetHeld  = actions.Player.Reset.IsPressed();
         resetEnd   = actions.Player.Reset.WasReleasedThisFrame();
 
+        sprintBegin = actions.Player.Sprint.WasPressedThisFrame();
+        sprintHeld  = actions.Player.Sprint.IsPressed();
+        sprintEnd   = actions.Player.Sprint.WasReleasedThisFrame();
+
         submitBegin = actions.UI.Submit.WasPressedThisFrame();
         submitHeld  = actions.UI.Submit.IsPressed();
         submitEnd   = actions.UI.Submit.WasReleasedThisFrame();
-        
+
         cancelBegin = actions.UI.Cancel.WasPressedThisFrame();
         cancelHeld  = actions.UI.Cancel.IsPressed();
         cancelEnd   = actions.UI.Cancel.WasReleasedThisFrame();

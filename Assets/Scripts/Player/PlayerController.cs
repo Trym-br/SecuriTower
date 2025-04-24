@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	// Movement
 	public float speed = 2.35f;
+	const float sprintSpeedMultiplier = 1.45f;
 	[Range(0.0f, 1.0f)]
 	public float friction = 0.425f;
 
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour, IResetable {
 	// ???
 	public bool inMenu = false;
 	private bool isResetting = false;
+
+	float currentSpeed;
+	bool isSprinting;
 
 	// Yeah I stole your epic name.
 	bool awoken = false;
@@ -88,6 +92,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (SceneController.instance != null) {
 			levelToResetPosition[SceneController.instance.currentLevel] = transform.position;
 		}
+
+		currentSpeed = speed;
 	}
 
 	public float resetHoldTime = 1.0f;
@@ -158,6 +164,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 			return;
 		}
 		currentMovementInput = input.movement;
+		isSprinting = input.sprintHeld;
 		if (input.interactBegin)
 		{
 			InteractWithNearest();	
@@ -168,8 +175,14 @@ public class PlayerController : MonoBehaviour, IResetable {
 	void FixedUpdate()
 	{
 		if (inMenu || isResetting) { return; }
-		
-		playerRB.linearVelocity += currentMovementInput.normalized * speed;
+
+		currentSpeed = speed;
+		if (isSprinting) currentSpeed *= sprintSpeedMultiplier;
+
+		animator.speed = 1.0f;
+		if (isSprinting) animator.speed *= sprintSpeedMultiplier;
+
+		playerRB.linearVelocity += currentMovementInput.normalized * currentSpeed;
 		playerRB.linearVelocity *= (1.0f - Mathf.Clamp01(friction));
 
 		// animator.SetFloat("x", playerRB.linearVelocityX);
@@ -203,7 +216,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 	void FootstepsSound() {
 		FMODController.PlayFootstepSound(FMODController.FootstepSoundType.Stein); // .Teppe
 	}
-	
+
 	Vector2 GetHeaviestDirectionOfFour(Vector2 v) {
 		var result = Vector2.zero;
 
@@ -244,7 +257,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 			objectBeingPushedAgainstPushDirection = Vector2.zero;
 			animator.SetBool("pushing", false);
 		}
-		
+
 		var boxCheckerPosition = moveDirection * (playerCollider.bounds.extents + new Vector3(0.2f, 0.2f));
 		boxCheckerPosition.x += playerCollider.bounds.center.x;
 		boxCheckerPosition.y += playerCollider.bounds.center.y;
