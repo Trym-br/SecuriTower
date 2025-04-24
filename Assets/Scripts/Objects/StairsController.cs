@@ -17,7 +17,11 @@ public class StairsController : MonoBehaviour {
 		
 		GameObject closestStairs = (LinkedStairs) ? LinkedStairs : FindClosestStairs(!stairsGoUpwards);
 
-		Vector3 StairPositon = closestStairs.GetComponent<CircleCollider2D>().bounds.center;
+		// Vector3 StairPositon = closestStairs.GetComponent<CircleCollider2D>().bounds.center;
+		CircleCollider2D circle = closestStairs.GetComponent<CircleCollider2D>();
+		Vector3 StairPositon = circle.bounds.center + new Vector3(circle.offset.x, circle.offset.y, 0);
+		// Vector3 StairPositon = transform.TransformPoint(closestStairs.GetComponent<CircleCollider2D>().offset);
+		print("StairPosition: " + StairPositon);
 		
 		var delta = camera.transform.position - player.transform.position;
 		camera.transform.position = new Vector3(StairPositon.x + delta.x,
