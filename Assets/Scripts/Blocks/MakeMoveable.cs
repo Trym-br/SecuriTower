@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MakeMoveable : MonoBehaviour, IResetable {
 	const string crystalTag = "Crystal";
@@ -15,6 +16,9 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	private Vector3 targetPosition;
 	private Vector3 startPosition;
 	private bool isMoving = false;
+	public UnityEvent OnMoveComplete;
+
+	private bool FinishedMoving = false;
 	//[SerializeField] private float snapAmount = 32f;
 
 	public bool canBeMovedInConjunction = true;
@@ -35,6 +39,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		Start();
 
 		transform.position = originalPosition;
+		OnMoveComplete.Invoke();
 	}
 
 	public bool TryMoveInDirection(Vector2 direction)
@@ -111,8 +116,14 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 
 			transform.position = move;
 			Physics2D.SyncTransforms();
+			FinishedMoving = false;
 		} else {
 			isMoving = false;
+			if (!FinishedMoving)
+			{
+				OnMoveComplete.Invoke();
+				FinishedMoving = true;
+			}
 		}
 	}
 #else

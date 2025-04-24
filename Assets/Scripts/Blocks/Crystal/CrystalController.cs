@@ -14,6 +14,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     [SerializeField] private bool[]    ActiveOutputs;
     [SerializeField] private bool[]    ActivePoints;
     [SerializeField] private LineRenderer[] Lasers;
+    private CrystalChildHitbox crystalChild;
     
     [SerializeField] private bool isSender = false;
     [SerializeField] private bool AnyInputValid = false;
@@ -30,6 +31,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     private SpriteRenderer spriteRenderer;
     private bool laserHumming = false;
     private int hummingId = 0;
+
+    [SerializeField] private Transform childTransform;
         
     public bool IsRotateable {
         get => isRotateable;
@@ -100,9 +103,9 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Lasers = new LineRenderer[OutputPoints.Length];
         linePoints = new Vector3[OutputPoints.Length*2];
         
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
-        
+        crystalChild = GetComponentInChildren<CrystalChildHitbox>();
         UpdateSprite();
     }
     
@@ -325,6 +328,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             laserHumming = false;
         }
         // print($"{this.name}: laserHumming: {laserHumming}");
+    }
+
+    public void UpdateCrystalLaserHitbox()
+    {
+        transform.position = transform.GetChild(0).position;
+        transform.GetChild(0).position = transform.position;
+        print("SHMOVING THE BOX");
     }
 
     // Rotate on Interact
