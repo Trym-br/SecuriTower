@@ -103,8 +103,10 @@ public class MainMenuManager : MonoBehaviour {
         animator.Play("startCredits");
     }
 
-    public void DisableBlackOverlay() {
+    public void CreditsEnd() {
         blackOverlay.SetActive(false);
         EnableButtons();
+        FMODController.instance.currentMusicStage = FMODController.MusicStage.TitleScreen;
+        LevelResetController.instance.ResetAllLevels();
     }
 }
