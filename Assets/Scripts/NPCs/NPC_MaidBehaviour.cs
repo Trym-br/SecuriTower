@@ -29,6 +29,10 @@ public class NPC_MaidBehaviour : MonoBehaviour, IInteractable {
     }
 
     void Update() {
+		Debug.LogError($"{this.name}: THIS SCRIPT SHOULD NOT BE ATTACHED TO ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+		return;
+
+#if false
         if (DialogueManager.instance.dialogueIsPlaying) return;
         if (currentPoint == point_a.transform) {
             transform.position =
@@ -46,6 +50,7 @@ public class NPC_MaidBehaviour : MonoBehaviour, IInteractable {
                 animator.Play("walk_left");
             }
         }
+#endif
     }
 
     void OnTriggerStay2D(Collider2D other) {
@@ -63,10 +68,12 @@ public class NPC_MaidBehaviour : MonoBehaviour, IInteractable {
         outlineMaterial.SetFloat("_Alpha", 0.0f);
     }
 
+	/*
     public void EndedMaidDialogue() {
         currentPoint = point_a.transform;
         animator.Play("walk_left");
     }
+	*/
 
     public void Interact() {
         if (!DialogueManager.instance.dialogueIsPlaying) {

@@ -47,23 +47,25 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
     }
 
     void Update() {
-        
         if (!walks) return;
+
         if (DialogueManager.instance.dialogueIsPlaying) return;
+
         if (currentPoint == point_a.transform) {
             transform.position =
                 Vector3.MoveTowards(transform.position, point_a.transform.position, walkSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, point_a.transform.position) < 0.1f) {
                 currentPoint = point_b.transform;
-                if (animator != null) animator.Play("walk_right");
+				currentWalkAnimation = "walk_right";
+                if (animator != null) animator.Play(currentWalkAnimation);
             }
-        }
-        else if (currentPoint == point_b.transform) {
+        } else if (currentPoint == point_b.transform) {
             transform.position =
                 Vector3.MoveTowards(transform.position, point_b.transform.position, walkSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, point_b.transform.position) < 0.1f) {
                 currentPoint = point_a.transform;
-                if (animator != null) animator.Play("walk_left");
+				currentWalkAnimation = "walk_left";
+                if (animator != null) animator.Play(currentWalkAnimation);
             }
         }
         
@@ -83,20 +85,13 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
         material.SetFloat("_Alpha", 0.0f);
     }
 
-    public void EnableOutline() {
-        material.SetFloat("_Alpha", 1.0f);
-    }
-
-    public void DisableOutline() {
-        material.SetFloat("_Alpha", 0.0f);
-    }
-
+	string currentWalkAnimation = "walk_right";
     public void EndedDialogue() {
-        if (walks) {
-            if (animator != null) animator.Play("walk_left");
-            currentPoint = point_a.transform;
-        }
-        else if (gnome) {
+		if (walks && animator != null) {
+			animator.Play(currentWalkAnimation);
+		}
+
+        if (gnome) {
             animator.Play("idle");
         }
     }
