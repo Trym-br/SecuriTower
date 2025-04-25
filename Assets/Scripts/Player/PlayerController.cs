@@ -155,19 +155,24 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (resetHoldTime != 0.0f) {
 			resetTimerProgress = Mathf.Clamp01(resetTimer / resetHoldTime);
 		}
-		// Movement
-		if (inMenu || isResetting)
-		{
+
+		if (isResetting) {
 			playerRB.linearVelocity = Vector3.zero;
 			animator.SetFloat("x", 0);
 			animator.SetFloat("y", -0.5f);
 			animator.SetBool("pushing", false);
 			return;
 		}
+
+		if (inMenu) {
+			playerRB.linearVelocity = Vector3.zero;
+			animator.SetBool("pushing", false);
+			return;
+		}
+
 		currentMovementInput = input.movement;
 		isSprinting = input.sprintHeld;
-		if (input.interactBegin)
-		{
+		if (input.interactBegin) {
 			InteractWithNearest();	
 		}
 
