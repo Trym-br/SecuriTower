@@ -26,10 +26,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     //[SerializeField] private float DestructionTimer;
     //private bool isDying;
     private PolygonCollider2D polygonCollider2D;
+    private BoxCollider2D boxCollider2D;
     
     private SpriteRenderer spriteRenderer;
     private bool laserHumming = false;
     private int hummingId = 0;
+
+    [SerializeField] private Transform childTransform;
         
     public bool IsRotateable {
         get => isRotateable;
@@ -100,9 +103,9 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Lasers = new LineRenderer[OutputPoints.Length];
         linePoints = new Vector3[OutputPoints.Length*2];
         
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
-        
+        boxCollider2D = GetComponent<BoxCollider2D>();
         UpdateSprite();
     }
     
@@ -325,6 +328,23 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             laserHumming = false;
         }
         // print($"{this.name}: laserHumming: {laserHumming}");
+    }
+
+    public void UpdateCrystalLaserHitbox()
+    {
+        transform.position = transform.GetChild(0).position;
+        transform.GetChild(0).position = transform.position;
+        boxCollider2D.enabled = true;
+        polygonCollider2D.enabled = true;
+        print("SHMOVING THE BOX");
+    }
+    public void OnMoveStart()
+    {
+        boxCollider2D.enabled = false;
+        polygonCollider2D.enabled = false;
+        // transform.position = transform.GetChild(0).position;
+        // transform.GetChild(0).position = transform.position;
+        // print("SHMOVING THE BOX");
     }
 
     // Rotate on Interact
