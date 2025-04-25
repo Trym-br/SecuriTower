@@ -443,4 +443,12 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             polygonCollider2D.SetPath(i, path.ToArray());
         }
     }
+
+	void OnDisable() {
+		if (laserHumming) {
+			FMODController.StopSound(hummingId);
+			laserHumming = false;
+			hummingId = 0;
+		}
+	}
 }
