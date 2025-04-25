@@ -877,7 +877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadOnStartup:
   - Player
-  currentLevel: 1
+  currentLevel: 18
   levels:
   - {fileID: 1802688116}
   - {fileID: 1231568436}
@@ -1085,7 +1085,7 @@ PrefabInstance:
     - target: {fileID: 2198333485280817700, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
       propertyPath: credits
       value: 
-      objectReference: {fileID: 1543670265}
+      objectReference: {fileID: 1901988448}
     - target: {fileID: 2198333485280817700, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
       propertyPath: musicStageChangerObject
       value: 
@@ -2921,11 +2921,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &1543670265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 974926288135435646, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
-  m_PrefabInstance: {fileID: 875513485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!19719996 &1614523656 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: 5388281299381170943, guid: 7d47d331e65d2914da4d57dfd8a74ed0, type: 3}
@@ -3739,6 +3734,11 @@ Sprite:
   m_Bones: []
   m_ScriptableObjects: []
   m_SpriteID: 
+--- !u!1 &1901988448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5856735175231893588, guid: 69b51bef0e148d646a5ddc02be90af53, type: 3}
+  m_PrefabInstance: {fileID: 875513485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1954653160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5982949108402149565, guid: 7d47d331e65d2914da4d57dfd8a74ed0, type: 3}
