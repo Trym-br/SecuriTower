@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 7625752429150417670}
   m_Layer: 6
   m_Name: Temp
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 8524748197203461886}
   m_Layer: 0
   m_Name: Visual
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
