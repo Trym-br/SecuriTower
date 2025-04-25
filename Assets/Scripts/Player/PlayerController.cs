@@ -114,6 +114,15 @@ public class PlayerController : MonoBehaviour, IResetable {
 		}
 	}
 
+	void DisableAllNearbyOutlines() {
+		var overlapped = Physics2D.OverlapCircleAll(playerCollider.bounds.center, 100.0f);
+		for (int i = 0; i < overlapped.Length; ++i) {
+			var outline = overlapped[i].gameObject.GetComponentInChildren<InteractableOutline>();
+			if (outline == null) return;
+			outline.DisableOutline();
+		}
+	}
+
 	void Update() {
 		// Reset
 		if (input.resetBegin) {
@@ -172,11 +181,30 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 		currentMovementInput = input.movement;
 		isSprinting = input.sprintHeld;
-		if (input.interactBegin) {
-			InteractWithNearest();	
-		}
 
+		{ // Interaction!
+			if (previousNearestOutline != null) {
+				previousNearestOutline.DisableOutline();
+			}
+
+			var nearest = GetNearestInteractable();
+
+			if (nearest != null) {
+				var nearestOutline = nearest.GetComponentInChildren<InteractableOutline>();
+				if (nearestOutline != null) nearestOutline.EnableOutline();
+
+				previousNearestOutline = nearestOutline;
+
+				if (input.interactBegin) {
+					nearest.GetComponentInChildren<IInteractable>().Interact();
+				}
+			} else {
+				previousNearestOutline = null;
+			}
+		}
 	}
+
+	InteractableOutline previousNearestOutline;
 
 	void FixedUpdate()
 	{
@@ -345,16 +373,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 		return bestTarget;
 	}
 
-
-	void InteractWithNearest() {
-		var bestTarget = GetNearestInteractable();
-
-		if (bestTarget) {
-			print("Player interacts with: " + bestTarget.name);
-			bestTarget.GetComponentInChildren<IInteractable>().Interact();
-		}
-	}
-	
 	private GameObject FindClosestStairs(bool dir = false)
 	{
 		var levelObjectTransform = SceneController.instance.levels[SceneController.instance.currentLevel].transform;
