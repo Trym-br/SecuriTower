@@ -96,11 +96,14 @@ public class MainMenuManager : MonoBehaviour {
 
     public void StartCredits() {
         FMODController.instance.currentMusicStage = FMODController.MusicStage.Credits;
-        mainMenuHolder.SetActive(true);
-        credits.SetActive(true);
         blackOverlay.SetActive(true);
         PlayerController.instance.inMenu = true;
-        animator.Play("startCredits");
+        animator.Play("startCreditsNew");
+    }
+
+    public void StartCreditsAdditionalDings() {
+        mainMenuHolder.SetActive(true);
+        credits.SetActive(true);
     }
 
     public void CreditsEnd() {
