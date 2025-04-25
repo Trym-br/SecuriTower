@@ -1,8 +1,8 @@
 using System;
-using System.Collections;
+// using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Rendering;
+// using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CrystalController : MonoBehaviour, IInteractable, IResetable
