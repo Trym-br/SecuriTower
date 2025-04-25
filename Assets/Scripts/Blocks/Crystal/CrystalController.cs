@@ -446,7 +446,10 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
 	void OnDisable() {
 		if (laserHumming) {
-			FMODController.StopSound(hummingId);
+			if (FMODController.instance != null) {
+				FMODController.StopSound(hummingId);
+			}
+
 			laserHumming = false;
 			hummingId = 0;
 		}
