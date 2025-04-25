@@ -313,9 +313,9 @@ public class PlayerController : MonoBehaviour, IResetable {
 
 	[SerializeField] private float InteractRange = 0.5f;
 	[SerializeField] private float BoxPushRange = 0.5f;
-	// ("Do the dings" - August)
-	private void InteractWithNearest()
-	{
+
+	// NOTE: May return null!
+	GameObject GetNearestInteractable() {
 		//		Find all objects in range
 		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerCollider.bounds.center, InteractRange);
 		// Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerCollider.bounds.center, new Vector2(InteractRange, InteractRange), 0);
@@ -323,27 +323,33 @@ public class PlayerController : MonoBehaviour, IResetable {
 		List<GameObject> gameObjects = hitColliders
 			.Select(col => col.gameObject)                   // Get GameObject from Collider
 			.Where(go => go.GetComponentInChildren<IInteractable>() != null)    // Check if it has the interface
-			.ToList();      
+			.ToList();
 		
 		// print("hitColliders: " + hitColliders.Length + " / gameObjects: " + gameObjects.Count);
 		//		Finds the closest one out of the list
 		GameObject bestTarget = null;
 		float closestDistanceSqr = Mathf.Infinity;
 		Vector3 currentPosition = playerCollider.bounds.center;
-		foreach(GameObject potentialTarget in gameObjects)
-		{
+
+		foreach(GameObject potentialTarget in gameObjects) {
 			// print("Checking: " + potentialTarget.name);
 			Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
 			float dSqrToTarget = directionToTarget.sqrMagnitude;
-			if(dSqrToTarget < closestDistanceSqr)
-			{
+
+			if(dSqrToTarget < closestDistanceSqr) {
 				closestDistanceSqr = dSqrToTarget;
 				bestTarget = potentialTarget;
 			}
 		}
-		//		Interacts with the found object, if any found
-		if (bestTarget)
-		{
+
+		return bestTarget;
+	}
+
+
+	void InteractWithNearest() {
+		var bestTarget = GetNearestInteractable();
+
+		if (bestTarget) {
 			print("Player interacts with: " + bestTarget.name);
 			bestTarget.GetComponentInChildren<IInteractable>().Interact();
 		}
