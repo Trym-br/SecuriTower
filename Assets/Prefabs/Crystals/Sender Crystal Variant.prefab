@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283034566591095006, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 442739920675841832, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -65,17 +69,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5993602230253559431, guid: d36367ca1697997499e6de6a536efaae, type: 3}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'Sprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'Sprites.Array.data[2]'
       value: 
       objectReference: {fileID: -4682550216856492141, guid: d36367ca1697997499e6de6a536efaae, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'Sprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'Sprites.Array.data[4]'
       value: 
       objectReference: {fileID: 2303775705132740994, guid: d36367ca1697997499e6de6a536efaae, type: 3}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'Sprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'Sprites.Array.data[6]'
       value: 
       objectReference: {fileID: 1116794709967398465, guid: d36367ca1697997499e6de6a536efaae, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'Sprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: OutputPoints.Array.size
       value: 1

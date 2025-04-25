@@ -1,8 +1,8 @@
 using System;
-using System.Collections;
+// using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Rendering;
+// using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CrystalController : MonoBehaviour, IInteractable, IResetable
@@ -248,7 +248,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         for (int i = 0; i < OutputPoints.Length; i++)
         {
             // print($"{this.name}: {Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir)}");
-            if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Mathf.Abs(Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir)) > 0.1f));
+            if ((hitPoint == transform.position + ValidPositions[OutputPoints[i]] && Mathf.Abs(Vector3.Dot(ValidPositions[OutputPoints[i]], hitDir)) > 0.1f))
             {
                 flag = true;
             }
@@ -443,4 +443,12 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
             polygonCollider2D.SetPath(i, path.ToArray());
         }
     }
+
+	void OnDisable() {
+		if (laserHumming) {
+			FMODController.StopSound(hummingId);
+			laserHumming = false;
+			hummingId = 0;
+		}
+	}
 }
