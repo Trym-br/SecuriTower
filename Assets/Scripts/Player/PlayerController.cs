@@ -176,6 +176,8 @@ public class PlayerController : MonoBehaviour, IResetable {
 		if (inMenu) {
 			playerRB.linearVelocity = Vector3.zero;
 			animator.SetBool("pushing", false);
+			animator.SetFloat("x", lastDir.x);
+			animator.SetFloat("y", lastDir.y);
 			return;
 		}
 
