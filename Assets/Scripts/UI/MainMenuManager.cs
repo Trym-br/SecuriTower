@@ -106,7 +106,9 @@ public class MainMenuManager : MonoBehaviour {
     public void CreditsEnd() {
         blackOverlay.SetActive(false);
         EnableButtons();
+        startButton.Select();
         FMODController.instance.currentMusicStage = FMODController.MusicStage.TitleScreen;
         LevelResetController.instance.ResetAllLevels();
+        
     }
 }
