@@ -191,14 +191,14 @@ MonoBehaviour:
   childTransform: {fileID: 0}
   isLaserOn: 0
   Sprites:
-  - {fileID: -8583130746002135103, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: -2639693824654017350, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: 8881560662044938815, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: 4498062215597719578, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: -1913787833746056166, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: 1102758431542244024, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: 2438221898596782262, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
-  - {fileID: -3646308302006948790, guid: ef5fe337d94b22d42809f1d5f340c47c, type: 3}
+  - {fileID: 1099204516, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: -1804077173, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: 876060945, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: -1702309083, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: -1428405165, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: -1437849725, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: -641979996, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
+  - {fileID: 154330611, guid: ee659ab62b47bb54fa575d6a1cb2c217, type: 3}
 --- !u!1 &5669715711831976569
 GameObject:
   m_ObjectHideFlags: 0
