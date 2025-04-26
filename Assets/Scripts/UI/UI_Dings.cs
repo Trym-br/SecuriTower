@@ -26,7 +26,8 @@ public class UI_Dings : MonoBehaviour {
     void Update() {
         if (input.cancelBegin) {
             if (DialogueManager.instance.dialogueIsPlaying) {
-                // do nothing
+                // do nothing   
+                pauseMenuManager.ActivatePauseMenu(false);
             }
             else if (mainMenuManager.introCutsceneIsPlaying) {
                 mainMenuManager.EndIntroCutscene();

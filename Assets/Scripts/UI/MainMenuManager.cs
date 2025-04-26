@@ -36,6 +36,7 @@ public class MainMenuManager : MonoBehaviour {
         musicStageChanger.TitleScreenMusic();
         PlayerController.instance.inMenu = true;
         Debug.Log("STARTING MAIN MENU" + PlayerController.instance.inMenu);
+        FMODController.instance.pauseAudio = false;
     }
 
     public void StartIntroCutscene() {
@@ -47,6 +48,7 @@ public class MainMenuManager : MonoBehaviour {
             musicStageChanger.IntroCutsceneMusic();
             credits.SetActive(false);
         }
+        FMODController.instance.pauseAudio = false;
     }
 
     public void EndIntroCutscene() {
@@ -65,6 +67,7 @@ public class MainMenuManager : MonoBehaviour {
         EnableButtons();
         PlayerController.instance.inMenu = true;
         FMODController.instance.currentMusicStage = FMODController.MusicStage.TitleScreen;
+        FMODController.instance.pauseAudio = true;
         startButton.Select();
         Debug.Log("opened main menu");
     }
@@ -73,6 +76,7 @@ public class MainMenuManager : MonoBehaviour {
         mainMenuHolder.SetActive(false);
         animator.Play("default");
         PlayerController.instance.inMenu = false;
+        FMODController.instance.pauseAudio = false;
     }
 
     public void DisableButtons() {

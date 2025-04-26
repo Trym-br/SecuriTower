@@ -435,7 +435,6 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     {
         // for (int i = 0; i < polygonCollider2D.pathCount; i++) polygonCollider2D.SetPath(i, (Vector2[])null);
         polygonCollider2D.pathCount = spriteRenderer.sprite.GetPhysicsShapeCount();
-
         List<Vector2> path = new List<Vector2>();
         for (int i = 0; i < polygonCollider2D.pathCount; i++) {
             path.Clear();
