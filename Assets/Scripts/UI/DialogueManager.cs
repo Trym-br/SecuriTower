@@ -78,6 +78,9 @@ public class DialogueManager : MonoBehaviour {
         }
 
         if (input.submitBegin && dialogueIsPlaying) {
+            if (PauseMenuManager.instance.pauseMenuIsActive) {
+                return;
+            }
             if (typing) {
                 SkipDialogue();
                 Debug.Log("Skipped dialogue!");
