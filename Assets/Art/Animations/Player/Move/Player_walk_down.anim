@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 888221806240118937, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
-    - time: 0.2
       value: {fileID: 275776020843046039, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
+    - time: 0.2
+      value: {fileID: 888221806240118937, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
     - time: 0.4
-      value: {fileID: 8017640058360692100, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
-    - time: 0.6
       value: {fileID: 7039226699531413852, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
+    - time: 0.6
+      value: {fileID: 8017640058360692100, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
     - time: 0.8
       value: {fileID: 7039226699531413852, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
     attribute: m_Sprite
@@ -52,10 +52,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 888221806240118937, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
     - {fileID: 275776020843046039, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
-    - {fileID: 8017640058360692100, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
+    - {fileID: 888221806240118937, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
     - {fileID: 7039226699531413852, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
+    - {fileID: 8017640058360692100, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
     - {fileID: 7039226699531413852, guid: 443a4be4f1c1cd647984d1b54e23b616, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -82,14 +82,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.2
     functionName: FootstepsSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.4
+  - time: 0.6
     functionName: FootstepsSound
     data: 
     objectReferenceParameter: {fileID: 0}
