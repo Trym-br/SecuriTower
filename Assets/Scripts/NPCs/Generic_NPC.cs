@@ -3,7 +3,6 @@ using UnityEngine;
 public class Generic_NPC : MonoBehaviour, IInteractable {
     
     private Animator animator;
-    private Material material;
     private Transform currentPoint;
     
     public int timesInteractedWith;
@@ -31,7 +30,6 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
 
     void Awake() {
         TryGetComponent<Animator>(out animator);
-        material = GetComponent<Renderer>().material;
 
         instance = this;
     }
@@ -69,20 +67,6 @@ public class Generic_NPC : MonoBehaviour, IInteractable {
             }
         }
         
-    }
-    void OnTriggerStay2D(Collider2D other) {
-        if (!other.CompareTag("Player")) return;
-        if (DialogueManager.instance.dialogueIsPlaying) {
-            material.SetFloat("_Alpha", 0.0f);
-        }
-        else {
-            material.SetFloat("_Alpha", 1.0f);
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other) {
-        if (!other.CompareTag("Player")) return;
-        material.SetFloat("_Alpha", 0.0f);
     }
 
 	string currentWalkAnimation = "walk_right";
