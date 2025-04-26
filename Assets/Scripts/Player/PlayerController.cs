@@ -165,6 +165,11 @@ public class PlayerController : MonoBehaviour, IResetable {
 			resetTimerProgress = Mathf.Clamp01(resetTimer / resetHoldTime);
 		}
 
+		if (previousNearestOutline != null) {
+			previousNearestOutline.DisableOutline();
+			previousNearestOutline = null;
+		}
+
 		if (isResetting) {
 			playerRB.linearVelocity = Vector3.zero;
 			animator.SetFloat("x", 0);
@@ -185,10 +190,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 		isSprinting = input.sprintHeld;
 
 		{ // Interaction!
-			if (previousNearestOutline != null) {
-				previousNearestOutline.DisableOutline();
-			}
-
 			var nearest = GetNearestInteractable();
 
 			if (nearest != null) {
@@ -200,8 +201,6 @@ public class PlayerController : MonoBehaviour, IResetable {
 				if (input.interactBegin) {
 					nearest.GetComponentInChildren<IInteractable>().Interact();
 				}
-			} else {
-				previousNearestOutline = null;
 			}
 		}
 	}
