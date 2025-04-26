@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class MakeMoveable : MonoBehaviour, IResetable {
 	const string crystalTag = "Crystal";
 
-	LayerMask getStoppedBy = ~0;
+	public LayerMask getStoppedBy = ~0;
 	ContactFilter2D filter = new ContactFilter2D();
 	// [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0,0,1,1);
 	[SerializeField] private AnimationCurve moveCurve;
