@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4c100f4220c16644b92b234dbdd77851
+guid: dcd1f201773d346e59133c8d11bddc46
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 930366768963152596
-    second: crystal_reflector_UP_updated_sheet_0
+      213: -513042851762624943
+    second: pondering_orb_sheet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crystal_reflector_UP_updated_sheet_0
+      name: pondering_orb_sheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 21
-        height: 33
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4da60e6a5a359ec00800000000000000
-      internalID: 930366768963152596
+      spriteID: 156a22a9e3e41e8f0800000000000000
+      internalID: -513042851762624943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pondering_orb_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad61d6a98c7b8d4c820a9cd4acea1f5
+      internalID: 314137789
       vertices: []
       indices: 
       edges: []
@@ -125,7 +173,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: f19f5bd96080fab45bc0c3eb666b24c4
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +183,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crystal_reflector_UP_updated_sheet_0: 930366768963152596
+      pondering_orb_sheet_0: -513042851762624943
+      pondering_orb_sheet_1: 314137789
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
