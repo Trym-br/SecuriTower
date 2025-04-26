@@ -64,6 +64,7 @@ public class MainMenuManager : MonoBehaviour {
         }
         EnableButtons();
         PlayerController.instance.inMenu = true;
+        FMODController.instance.currentMusicStage = FMODController.MusicStage.TitleScreen;
         startButton.Select();
         Debug.Log("opened main menu");
     }
