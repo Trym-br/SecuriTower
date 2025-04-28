@@ -18,7 +18,8 @@ public class NPC_PrincessBehaviour : MonoBehaviour {
         FMODController.instance.currentMusicStage = FMODController.MusicStage.WaitingSpace;
         FMODController.instance.currentLevel = FMODController.Level.IntroLevel;
         animator.Play("yeetPrincess");
-        
+        PlayerController.instance.inMenu = true;
+
     }
 
     public void ShatterGlassSFX() {

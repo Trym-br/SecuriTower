@@ -8,6 +8,7 @@ public class SettingsMenuManager : MonoBehaviour {
     public Slider sfxSlider;
     public Slider musicSlider;
     public Slider voSlider;
+    public GameObject mainMenuButtons;
 
     public bool fromPauseMenu;
 
@@ -19,6 +20,9 @@ public class SettingsMenuManager : MonoBehaviour {
         if (parameterFromPauseMenu) {
             fromPauseMenu = true;
             pauseMenuHolder.SetActive(false);
+        }
+        else if (!fromPauseMenu) {
+            mainMenuButtons.SetActive(false);
         }
         PlayerController.instance.inMenu = true;
         settingsMenuHolder.SetActive(true);
@@ -32,6 +36,7 @@ public class SettingsMenuManager : MonoBehaviour {
         }
         else {
             MainMenuManager.instance.EnableMainMenu();
+            mainMenuButtons.SetActive(true);
         }
         settingsMenuHolder.SetActive(false);
     }

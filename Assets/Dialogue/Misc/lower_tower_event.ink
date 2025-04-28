@@ -3,7 +3,7 @@
 === main ===
 #leftPortrait;wizard#rightPortrait;none
 Ah...#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_sigh
-My good ol' pondering spot.#audio;event:/VO/Wizard/vo_wizzard_default
+My good ol' pondering orb.#audio;event:/VO/Wizard/vo_wizzard_default
 Sitting here, watching the view…#audio;event:/VO/Wizard/vo_wizzard_default
 Really makes you think.#audio;event:/VO/Wizard/vo_wizzard_default
 Why are we here?#audio;event:/VO/Wizard/vo_wizzard_thinking
