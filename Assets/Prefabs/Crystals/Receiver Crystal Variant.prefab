@@ -212,6 +212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Receiver Crystal Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5593226002040999441, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6212953860591975626, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_Sprite
       value: 
