@@ -28,11 +28,10 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     private PolygonCollider2D polygonCollider2D;
     private BoxCollider2D boxCollider2D;
     
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRendererCrystal;
+    public SpriteRenderer spriteRendererBase;
     private bool laserHumming = false;
     private int hummingId = 0;
-
-    [SerializeField] private Transform childTransform;
         
     public bool IsRotateable {
         get => isRotateable;
@@ -55,14 +54,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         new Vector3(-0.5f, 0f),
         new Vector3(-0.5f, 0.5f),
     };
-    private Vector3[] CardinalPositions = new Vector3[]
-    {
-        new Vector3(0f, 0.5f),
-        new Vector3(0.5f, 0f),
-        new Vector3(0, -0.5f),
-        new Vector3(-0.5f, 0f),
-    };
-    [SerializeField] private Sprite[] Sprites;
+    [SerializeField] private Sprite[] BaseSprites;
+    [SerializeField] private Sprite[] CrystalSprites;
 
     private void OnValidate()
     {
@@ -103,7 +96,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         Lasers = new LineRenderer[OutputPoints.Length];
         linePoints = new Vector3[OutputPoints.Length*2];
         
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        // spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         UpdateSprite();
@@ -443,18 +436,19 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     {
         if (OutputPoints.Length > 0)
         {
-            spriteRenderer.sprite = Sprites[OutputPoints[0]];
+            spriteRendererCrystal.sprite = CrystalSprites[OutputPoints[0]];
+            spriteRendererBase.sprite = BaseSprites[OutputPoints[0]];
         }
         UpdatePhysicsShape();
     }
     private void UpdatePhysicsShape()
     {
         // for (int i = 0; i < polygonCollider2D.pathCount; i++) polygonCollider2D.SetPath(i, (Vector2[])null);
-        polygonCollider2D.pathCount = spriteRenderer.sprite.GetPhysicsShapeCount();
+        polygonCollider2D.pathCount = spriteRendererCrystal.sprite.GetPhysicsShapeCount();
         List<Vector2> path = new List<Vector2>();
         for (int i = 0; i < polygonCollider2D.pathCount; i++) {
             path.Clear();
-            spriteRenderer.sprite.GetPhysicsShape(i, path);
+            spriteRendererCrystal.sprite.GetPhysicsShape(i, path);
             polygonCollider2D.SetPath(i, path.ToArray());
         }
     }
