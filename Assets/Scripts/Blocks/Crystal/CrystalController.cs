@@ -129,10 +129,10 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
     bool playedReceiverNoise;
 
-    private void Update()
-    {
-        UpdateCrystalLaserHitbox();
-    }
+    // private void Update()
+    // {
+    //     // UpdateCrystalLaserHitbox();
+    // }
 
     private void FixedUpdate()
     {
@@ -348,8 +348,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
 
     public void UpdateCrystalLaserHitbox()
     {
-        transform.position = transform.GetChild(0).position;
-        transform.GetChild(0).position = transform.position;
+        // transform.position = transform.GetChild(0).position;
+        // transform.GetChild(0).position = transform.position;
         // boxCollider2D.enabled = true;
         // polygonCollider2D.enabled = true;
         // print("SHMOVING THE BOX");

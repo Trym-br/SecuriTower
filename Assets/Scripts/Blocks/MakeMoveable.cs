@@ -54,7 +54,9 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 		// Collider2D[] collidersAtTarget = Physics2D.OverlapCircleAll(moveTo, 0.1f);
 		// Collider2D[] collidersAtTarget; 
 		List<Collider2D> collidersAtTarget = new List<Collider2D>();
-		Physics2D.OverlapCircle(moveTo, 0.1f, filter, collidersAtTarget);
+		// Physics2D.OverlapCircle(moveTo, 0.1f, filter, collidersAtTarget);
+		Physics2D.OverlapBox(moveTo, new Vector2(0.99f, 0.99f), 0f, filter, collidersAtTarget);
+		// Physics2D.OverlapBox(moveTo, new Vector2(1f, 1f), 0f, filter, collidersAtTarget);
 
 		// foreach (var collider in collidersAtTarget)
 		// {

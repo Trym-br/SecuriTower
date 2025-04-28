@@ -95,5 +95,66 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8767976005323320987}
   m_SourcePrefab: {fileID: 100100000, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
+--- !u!1 &5785785386225969565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
+  m_PrefabInstance: {fileID: 3262203630879075961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &8767976005323320987
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785785386225969565}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 3}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5, y: 0.9375}
+      - {x: -0.5, y: 0.9375}
+      - {x: -0.5, y: -1.09375}
+      - {x: -0.46875, y: 0.90625}
+      - {x: 0.46875, y: 0.90625}
+      - {x: 0.5, y: -1.09375}
+  m_UseDelaunayMesh: 0
