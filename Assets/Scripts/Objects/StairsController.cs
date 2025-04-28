@@ -26,15 +26,12 @@ public class StairsController : MonoBehaviour {
 		// Vector3 StairPositon = transform.TransformPoint(closestStairs.GetComponent<CircleCollider2D>().offset);
 		// print("StairPosition: " + StairPositon);
 		
-		// Makes the camera keep it's position lag as to not disturb camera movement
+		// Makes the camera keep its position lag as to not disturb camera movement
 		var delta = camera.transform.position - player.transform.position + new Vector3(0, player.GetComponent<SpriteRenderer>().bounds.size.y/2);
 		camera.transform.position = new Vector3(StairPositon.x + delta.x,
 		                                        StairPositon.y + delta.y,
 		                                        camera.transform.position.z);
 		
-		// camera.transform.position = new Vector3(PlayerPosition.x,
-		//                                         PlayerPosition.y,
-		//                                         camera.transform.position.z);
 		//TODO change TO A COLLIDER HITPOINT???
 		player.transform.position = PlayerPosition;
 		
