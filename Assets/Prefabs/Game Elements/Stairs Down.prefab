@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423250494808481823, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Offset.y
-      value: -0.40625
+      value: -0.375
       objectReference: {fileID: 0}
     - target: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Name
@@ -90,14 +90,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6149999141186986592}
+      addedObject: {fileID: 3043130266082001248}
   m_SourcePrefab: {fileID: 100100000, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
 --- !u!1 &740312829104276273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
   m_PrefabInstance: {fileID: 8595277480284161237}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &6149999141186986592
+--- !u!60 &3043130266082001248
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,8 +144,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.5, y: 0.25}
+      - {x: 0.46875, y: -0.09375}
       - {x: 0.46875, y: -0.46875}
       - {x: -0.46875, y: -0.46875}
+      - {x: -0.46875, y: -0.09375}
       - {x: -0.5, y: 0.25}
       - {x: -0.5, y: -0.5}
       - {x: 0.5, y: -0.5}

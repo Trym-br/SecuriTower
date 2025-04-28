@@ -155,8 +155,10 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 16, y: 8}
+        - {x: 15, y: -3}
         - {x: 15, y: -15}
         - {x: -15, y: -15}
+        - {x: -15, y: -3}
         - {x: -16, y: 8}
         - {x: -16, y: -16}
         - {x: 16, y: -16}
