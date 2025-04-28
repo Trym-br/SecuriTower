@@ -25,8 +25,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2431997983670113249, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431997983670113249, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_Offset.y
-      value: 0.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2521857702441933932, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
       propertyPath: m_LocalPosition.x
@@ -89,7 +93,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9011300212444776420, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 3043130266082001248}
   m_SourcePrefab: {fileID: 100100000, guid: 128272e174ba35243afe22ef14ff9303, type: 3}
 --- !u!1 &740312829104276273 stripped

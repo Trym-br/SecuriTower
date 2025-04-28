@@ -6,7 +6,7 @@ public class StairsController : MonoBehaviour {
 	public bool stairsGoUpwards;
 	[SerializeField] private GameObject LinkedStairs;
 
-	public void PerformStairing() {
+	public void StairLogic() {
 		if (SceneController.instance != null)
 		{
 			if (stairsGoUpwards) { SceneController.instance.LoadNextLevel(); }
@@ -19,17 +19,22 @@ public class StairsController : MonoBehaviour {
 
 		// Vector3 StairPositon = closestStairs.GetComponent<CircleCollider2D>().bounds.center;
 		CircleCollider2D circle = closestStairs.GetComponent<CircleCollider2D>();
-		Vector3 StairPositon = circle.bounds.center + new Vector3(circle.offset.x, circle.offset.y, 0);
+		// Vector3 StairPositon = circle.bounds.center + new Vector3(circle.offset.x, circle.offset.y, 0);
+		// Vector3 StairPositon = circle.bounds.center;
+		Vector3 StairPositon = (Vector2)circle.transform.position + circle.offset;
+		Vector3 PlayerPosition =  StairPositon + new Vector3(0, player.GetComponent<SpriteRenderer>().bounds.size.y/2);
 		// Vector3 StairPositon = transform.TransformPoint(closestStairs.GetComponent<CircleCollider2D>().offset);
-		print("StairPosition: " + StairPositon);
+		// print("StairPosition: " + StairPositon);
 		
-		var delta = camera.transform.position - player.transform.position;
+		// Makes the camera keep its position lag as to not disturb camera movement
+		var delta = camera.transform.position - player.transform.position + new Vector3(0, player.GetComponent<SpriteRenderer>().bounds.size.y/2);
 		camera.transform.position = new Vector3(StairPositon.x + delta.x,
 		                                        StairPositon.y + delta.y,
 		                                        camera.transform.position.z);
 		
 		//TODO change TO A COLLIDER HITPOINT???
-		player.transform.position = StairPositon;
+		player.transform.position = PlayerPosition;
+		
 
 		Physics2D.SyncTransforms();
 
@@ -64,7 +69,7 @@ public class StairsController : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag("Player")) {
-			PerformStairing();
+			StairLogic();
 		}
 	}
 }
