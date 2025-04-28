@@ -2,53 +2,33 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class GateController : MonoBehaviour
-{
-    
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Collider2D _collider2D;
-    [SerializeField] private CrystalController[] Inputs;
-    private Animator animator;
-    private bool isOpen = false;
+public class GateController : MonoBehaviour {
+	[SerializeField] private CrystalController[] Inputs;
 
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider2D = GetComponent<Collider2D>();
-        animator = GetComponent<Animator>();
-    }
+	Collider2D _collider2D;
+	Animator animator;
 
-    private void FixedUpdate()
-    {
-        bool shouldOpen = Inputs.All(x=> x.isLaserOn == true);
+	void Awake() {
+		_collider2D = GetComponent<Collider2D>();
+		animator = GetComponent<Animator>();
+	}
 
-		if (shouldOpen && !isOpen)
-		{
-			Open();
-			isOpen = true;
-		}
-		else if(!shouldOpen && isOpen)
-		{
-			Close();
-			isOpen = false;
+	void FixedUpdate() {
+		if (Inputs == null || Inputs.Length == 0) {
+			Debug.LogError($"'{this.name}' does not have any receiver crystals set in the Inputs array.");
+			return;
 		}
 
-		animator.SetBool("Open", isOpen);
-    }
+		bool open = Inputs.All(x=> x.isLaserOn == true);
+		_collider2D.enabled = !open;
+		animator.SetBool("Open", open);
+	}
 
-    private void Open()
-    {
-        //spriteRenderer.enabled = false;
-        _collider2D.enabled = false;
-
+	public void PlayOpeningSound() {
 		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateOpen, gameObject);
-    }
+	}
 
-    private void Close()
-    {
-        spriteRenderer.enabled = true;
-        _collider2D.enabled = true;
-        
+	public void PlayClosingSound() {
 		FMODController.PlaySoundFrom(FMODController.Sound.SFX_GateClose, gameObject);
-    }
+	}
 }

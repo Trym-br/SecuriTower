@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0068f71fdcc2824428b1f92b26559878
+guid: 83a6590dbd2dc13d8adbaba9fc283ad1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4304262965037058467
-    second: StairsFINAL_0
+      213: -6118983857938699174
+    second: sender_wires_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -101,7 +101,20 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,57 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StairsFINAL_0
+      name: sender_wires_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 96
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 16, y: 30}
-        - {x: -16, y: 30}
-        - {x: -16, y: -35}
-        - {x: -15, y: 29}
-        - {x: 15, y: 29}
-        - {x: 16, y: -35}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 3a947ea9c50dbbb30800000000000000
-      internalID: 4304262965037058467
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StairsFINAL_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 16, y: 8}
-        - {x: 15, y: -15}
-        - {x: -15, y: -15}
-        - {x: -16, y: 8}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a77870582e77de6408fdabf9faf78b3a
-      internalID: 431224191
+      spriteID: a5ce639d990051ba0800000000000000
+      internalID: -6118983857938699174
       vertices: []
       indices: 
       edges: []
@@ -172,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d777beb8e7cda9b4d94d62b3d1868958
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -182,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StairsFINAL_0: 4304262965037058467
-      StairsFINAL_1: 431224191
+      sender_wires_1_0: -6118983857938699174
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
