@@ -5,10 +5,6 @@ public class InteractableBowtie : MonoBehaviour, IInteractable {
 	public TextAsset[] inOrderDialogueInkJSONArray;
 	static int dialogueIndex = 0;
 
-	void Awake() {
-		dialogueIndex = 0;
-	}
-
 	bool wasInteractedWith = false;
 	void Update() {
 		if (wasInteractedWith && !DialogueManager.instance.dialogueIsPlaying) {
