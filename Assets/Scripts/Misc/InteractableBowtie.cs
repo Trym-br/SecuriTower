@@ -13,7 +13,7 @@ public class InteractableBowtie : MonoBehaviour, IInteractable {
 	void Update() {
 		if (wasInteractedWith && !DialogueManager.instance.dialogueIsPlaying) {
 			Destroy(this.gameObject);
-			//FMODController.PlaySoundFrom(, gameObject);
+			FMODController.PlaySoundFrom(FMODController.Sound.SFX_BowRemove, gameObject);
 		}
 	}
 
