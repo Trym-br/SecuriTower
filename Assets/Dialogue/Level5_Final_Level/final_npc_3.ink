@@ -4,14 +4,14 @@
 EXTERNAL yeetPrincess(hei)
 #leftPortrait;wizard#rightPortrait;princess
 
-Halt!#speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_anger
+Halt!#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_anger
 What do you think you're doing?#audio;event:/VO/Wizard/vo_wizzard_anger
 
 Eeee!!!!!!!#speaker;Princess#layout;right#audio;event:/VO/Princess/vo_princess_scream
 What do you think <i>you're</i> doing?!#audio;event:/VO/Princess/vo_princess_default
 Get out!#audio;event:/VO/Princess/vo_princess_default
 
-Excuse me?#speaker;Wizard#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
+Excuse me?#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
 This is my room!#audio;event:/VO/Wizard/vo_wizzard_annoyed
 This is MY tower!#audio;event:/VO/Wizard/vo_wizzard_annoyed
 

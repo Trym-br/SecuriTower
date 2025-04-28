@@ -39,19 +39,26 @@ public class MainMenuManager : MonoBehaviour {
         FMODController.instance.pauseAudio = false;
     }
 
-    public void StartIntroCutscene() {
-        if (!firstTime) animator.Play("endIntroCutscene");
-        else {
-            firstTime = false;
-            animator.Play("startIntroCutscene");
-            introCutsceneIsPlaying = true;
-            musicStageChanger.IntroCutsceneMusic();
-            credits.SetActive(false);
+    public void StartGame() {
+        if (firstTime) {
+            StartIntroCutscene();
         }
+        else if (!firstTime) {
+            EndIntroCutscene();
+        }
+    }
+
+    public void StartIntroCutscene() {
+        firstTime = false;
+        animator.Play("startIntroCutscene");
+        introCutsceneIsPlaying = true;
+        musicStageChanger.IntroCutsceneMusic();
+        credits.SetActive(false);
         FMODController.instance.pauseAudio = false;
     }
 
     public void EndIntroCutscene() {
+        credits.SetActive(false);
         animator.Play("endIntroCutscene");
         introCutsceneIsPlaying = false;
         musicStageChanger.MainStageMusic();
@@ -117,6 +124,5 @@ public class MainMenuManager : MonoBehaviour {
         startButton.Select();
         FMODController.instance.currentMusicStage = FMODController.MusicStage.TitleScreen;
         LevelResetController.instance.ResetAllLevels();
-        
     }
 }
