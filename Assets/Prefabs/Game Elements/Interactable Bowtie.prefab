@@ -162,3 +162,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inOrderDialogueInkJSONArray:
   - {fileID: 4900000, guid: 864a06bd39e588b48ac96dcfee719406, type: 3}
+  - {fileID: 4900000, guid: 75131f4cb7a307c46b29699071e0e10c, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4900000, guid: 7fedc97015ce2d64f8856590ce49a8b3, type: 3}
