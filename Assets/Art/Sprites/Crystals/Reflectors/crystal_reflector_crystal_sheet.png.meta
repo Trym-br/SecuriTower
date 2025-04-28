@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: ef5fe337d94b22d42809f1d5f340c47c
+guid: 0e8525a0f9146f74ba430a976e8a8a3d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2438221898596782262
-    second: crystal_reflector_sprite_sheet_0
+      213: -3197504531231157878
+    second: crystal_reflector_sprite_sheet-sheet_0
   - first:
-      213: 1102758431542244024
-    second: crystal_reflector_sprite_sheet_1
+      213: 7899829535524941442
+    second: crystal_reflector_sprite_sheet-sheet_1
   - first:
-      213: -1913787833746056166
-    second: crystal_reflector_sprite_sheet_2
+      213: -781353048280477046
+    second: crystal_reflector_sprite_sheet-sheet_2
   - first:
-      213: 4498062215597719578
-    second: crystal_reflector_sprite_sheet_3
+      213: 4364119007658509964
+    second: crystal_reflector_sprite_sheet-sheet_3
   - first:
-      213: 8881560662044938815
-    second: crystal_reflector_sprite_sheet_4
+      213: 1308789713388701761
+    second: crystal_reflector_sprite_sheet-sheet_4
   - first:
-      213: -2639693824654017350
-    second: crystal_reflector_sprite_sheet_5
+      213: -5256985097696681093
+    second: crystal_reflector_sprite_sheet-sheet_5
   - first:
-      213: -8583130746002135103
-    second: crystal_reflector_sprite_sheet_6
+      213: -2134872330380233468
+    second: crystal_reflector_sprite_sheet-sheet_6
   - first:
-      213: -3646308302006948790
-    second: crystal_reflector_sprite_sheet_7
+      213: -961553587170243908
+    second: crystal_reflector_sprite_sheet-sheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,7 +122,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,252 +134,244 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_0
+      name: crystal_reflector_sprite_sheet-sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 10, y: 5}
+      - - {x: 11, y: 6}
+        - {x: -3, y: 6}
         - {x: -3, y: 5}
-        - {x: -14, y: 1}
-        - {x: -14, y: -2}
+        - {x: -13, y: 1}
+        - {x: -13, y: -2}
         - {x: -3, y: -6}
-        - {x: 10, y: -6}
-      - - {x: -14, y: 1}
-        - {x: -14, y: 1}
-        - {x: -14, y: 1}
-        - {x: -14, y: 1}
+        - {x: -3, y: -7}
+        - {x: 11, y: -7}
       tessellationDetail: 0
       bones: []
-      spriteID: 6b0907506ed46d120800000000000000
-      internalID: 2438221898596782262
+      spriteID: f199bd4e6f96a4a4f8ab324f27757c5b
+      internalID: -641979996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_1
+      name: crystal_reflector_sprite_sheet-sheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 34
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 11, y: 0}
-        - {x: 11, y: 6}
-        - {x: 9, y: 9}
-        - {x: 6, y: 11}
-        - {x: 0, y: 11}
-        - {x: -5, y: 6}
-        - {x: -9, y: 2}
-        - {x: -10, y: -1}
-        - {x: -12, y: -12}
-        - {x: -7, y: -12}
-        - {x: 2, y: -9}
+      - - {x: 1, y: -7}
+        - {x: 9, y: 0}
+        - {x: 9, y: 6}
+        - {x: 6, y: 9}
+        - {x: 0, y: 9}
+        - {x: -6, y: 3}
+        - {x: -11, y: -7}
+        - {x: -11, y: -11}
+        - {x: -7, y: -11}
       tessellationDetail: 0
       bones: []
-      spriteID: 8b2742963f8cd4f00800000000000000
-      internalID: 1102758431542244024
+      spriteID: 5231f036621d6dd468539ff5afe27775
+      internalID: -1437849725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_2
+      name: crystal_reflector_sprite_sheet-sheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 68
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 8, y: -4}
-        - {x: 8, y: 9}
-        - {x: 4, y: 12}
-        - {x: -3, y: 12}
-        - {x: -7, y: 9}
-        - {x: -7, y: 2}
-        - {x: -7, y: -4}
-        - {x: 0, y: -16}
-        - {x: 1, y: -16}
+      - - {x: 6, y: -4}
+        - {x: 6, y: 9}
+        - {x: 4, y: 10}
+        - {x: -3, y: 10}
+        - {x: -5, y: 9}
+        - {x: -5, y: -4}
+        - {x: -1, y: -14}
+        - {x: 2, y: -14}
       tessellationDetail: 0
       bones: []
-      spriteID: a1c1a1ada1cd075e0800000000000000
-      internalID: -1913787833746056166
+      spriteID: 65a9a36285e8dee4eb6f546f368cc0b9
+      internalID: -1428405165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_3
+      name: crystal_reflector_sprite_sheet-sheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 102
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 12, y: -12}
-        - {x: 12, y: -7}
-        - {x: 9, y: 2}
-        - {x: 0, y: 11}
-        - {x: -6, y: 11}
-        - {x: -9, y: 9}
-        - {x: -11, y: 6}
-        - {x: -11, y: 0}
-        - {x: -2, y: -8}
-        - {x: 8, y: -12}
+      - - {x: 11, y: -7}
+        - {x: 10, y: -7}
+        - {x: 7, y: 1}
+        - {x: 0, y: 9}
+        - {x: -6, y: 9}
+        - {x: -9, y: 6}
+        - {x: -9, y: 0}
+        - {x: -2, y: -6}
+        - {x: 8, y: -11}
+        - {x: 11, y: -11}
       tessellationDetail: 0
       bones: []
-      spriteID: a100f4ad0c35c6e30800000000000000
-      internalID: 4498062215597719578
+      spriteID: 1e953dd2e460e45468dc08ba8e541407
+      internalID: -1702309083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_4
+      name: crystal_reflector_sprite_sheet-sheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 136
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 16, y: -1}
-        - {x: 16, y: 0}
-        - {x: 4, y: 7}
-        - {x: -11, y: 7}
-        - {x: -12, y: 6}
-        - {x: -12, y: -7}
-        - {x: -11, y: -8}
-        - {x: 4, y: -8}
-      tessellationDetail: 0
+      - - {x: 13, y: -2}
+        - {x: 13, y: 1}
+        - {x: 3, y: 5}
+        - {x: -10, y: 5}
+        - {x: -10, y: -6}
+        - {x: 3, y: -6}
+      tessellationDetail: 0.414
       bones: []
-      spriteID: f3295489d54a14b70800000000000000
-      internalID: 8881560662044938815
+      spriteID: 5cd5494bef5510745b21db49f9cab04f
+      internalID: 876060945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_5
+      name: crystal_reflector_sprite_sheet-sheet_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 170
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 0, y: -11}
-        - {x: 8, y: -3}
-        - {x: 12, y: 7}
-        - {x: 12, y: 12}
-        - {x: 7, y: 12}
-        - {x: -2, y: 9}
-        - {x: -11, y: 0}
-        - {x: -11, y: -6}
-        - {x: -6, y: -11}
+      - - {x: 7, y: -1}
+        - {x: 10, y: 7}
+        - {x: 11, y: 11}
+        - {x: 7, y: 10}
+        - {x: -1, y: 7}
+        - {x: -9, y: -1}
+        - {x: -9, y: -6}
+        - {x: -6, y: -9}
+        - {x: 0, y: -9}
       tessellationDetail: 0
       bones: []
-      spriteID: abc74b1c37ced5bd0800000000000000
-      internalID: -2639693824654017350
+      spriteID: a5ac7772290aa7b409cfd428bd721e82
+      internalID: -1804077173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_6
+      name: crystal_reflector_sprite_sheet-sheet_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 204
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 8, y: -9}
-        - {x: 8, y: 4}
-        - {x: 1, y: 16}
-        - {x: 0, y: 16}
-        - {x: -7, y: 4}
-        - {x: -7, y: -9}
-        - {x: -3, y: -12}
-        - {x: 4, y: -12}
+      - - {x: 5, y: -10}
+        - {x: 7, y: -8}
+        - {x: 6, y: 4}
+        - {x: 2, y: 13}
+        - {x: -1, y: 13}
+        - {x: -5, y: 4}
+        - {x: -6, y: -8}
+        - {x: -4, y: -10}
       tessellationDetail: 0
       bones: []
-      spriteID: 1c72fc7df0892e880800000000000000
-      internalID: -8583130746002135103
+      spriteID: 02fb5dc1538164b4a8b1552bbff7fee5
+      internalID: 1099204516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crystal_reflector_sprite_sheet_7
+      name: crystal_reflector_sprite_sheet-sheet_7
       rect:
         serializedVersion: 2
-        x: 224
+        x: 238
         y: 0
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 11, y: -6}
-        - {x: 11, y: 0}
-        - {x: 3, y: 8}
-        - {x: -7, y: 12}
-        - {x: -12, y: 12}
-        - {x: -12, y: 7}
-        - {x: -9, y: -2}
-        - {x: -5, y: -6}
-        - {x: 0, y: -11}
-        - {x: 8, y: -10}
+      - - {x: 9, y: -6}
+        - {x: 9, y: 0}
+        - {x: 3, y: 6}
+        - {x: -7, y: 10}
+        - {x: -11, y: 11}
+        - {x: -10, y: 7}
+        - {x: -5, y: -4}
+        - {x: 0, y: -9}
+        - {x: 6, y: -9}
       tessellationDetail: 0
       bones: []
-      spriteID: a4c61551be5b56dc0800000000000000
-      internalID: -3646308302006948790
+      spriteID: 096aad6b6f2a3824b9e9ab682088d158
+      internalID: 154330611
       vertices: []
       indices: 
       edges: []
@@ -388,7 +380,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 153d38644f4e6f744b42a94e2834d61b
+    spriteID: 1c9a680e25c3ef344b8e677e6716bdb9
     internalID: 0
     vertices: []
     indices: 
@@ -398,14 +390,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crystal_reflector_sprite_sheet_0: 2438221898596782262
-      crystal_reflector_sprite_sheet_1: 1102758431542244024
-      crystal_reflector_sprite_sheet_2: -1913787833746056166
-      crystal_reflector_sprite_sheet_3: 4498062215597719578
-      crystal_reflector_sprite_sheet_4: 8881560662044938815
-      crystal_reflector_sprite_sheet_5: -2639693824654017350
-      crystal_reflector_sprite_sheet_6: -8583130746002135103
-      crystal_reflector_sprite_sheet_7: -3646308302006948790
+      crystal_reflector_sprite_sheet-sheet_0: -641979996
+      crystal_reflector_sprite_sheet-sheet_1: -1437849725
+      crystal_reflector_sprite_sheet-sheet_2: -1428405165
+      crystal_reflector_sprite_sheet-sheet_3: -1702309083
+      crystal_reflector_sprite_sheet-sheet_4: 876060945
+      crystal_reflector_sprite_sheet-sheet_5: -1804077173
+      crystal_reflector_sprite_sheet-sheet_6: 1099204516
+      crystal_reflector_sprite_sheet-sheet_7: 154330611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
