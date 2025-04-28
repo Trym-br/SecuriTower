@@ -352,6 +352,7 @@ public class PlayerController : MonoBehaviour, IResetable {
 		List<GameObject> gameObjects = hitColliders
 			.Select(col => col.gameObject)                   // Get GameObject from Collider
 			.Where(go => go.GetComponentInChildren<IInteractable>() != null)    // Check if it has the interface
+			.Where(go => go.GetComponentInChildren<InteractableOutline>() != null)    // Check if it has the interface
 			.ToList();
 		
 		// print("hitColliders: " + hitColliders.Length + " / gameObjects: " + gameObjects.Count);
