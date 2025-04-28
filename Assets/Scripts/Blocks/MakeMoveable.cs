@@ -17,6 +17,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	private Vector3 startPosition;
 	private bool isMoving = false;
 	public UnityEvent OnMoveComplete;
+	public UnityEvent DuringMove;
 	public UnityEvent OnMoveStart;
 
 	private bool FinishedMoving = false;
@@ -104,6 +105,7 @@ public class MakeMoveable : MonoBehaviour, IResetable {
 	float elapsedMovingTime = Mathf.Infinity;
 	void Update() {
 		if (elapsedMovingTime < moveDuration) {
+			DuringMove.Invoke();
 			if (FinishedMoving)
 			{
 				OnMoveStart.Invoke();

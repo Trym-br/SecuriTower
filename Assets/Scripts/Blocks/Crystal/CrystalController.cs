@@ -267,6 +267,16 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         return flag;
     }
 
+    public void CheckForOff()
+    {
+        bool flag = ActiveInputs.All(x => x == false);
+        // print($"{this.name}: flag is {flag}");
+        if (!isSender && flag)
+        {
+            UpdateLineRenderer(true);
+        }
+    }
+
     bool isPointOnLine(Vector3 r, Vector3 p, Vector3 v)
     {
         return (p.x - r.x) * v.y - (p.y - r.y) * v.x == 0;
