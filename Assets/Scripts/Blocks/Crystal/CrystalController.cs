@@ -127,7 +127,13 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
        }
     }
 
-	bool playedReceiverNoise;
+    bool playedReceiverNoise;
+
+    private void Update()
+    {
+        UpdateCrystalLaserHitbox();
+    }
+
     private void FixedUpdate()
     {
 		if (OutputPoints.Length == 0) {
@@ -334,14 +340,14 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     {
         transform.position = transform.GetChild(0).position;
         transform.GetChild(0).position = transform.position;
-        boxCollider2D.enabled = true;
-        polygonCollider2D.enabled = true;
-        print("SHMOVING THE BOX");
+        // boxCollider2D.enabled = true;
+        // polygonCollider2D.enabled = true;
+        // print("SHMOVING THE BOX");
     }
     public void OnMoveStart()
     {
-        boxCollider2D.enabled = false;
-        polygonCollider2D.enabled = false;
+        // boxCollider2D.enabled = false;
+        // polygonCollider2D.enabled = false;
         // transform.position = transform.GetChild(0).position;
         // transform.GetChild(0).position = transform.position;
         // print("SHMOVING THE BOX");
