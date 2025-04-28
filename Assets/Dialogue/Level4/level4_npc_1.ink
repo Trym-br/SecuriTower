@@ -24,7 +24,7 @@ Is that what you think?#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
 Uhm...#speaker;Quintus#layout;left#audio;event:/VO/Wizard/vo_wizzard_confused
 
-If it's the princess you're talking about, you can find her upstairs.#speaker;Vera#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
+If it's the princess you're talking about, you can find her upstairs somewhere.#speaker;Vera#layout;right#audio;event:/VO/Dragon Librarian/vo_dragon_default
 
 Huh?#speaker;Quintus #layout;left#audio;event:/VO/Wizard/vo_wizzard_shock
 Princess?#audio;event:/VO/Wizard/vo_wizzard_shock

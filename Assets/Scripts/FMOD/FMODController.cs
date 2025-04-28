@@ -34,6 +34,8 @@ public class FMODController : MonoBehaviour {
 
 		instance = this;
 
+		currentlyPlayingSounds = new();
+
 		currentMusicStage = MusicStage.TitleScreen;
 		currentLevel = Level.IntroLevel;
 	}
