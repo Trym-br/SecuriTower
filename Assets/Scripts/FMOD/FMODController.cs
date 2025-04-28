@@ -415,6 +415,7 @@ public class FMODController : MonoBehaviour {
 		SFX_DoorLocked,
 		SFX_DoorOpen,
 		SFX_StaffPickup,
+		SFX_BowRemove,
 	}
 
 	public static void BeginResetSpell() {

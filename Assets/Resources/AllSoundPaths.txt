@@ -29,3 +29,4 @@ event:/AMB/amb_tourch
 event:/SFX/Door/sfx_doorLocked
 event:/SFX/Door/sfx_doorOpen
 event:/SFX/Player/sfx_staffPickup
+event:/SFX/sfx_bowRemove

@@ -3200,6 +3200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db441fcdb5f621840bee4fe804e5b111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuIsActive: 0
   pauseMenuHolder: {fileID: 6151479794290677578}
   continueButton: {fileID: 5839507621625459125}
   settingsButton: {fileID: 8351054975622859339}
@@ -3640,7 +3641,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2198333485280817700}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: StartIntroCutscene
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7190,6 +7191,7 @@ MonoBehaviour:
   sfxSlider: {fileID: 4832326556268707554}
   musicSlider: {fileID: 1406631769155101465}
   voSlider: {fileID: 7790886556107462170}
+  mainMenuButtons: {fileID: 421835904963113459}
   fromPauseMenu: 0
 --- !u!114 &1496843114174134743
 MonoBehaviour:
@@ -7892,7 +7894,7 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}

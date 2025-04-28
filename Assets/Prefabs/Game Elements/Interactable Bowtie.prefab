@@ -160,4 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42f14ccb0dcbda8e930fc99f107190a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inOrderDialogueInkJSONArray: []
+  inOrderDialogueInkJSONArray:
+  - {fileID: 4900000, guid: d85256ffe1d30f049a912e48edc77abf, type: 3}
+  - {fileID: 4900000, guid: 00c75d40003188942bec0331fdec5a31, type: 3}
+  - {fileID: 4900000, guid: 7bb8f3c28e8d56b4ca0c67c797224df4, type: 3}
