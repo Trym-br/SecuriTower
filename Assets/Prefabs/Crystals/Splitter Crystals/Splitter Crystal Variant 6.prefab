@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1896453764961048053, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4705337334157454803, guid: 6fdde19698272512db6d162d95390efc, type: 3}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'Sprites.Array.data[0]'
       value: 
@@ -93,6 +97,38 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1203873465216435421, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6475419634392687953, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6189690673155533162, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -5938503523493670578, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -2676411370758170172, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: -6881191424300928002, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2305346383621983879, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'BaseSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 2863090299272291168, guid: 80f2b1512eec82a49966cc90516dc8bb, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'InputPoints.Array.data[1]'
       value: 1
       objectReference: {fileID: 0}
@@ -122,12 +158,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'OutputPoints.Array.data[0]'
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'OutputPoints.Array.data[1]'
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5757741912025280132, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -322175014038864298, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: -4227803630438374541, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -8063682261121074475, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -4637859450176439894, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: -5694523505058652070, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: 282788071832844812, guid: e053e63a10e5e2041a26c77267781833, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'CrystalSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 3888513676110278692, guid: e053e63a10e5e2041a26c77267781833, type: 3}
     - target: {fileID: 4273786917217003375, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_Name
       value: Splitter Crystal Variant 6

@@ -1,0 +1,446 @@
+fileFormatVersion: 2
+guid: e053e63a10e5e2041a26c77267781833
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5694523505058652070
+    second: crystal_splitter_sprite_crystal_sheet_0
+  - first:
+      213: -4637859450176439894
+    second: crystal_splitter_sprite_crystal_sheet_1
+  - first:
+      213: -8063682261121074475
+    second: crystal_splitter_sprite_crystal_sheet_2
+  - first:
+      213: -4227803630438374541
+    second: crystal_splitter_sprite_crystal_sheet_3
+  - first:
+      213: -322175014038864298
+    second: crystal_splitter_sprite_crystal_sheet_4
+  - first:
+      213: 5757741912025280132
+    second: crystal_splitter_sprite_crystal_sheet_5
+  - first:
+      213: 3888513676110278692
+    second: crystal_splitter_sprite_crystal_sheet_6
+  - first:
+      213: 282788071832844812
+    second: crystal_splitter_sprite_crystal_sheet_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -10, y: -12}
+        - {x: -2, y: -6}
+        - {x: 10, y: -6}
+        - {x: 10, y: 5}
+        - {x: -2, y: 5}
+        - {x: -10, y: 12}
+        - {x: -13, y: 13}
+        - {x: -12, y: 10}
+        - {x: -5, y: 0}
+        - {x: -5, y: -1}
+        - {x: -12, y: -10}
+        - {x: -13, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50edd30b0df8f0b0800000000000000
+      internalID: -5694523505058652070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 2, y: -11}
+        - {x: 2, y: -5}
+        - {x: 9, y: 1}
+        - {x: 9, y: 5}
+        - {x: 8, y: 7}
+        - {x: 7, y: 8}
+        - {x: 4, y: 9}
+        - {x: 1, y: 9}
+        - {x: -4, y: 2}
+        - {x: -11, y: 2}
+        - {x: -13, y: 1}
+        - {x: -13, y: -2}
+        - {x: -11, y: -3}
+        - {x: -3, y: -3}
+        - {x: -3, y: -11}
+        - {x: -2, y: -13}
+        - {x: 1, y: -13}
+      tessellationDetail: 1
+      bones: []
+      spriteID: aa97b0a076303afb0800000000000000
+      internalID: -4637859450176439894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -4}
+        - {x: 1, y: -4}
+        - {x: 10, y: -12}
+        - {x: 13, y: -13}
+        - {x: 12, y: -10}
+        - {x: 6, y: -3}
+        - {x: 6, y: 9}
+        - {x: 4, y: 10}
+        - {x: -3, y: 10}
+        - {x: -5, y: 9}
+        - {x: -5, y: -2}
+        - {x: -11, y: -7}
+        - {x: -13, y: -13}
+        - {x: -7, y: -11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da724ce4bb081090800000000000000
+      internalID: -8063682261121074475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 3, y: -11}
+        - {x: 3, y: -3}
+        - {x: 11, y: -3}
+        - {x: 13, y: -2}
+        - {x: 13, y: 1}
+        - {x: 11, y: 2}
+        - {x: 5, y: 2}
+        - {x: -1, y: 9}
+        - {x: -5, y: 9}
+        - {x: -9, y: 5}
+        - {x: -9, y: 1}
+        - {x: -2, y: -5}
+        - {x: -2, y: -11}
+        - {x: -1, y: -13}
+        - {x: 2, y: -13}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3732d9b7ff2d355c0800000000000000
+      internalID: -4227803630438374541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 11, y: -8}
+        - {x: 4, y: -1}
+        - {x: 4, y: 0}
+        - {x: 11, y: 8}
+        - {x: 12, y: 12}
+        - {x: 8, y: 11}
+        - {x: 2, y: 5}
+        - {x: -10, y: 5}
+        - {x: -10, y: -6}
+        - {x: 3, y: -6}
+        - {x: 8, y: -11}
+        - {x: 12, y: -12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65ef4bc1887678bf0800000000000000
+      internalID: -322175014038864298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -9}
+        - {x: 6, y: -2}
+        - {x: 11, y: -2}
+        - {x: 13, y: -1}
+        - {x: 13, y: 2}
+        - {x: 11, y: 3}
+        - {x: 3, y: 3}
+        - {x: 3, y: 12}
+        - {x: 2, y: 13}
+        - {x: -1, y: 13}
+        - {x: -2, y: 12}
+        - {x: -2, y: 6}
+        - {x: -9, y: 0}
+        - {x: -9, y: -5}
+        - {x: -8, y: -8}
+        - {x: -5, y: -9}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e25ae53cb97ef40800000000000000
+      internalID: 5757741912025280132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: -9}
+        - {x: 6, y: 2}
+        - {x: 10, y: 5}
+        - {x: 12, y: 10}
+        - {x: 13, y: 13}
+        - {x: 10, y: 12}
+        - {x: 5, y: 9}
+        - {x: 1, y: 5}
+        - {x: 0, y: 5}
+        - {x: -4, y: 9}
+        - {x: -10, y: 12}
+        - {x: -13, y: 13}
+        - {x: -12, y: 10}
+        - {x: -9, y: 5}
+        - {x: -5, y: 2}
+        - {x: -5, y: -9}
+        - {x: -3, y: -10}
+        - {x: 4, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4203dc01696c6f530800000000000000
+      internalID: 3888513676110278692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_splitter_sprite_crystal_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -5}
+        - {x: 9, y: 0}
+        - {x: 3, y: 4}
+        - {x: 2, y: 6}
+        - {x: 2, y: 12}
+        - {x: 1, y: 13}
+        - {x: -2, y: 13}
+        - {x: -3, y: 12}
+        - {x: -3, y: 3}
+        - {x: -10, y: 3}
+        - {x: -13, y: 2}
+        - {x: -13, y: -1}
+        - {x: -10, y: -2}
+        - {x: -5, y: -3}
+        - {x: 0, y: -9}
+        - {x: 5, y: -9}
+        - {x: 8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0a7058c04aace300800000000000000
+      internalID: 282788071832844812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 232dda56fd5bcd241a9c162b7b0ba318
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crystal_splitter_sprite_crystal_sheet_0: -5694523505058652070
+      crystal_splitter_sprite_crystal_sheet_1: -4637859450176439894
+      crystal_splitter_sprite_crystal_sheet_2: -8063682261121074475
+      crystal_splitter_sprite_crystal_sheet_3: -4227803630438374541
+      crystal_splitter_sprite_crystal_sheet_4: -322175014038864298
+      crystal_splitter_sprite_crystal_sheet_5: 5757741912025280132
+      crystal_splitter_sprite_crystal_sheet_6: 3888513676110278692
+      crystal_splitter_sprite_crystal_sheet_7: 282788071832844812
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
