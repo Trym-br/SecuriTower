@@ -30,6 +30,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     
     public SpriteRenderer spriteRendererCrystal;
     public SpriteRenderer spriteRendererBase;
+    public SpriteRenderer spriteRendererWhole;
     private bool laserHumming = false;
     private int hummingId = 0;
         
@@ -56,6 +57,8 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
     };
     [SerializeField] private Sprite[] BaseSprites;
     [SerializeField] private Sprite[] CrystalSprites;
+    [SerializeField] private Sprite[] WholeSprites;
+    
 
     private void OnValidate()
     {
@@ -438,6 +441,7 @@ public class CrystalController : MonoBehaviour, IInteractable, IResetable
         {
             spriteRendererCrystal.sprite = CrystalSprites[OutputPoints[0]];
             spriteRendererBase.sprite = BaseSprites[OutputPoints[0]];
+            spriteRendererWhole.sprite = WholeSprites[OutputPoints[0]];
         }
         UpdatePhysicsShape();
     }

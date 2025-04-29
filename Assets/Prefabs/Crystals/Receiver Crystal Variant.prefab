@@ -97,6 +97,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: spriteRendererWhole
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'Sprites.Array.data[0]'
       value: 
       objectReference: {fileID: -8824918637270012061, guid: 61b8688a232d065488447ee5d7a7daf7, type: 3}
@@ -295,7 +299,8 @@ PrefabInstance:
     - {fileID: 3332365587356926096, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
     - {fileID: 5593226002040999441, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
     - {fileID: 5164801756367268086, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6629465178838853082, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4273786917217003375, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}

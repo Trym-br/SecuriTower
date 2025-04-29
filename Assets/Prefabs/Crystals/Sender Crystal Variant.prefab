@@ -200,6 +200,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sender Crystal Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5059670809485217074, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059670809485217074, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5164801756367268086, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1

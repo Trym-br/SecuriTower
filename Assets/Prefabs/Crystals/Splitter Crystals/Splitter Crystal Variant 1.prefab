@@ -169,6 +169,38 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: -4936478495219384770, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -6645634875764205455, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: 5899132540873692886, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -6815142021257499030, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -5341819952037164093, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: -4705337334157454803, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1077290322479197511, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: 'WholeSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 3435095272793525462, guid: 6fdde19698272512db6d162d95390efc, type: 3}
+    - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'CrystalSprites.Array.data[0]'
       value: 
       objectReference: {fileID: 5757741912025280132, guid: e053e63a10e5e2041a26c77267781833, type: 3}
