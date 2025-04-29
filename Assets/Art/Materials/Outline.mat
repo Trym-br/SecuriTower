@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0
-    - _Internal_Alpha: 0
+    - _Internal_Alpha: 1
     m_Colors:
     - _OutlineColour: {r: 0.78431374, g: 0.8235294, b: 0.9411765, a: 1}
   m_BuildTextureStacks: []
