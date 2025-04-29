@@ -20,7 +20,9 @@ public class NPC_DoorBehaviour : MonoBehaviour, IInteractable {
 		isOpen = false;
     }
 
-	BoxCollider2D boxCollider;
+	BoxCollider2D    boxCollider;
+	CircleCollider2D circleCollider;
+
 	void FixedUpdate() {
 		if (animator != null) {
 			animator.SetBool("Open", isOpen);
@@ -29,8 +31,12 @@ public class NPC_DoorBehaviour : MonoBehaviour, IInteractable {
 		if (boxCollider == null) {
 			boxCollider = GetComponent<BoxCollider2D>();
 		}
-
 		boxCollider.enabled = !isOpen;
+
+		if (circleCollider == null) {
+			circleCollider = GetComponent<CircleCollider2D>();
+		}
+		circleCollider.enabled = !isOpen;
 	}
 
     public void Interact()
