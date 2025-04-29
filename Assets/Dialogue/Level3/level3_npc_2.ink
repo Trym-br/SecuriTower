@@ -21,7 +21,7 @@ Sally friend.#audio;event:/VO/Wizard/vo_wizzard_annoyed
 Down stairs.#audio;event:/VO/Wizard/vo_wizzard_annoyed
 Go find Sally.#audio;event:/VO/Wizard/vo_wizzard_annoyed
 
-<b>Yes :-)</b> #speaker;Dirt #layout;right #wordSpeed;0.1#audio;event:/VO/Golem/vo_golem_default
+<b>:-)</b> #speaker;Dirt #layout;right #wordSpeed;0.1#audio;event:/VO/Golem/vo_golem_default
 
 
 -> END

@@ -36,13 +36,6 @@ With a giant golem guard dog!#audio;event:/VO/Wizard/vo_wizzard_annoyed
 But instead of being mean and scary...#audio;event:/VO/Wizard/vo_wizzard_annoyed
 You just let anyone waltz right in!#audio;event:/VO/Wizard/vo_wizzard_annoyed
 
-<b>Not scary.</b> #speaker;Dirt#layout;right#wordSpeed;0.08#audio;event:/VO/Golem/vo_golem_default
-<b>Nice.</b>#wordSpeed;0.1#audio;event:/VO/Golem/vo_golem_default
-
-Yeah, that's the issue! #speaker;Quintus#layout;left#wordSpeed;0.03#audio;event:/VO/Wizard/vo_wizzard_default
-You're not <i>supposed</i> to be nice.#audio;event:/VO/Wizard/vo_wizzard_default
-And you're definitely not supposed to let random strangers into my tower!#audio;event:/VO/Wizard/vo_wizzard_annoyed
-
 <b>Nice people.</b>#speaker;Dirt #layout;right#wordSpeed; 0.08#audio;event:/VO/Golem/vo_golem_default
 <b>I welcome nice people.</b>#audio;event:/VO/Golem/vo_golem_default
 
@@ -55,7 +48,7 @@ I hope she's alright...#audio;event:/VO/Wizard/vo_wizzard_default
 I have to make sure this witch hasn't harmed her.#audio;event:/VO/Wizard/vo_wizzard_default
 
 <b>Goodbye.</b> #speaker;Dirt #layout;right#wordSpeed;0.1#audio;event:/VO/Golem/vo_golem_default
-<b>Love you :-)</b>#audio;event:/VO/Golem/vo_golem_default
+<b>Love you.</b>#audio;event:/VO/Golem/vo_golem_default
 ... #speaker;Quintus #layout;left#wordSpeed;0.03
 Bye.#audio;event:/VO/Wizard/vo_wizzard_sigh
 
