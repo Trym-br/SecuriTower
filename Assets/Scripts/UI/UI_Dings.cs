@@ -7,11 +7,10 @@ public class UI_Dings : MonoBehaviour {
     private PauseMenuManager pauseMenuManager;
     private SettingsMenuManager settingsMenuManager;
 
-    [Header("Menus")] 
-    public GameObject mainMenu;
+    [Header("Menus")] public GameObject mainMenu;
     public GameObject pauseMenu;
     public GameObject settingsMenu;
-    
+
     void Awake() {
         input = GetComponent<InputActions>();
         mainMenuManager = mainMenu.GetComponent<MainMenuManager>();
@@ -26,8 +25,15 @@ public class UI_Dings : MonoBehaviour {
     void Update() {
         if (input.cancelBegin) {
             if (DialogueManager.instance.dialogueIsPlaying) {
-                // do nothing   
-                pauseMenuManager.ActivatePauseMenu(false);
+                if (settingsMenuManager.settingsMenuHolder.activeInHierarchy) {
+                    settingsMenuManager.DeactivateSettingsMenu();
+                }
+                else if (pauseMenuManager.pauseMenuHolder.activeInHierarchy) {
+                    pauseMenuManager.DeactivatePauseMenu();
+                }
+                else if (!pauseMenuManager.pauseMenuHolder.activeInHierarchy) {
+                    pauseMenuManager.ActivatePauseMenu(false);
+                }
             }
             else if (mainMenuManager.introCutsceneIsPlaying) {
                 mainMenuManager.EndIntroCutscene();
