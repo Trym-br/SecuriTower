@@ -9,6 +9,7 @@ public class PauseMenuManager : MonoBehaviour {
     public GameObject pauseMenuHolder;
     public Button continueButton;
     public Button settingsButton;
+    public Button mainMenuButton;
 
     void Start() {
         pauseMenuHolder.SetActive(false);
@@ -17,6 +18,7 @@ public class PauseMenuManager : MonoBehaviour {
     }
 
     public void ActivatePauseMenu(bool fromSettings) {
+        mainMenuButton.interactable = true;
         if (fromSettings) {
             settingsButton.Select();
         }
@@ -26,6 +28,9 @@ public class PauseMenuManager : MonoBehaviour {
         pauseMenuHolder.SetActive(true);
         pauseMenuIsActive = true;
         PlayerController.instance.inMenu = true;
+        if (DialogueManager.instance.dialogueIsPlaying) {
+            mainMenuButton.interactable = false;
+        }
     }
 
     public void DeactivatePauseMenu() {
