@@ -162,11 +162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'OutputPoints.Array.data[0]'
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'OutputPoints.Array.data[1]'
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2713880978647010285, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: 'WholeSprites.Array.data[0]'
@@ -239,6 +239,14 @@ PrefabInstance:
     - target: {fileID: 4273786917217003375, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059670809485217074, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059670809485217074, guid: 885d584774da6664d9d70044cf7cdbc6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
