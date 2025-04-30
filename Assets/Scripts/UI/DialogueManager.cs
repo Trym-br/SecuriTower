@@ -173,14 +173,17 @@ public class DialogueManager : MonoBehaviour {
         if (endCutsceneAfterDialogue) {
             Debug.Log("Ending cutscene.");
             MainMenuManager.instance.EndIntroCutscene();
+            endCutsceneAfterDialogue = false;
         }
 
         if (yeetPrincessAfterDialogue) {
             NPC_PrincessBehaviour.instance.YeetPrincess();
+            yeetPrincessAfterDialogue = false;
         }
 
         if (startCreditsAfterDialogue) {
             MainMenuManager.instance.StartCredits();
+            startCreditsAfterDialogue = false;
         }
     }
 
