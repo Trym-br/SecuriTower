@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour {
     public Button startButton;
     public Button settingsButton;
     public Button quitButton;
+    public GameObject princess;
 
     [Header("InkJSON file")] public TextAsset InkJSON;
 
@@ -124,5 +125,6 @@ public class MainMenuManager : MonoBehaviour {
         startButton.Select();
         FMODController.instance.currentMusicStage = FMODController.MusicStage.TitleScreen;
         LevelResetController.instance.ResetAllLevels();
+        princess.SetActive(false);
     }
 }

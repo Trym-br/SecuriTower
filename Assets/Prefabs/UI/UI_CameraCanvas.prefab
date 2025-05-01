@@ -7904,6 +7904,7 @@ MonoBehaviour:
   startButton: {fileID: 2347986929775789344}
   settingsButton: {fileID: 5783340125780412091}
   quitButton: {fileID: 2551347822922644630}
+  princess: {fileID: 1546210353791519857}
   InkJSON: {fileID: 4900000, guid: ce9b3902a3c38054d8bc965155c9458d, type: 3}
   introCutsceneIsPlaying: 0
 --- !u!95 &3235954289343029062
@@ -9757,7 +9758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Character Design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cf1c30be8468244b903a224350b665e, type: 2}
   m_sharedMaterial: {fileID: 5946678018170614132, guid: 1cf1c30be8468244b903a224350b665e, type: 2}
